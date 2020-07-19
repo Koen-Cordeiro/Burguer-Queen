@@ -5,12 +5,15 @@ import './styleRegister.css'
 
 const Register = () => {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const arrText = [
     { text: "Digite seu nome", type: "text", value: name, handleChange: (e)=> setName(e.currentTarget.value) },
-    { text: "Digite seu e-mail", type: "email" },
-    { text: "Digite sua senha", type: "password" },
-    { text: "Confirme sua senha", type: "password" },
+    { text: "Digite seu e-mail", type: "email", value: email, handleChange: (e)=> setEmail(e.currentTarget.value) },
+    { text: "Digite sua senha", type: "password", value: password, handleChange: (e)=> setPassword(e.currentTarget.value) },
+    { text: "Confirme sua senha", type: "password", value: confirmPassword, handleChange: (e)=> setConfirmPassword(e.currentTarget.value) },
   ]
   return (
     <main className='flex-center'> 
@@ -21,7 +24,7 @@ const Register = () => {
     {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
     <button className='button' type='submit' onClick={(e) => {
       e.preventDefault()
-      console.log(name)
+      console.log(confirmPassword)
       }}>Registre-se</button>
   </form>
   </section>
