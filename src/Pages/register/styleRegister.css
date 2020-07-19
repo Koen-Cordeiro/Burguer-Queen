@@ -1,0 +1,38 @@
+.flexCenter {
+    display: 'flex';
+    justify-content: 'space-around';
+    height: '97vh';
+    align-items: 'center';
+}
+
+.flexColumn {
+    display: 'flex';
+    flex-direction: 'column'
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.center {
+    align-items: 'center';
+}
+
+.input {
+    margin: '5px 0 20px';
+    height: '25px';
+    width: '320px'
+}
+
+.hRule {
+    height: '2px';
+    width: '400px';
+    background-color: 'black';
+    align-self: 'center';
+    margin-bottom: '10px';
+}
+
+.button {
+    height: '30px';
+    width: 100px;
+}
