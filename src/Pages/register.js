@@ -14,7 +14,7 @@ const Register = () => {
   return (
     <main className={css(styles.flexCenter)}> 
   <section className={css(styles.flexColumn)}>
-    <h2>Criar uma nova conta</h2>
+    <h2 className={css(styles.textCenter)}>Criar uma nova conta</h2>
     <div className={css(styles.hRule)}/>
     <form className={css(styles.flexColumn)}>
     {arrText.map((e, index) => <Input key={index} type={e.type} text={e.text} />)}
@@ -35,6 +35,15 @@ const styles = StyleSheet.create({
   flexColumn: {
     display: "flex",
     flexDirection: 'column'
+  },
+  textCenter: {
+    textAlign: 'center'
+  },
+  hRule: {
+    height:'2px',
+    width: '300px',
+    backgroundColor:'black',
+    alignSelf: 'center'
   },
   button: {
     height: '20px',
