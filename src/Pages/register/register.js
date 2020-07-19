@@ -1,0 +1,64 @@
+import React, {useState} from 'react'
+import { StyleSheet, css } from 'aphrodite';
+import Input from '../../Components/input'
+
+
+const Register = () => {
+  const [name, setName] = useState([]);
+
+  const arrText = [
+    { text: "Digite seu nome", type: "text", value: name, handleClick: ()=> {} },
+    { text: "Digite seu e-mail", type: "email" },
+    { text: "Digite sua senha", type: "password" },
+    { text: "Confirme sua senha", type: "password" },
+  ]
+  return (
+    <main className={css(styles.flexCenter)}> 
+  <section className={css(styles.flexColumn)}>
+    <h2 className={css(styles.textCenter)}>Criar uma nova conta</h2>
+    <div className={css(styles.hRule)}/>
+    <form className={css(styles.flexColumn, styles.center)}>
+    {arrText.map((e, index) => <Input key={index} value={e.value} inputClass={css(styles.input)} type={e.type} text={e.text} />)}
+    <button className={css(styles.button)}>Registre-se</button>
+  </form>
+  </section>
+  <section> Lateral</section>
+  </main>
+  )
+}
+const styles = StyleSheet.create({
+  flexCenter: {
+    display: "flex",
+    justifyContent: 'space-around',
+    height: '97vh',
+    alignItems: 'center'
+  },
+  flexColumn: {
+    display: "flex",
+    flexDirection: 'column'
+  },
+  textCenter: {
+    textAlign: 'center'
+  },
+  center: {
+    alignItems: 'center'
+  },
+  input: {
+    margin: '5px 0 20px',
+    height: '25px',
+    width:'320px'
+  },
+  hRule: {
+    height:'2px',
+    width: '400px',
+    backgroundColor:'black',
+    alignSelf: 'center',
+    marginBottom: '10px',
+  },
+  button: {
+    height: '30px',
+    width: '100px'
+  },
+});
+
+export default Register
