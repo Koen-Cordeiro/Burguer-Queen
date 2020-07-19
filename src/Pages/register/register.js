@@ -19,7 +19,10 @@ const Register = () => {
     <div className='h-rule'/>
     <form className='flex-column center'>
     {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-    <button className='button'>Registre-se</button>
+    <button className='button' type='submit' onClick={(e) => {
+      e.preventDefault()
+      console.log(name)
+      }}>Registre-se</button>
   </form>
   </section>
   <section> Lateral</section>
