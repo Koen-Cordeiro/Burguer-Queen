@@ -11,18 +11,34 @@ const Register = () => {
     { text: "Digite sua senha", type: "password" },
     { text: "Confirme sua senha", type: "password" },
   ]
-  return (<form className={css(styles.flexCenter)}>
+  return (
+    <main className={css(styles.flexCenter)}> 
+  <section className={css(styles.flexColumn)}>
+    <h2>Criar uma nova conta</h2>
+    <div className={css(styles.hRule)}/>
+    <form className={css(styles.flexColumn)}>
     {arrText.map((e, index) => <Input key={index} type={e.type} text={e.text} />)}
-    <button className={css(styles.red)}>Registre-se</button>
-  </form>)
+    <button className={css(styles.button)}>Registre-se</button>
+  </form>
+  </section>
+  <section> Lateral</section>
+  </main>
+  )
 }
 const styles = StyleSheet.create({
   flexCenter: {
     display: "flex",
-    flexDirection: "column"
+    justifyContent: 'space-around',
+    height: '97vh',
+    alignItems: 'center'
   },
-  red: {
-    backgroundColor: 'red'
+  flexColumn: {
+    display: "flex",
+    flexDirection: 'column'
+  },
+  button: {
+    height: '20px',
+    width: '25px'
   },
 });
 
