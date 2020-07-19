@@ -17,8 +17,8 @@ const Register = () => {
   <section className='flex-column'>
     <h2 className='text-center'>Criar uma nova conta</h2>
     <div className='h-rule'/>
-    <form className='flex-column'>
-    {arrText.map((e, index) => <Input key={index}type={e.type} text={e.text} />)}
+    <form className='flex-column center'>
+    {arrText.map((e, index) => <Input key={index} inputClass={'input-style'} type={e.type} text={e.text} />)}
     <button className='button'>Registre-se</button>
   </form>
   </section>
