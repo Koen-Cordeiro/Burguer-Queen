@@ -7,7 +7,7 @@ const Register = () => {
   const [name, setName] = useState([]);
 
   const arrText = [
-    { text: "Digite seu nome", type: "text", value: name, handleClick: ()=> {} },
+    { text: "Digite seu nome", type: "text", value: name, handleClick: (e)=> {setName(e.currentTarget.value)} },
     { text: "Digite seu e-mail", type: "email" },
     { text: "Digite sua senha", type: "password" },
     { text: "Confirme sua senha", type: "password" },
