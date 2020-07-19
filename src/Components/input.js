@@ -3,7 +3,7 @@ import React from 'react'
 const Input = (props) => (
   <>
     <label>{props.text}</label>
-    <input type={props.type} />
+    <input className={props.inputClass} type={props.type} />
   </>
 )
 
