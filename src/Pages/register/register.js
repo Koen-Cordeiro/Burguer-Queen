@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import firebase from '../../firebase'
 import Input from '../../Components/input'
 import './styleRegister.css'
 
@@ -8,6 +9,25 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const register = (document) =>  {
+    const userCollection = firebase.firestore().collection('users-info');
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(document.email, document.password)
+      .then((cred) => {
+        cred.user.updateProfile({ displayName: document.name });
+        
+      })
+      .then(() => {
+        const uid = firebase.auth().currentUser.uid;
+        userCollection.doc(uid).set(document);
+      })
+      .catch((error) => {
+        // const errorResult = errorRegister.filter(item => item.code === error.code);
+        // errorFunc(errorResult[0].message);
+      });
+  }
 
   const arrText = [
     { text: "Digite seu nome", type: "text", value: name, handleChange: (e)=> setName(e.currentTarget.value) },
@@ -24,7 +44,8 @@ const Register = () => {
     {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
     <button className='button' type='submit' onClick={(e) => {
       e.preventDefault()
-      console.log(confirmPassword)
+      register({name,email,password})
+      console.log(firebase.auth().currentUser)
       }}>Registre-se</button>
   </form>
   </section>
