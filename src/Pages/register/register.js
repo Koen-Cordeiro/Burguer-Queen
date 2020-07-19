@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
-import firebase from '../../firebase'
+import firebase from 'firebase'
+import {Link} from 'react-router-dom'
 import Input from '../../Components/input'
 import './styleRegister.css'
 
 
 const Register = () => {
   const [name, setName] = useState('');
+  const [kitchenButton, setKitchenButton] = useState(false);
+  const [saloonButton, setSaloonButton] = useState(false);
+  const [page, setPage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -41,12 +45,16 @@ const Register = () => {
     <h2 className='text-center'>Criar uma nova conta</h2>
     <div className='h-rule'/>
     <form className='flex-column center'>
-    {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-    <button className='button' type='submit' onClick={(e) => {
+  {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
+    <div onChange={event => console.log(event.target.value)}>
+    <Input type='radio' value={'cozinha'} name={'radio'} text={'Cozinha'}/>
+    <p>ou</p>
+    <Input type='radio' value={'salão'} name={'radio'} text={'Salão'}/>
+    </div>
+    <Link to={page}><button className='button' type='submit' onClick={(e) => {
       e.preventDefault()
       register({name,email,password})
-      console.log(firebase.auth().currentUser)
-      }}>Registre-se</button>
+      }}>Registre-se</button></Link>
   </form>
   </section>
   <section> Lateral</section>
