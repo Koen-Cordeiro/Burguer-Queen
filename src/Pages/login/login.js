@@ -4,6 +4,9 @@ import Input from "../Components/input";
 
 const Login = () => {
   
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const login = (staff) => {
     firebase
       .auth()
@@ -29,8 +32,8 @@ const Login = () => {
   }
 
   const arrText = [
-    { text: "E-mail", type: "email"},
-    { text: "Senha", type: "password"},
+    { text: "E-mail", type: "email", value: email, handleChange: (e) => setEmail(e.currentTarget.value)},
+    { text: "Senha", type: "password", value: password, handleChange: (e) => setPassword(e.currentTarget.value)},
   ];
 
   return (
@@ -39,7 +42,7 @@ const Login = () => {
         <h1>Burguer Queen</h1>
         <form className={}>
           {arrText.map((e, index) => (
-            <Input key={index} text={e.text} type={e.type} />
+            <Input key={index} text={e.text} type={e.type} handleChange={e.handleChange}/>
           ))}
           <Link to="MAP PRA RECEBER COZINHA OU SALÃO">
             <button>Login</button>
