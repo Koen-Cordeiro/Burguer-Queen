@@ -1,31 +1,33 @@
 import React, { useState } from 'react'
+import firebase from 'firebase'
 import { Link } from "react-router-dom";
-import Input from "../Components/input";
+import Input from '../../Components/input'
 
 const Login = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  
   const login = (staff) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(staff.email, staff.password)
       .then((user) => {
         checkWorkPlace(user);
+        console.log("to logado")
       })
       .catch((error) => {
-        callback(error);
+        // callback(error);
     });
   }
 
   const checkWorkPlace = (user) => {
     const userCollection = firebase.firestore().collection("users-info").doc(user.uid);
     userCollection.get().then((staff) => {
-      if (staff.workPlace == "cozinha") {
+      if (staff.workPlace === "cozinha") {
       // vai para cozinha
       }
-      if (staff.workPlace == "salão") {
+      if (staff.workPlace === "salão") {
         // vai para salão
       }
     });
@@ -40,7 +42,7 @@ const Login = () => {
     <main>
       <section>
         <h1>Burguer Queen</h1>
-        <form className={}>
+        <form>
           {arrText.map((e, index) => (
             <Input key={index} text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
@@ -50,7 +52,7 @@ const Login = () => {
             Entrar
           </button>
         </form>
-        <p>Não possui uma conta?<br/><Link to='/'>Registre-se</Link></p>
+        <p>Não possui uma conta?<br/><Link to='/register'>Registre-se</Link></p>
       </section>
       <section>Lateral</section>
     </main>
