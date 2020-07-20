@@ -9,10 +9,24 @@ import Page404 from '../src/Pages/404'
 const App = () => {
   const [userPage, setUserPage] = useState();
 
+  const checkWorkPlace = (user) => {
+    const userCollection = firebase.firestore().collection("users-info").doc(user.uid);
+    userCollection.get().then((staff) => {
+      if (staff.data().workPlace === "cozinha") {
+        setUserPage(<Kitchen />)
+      }
+      if (staff.data().workPlace === "salão") {
+        console.log('ele é do salão')
+      }
+    });
+  }
+
+
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        setUserPage(<Kitchen/>)
+        checkWorkPlace(user)
 
       } else {
         console.log('to deslogado')
@@ -27,23 +41,6 @@ const App = () => {
     });
 
   }, [])
-
-
-
-
-  // const checkWorkPlace = (user) => {
-  //   const userCollection = firebase.firestore().collection("users-info").doc(user.uid);
-  //   userCollection.get().then((staff) => {
-  //     if (staff.workPlace === "cozinha") {
-  //     // vai para cozinha
-  //     }
-  //     if (staff.workPlace === "salão") {
-  //       // vai para salão
-  //     }
-  //   });
-  // }
-
-
 
   return (
     <>
