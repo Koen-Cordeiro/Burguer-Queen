@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from '../src/Pages/login/login'
+import Kitchen from '../src/Pages/kitchen/kitchen'
 import Register from '../src/Pages/register/register'
 import Page404 from '../src/Pages/404'
 
 const App = () => {
-
   const [userPage, setUserPage] = useState();
-
-  const init = () => {
-
-  }
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        
+        setUserPage(<Kitchen/>)
 
       } else {
         console.log('to deslogado')
