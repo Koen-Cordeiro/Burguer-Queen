@@ -42,6 +42,7 @@ const App = () => {
       } else {
         console.log('to deslogado')
         setUserPage(() => <BrowserRouter>
+        <Redirect to='/'/>
           <Switch>
             <Route path='/' exact={true} component={Login} />
             <Route path='/register' component={Register} />
