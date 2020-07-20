@@ -44,9 +44,11 @@ const Login = () => {
           {arrText.map((e, index) => (
             <Input key={index} text={e.text} type={e.type} handleChange={e.handleChange}/>
           ))}
-          <Link to="MAP PRA RECEBER COZINHA OU SALÃO">
-            <button>Login</button>
-          </Link>
+          <button type="submit" onClick={(e) => {
+            e.preventDefault()
+            login(email, password)}}>
+            Login
+          </button>
         </form>
       </section>
       <section>Lateral</section>
