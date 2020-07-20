@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from '../src/Pages/login/login'
 import Kitchen from '../src/Pages/kitchen/kitchen'
+import Saloon from '../src/Pages/saloon/saloon'
 import Register from '../src/Pages/register/register'
 import Page404 from '../src/Pages/404'
 
@@ -16,7 +17,7 @@ const App = () => {
         setUserPage(<Kitchen />)
       }
       if (staff.data().workPlace === "salão") {
-        console.log('ele é do salão')
+        setUserPage(<Saloon/>)
       }
     });
   }
