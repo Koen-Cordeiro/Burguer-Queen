@@ -11,30 +11,28 @@ const App = () => {
   const [userPage, setUserPage] = useState();
 
   const checkWorkPlace = (user) => {
-    const userCollection = firebase.firestore().collection("users-info").doc(user.uid);
+    const userCollection = firebase.firestore().collection('users-info').doc(user.uid);
     userCollection.get().then((staff) => {
-      if (staff.data().workPlace === "cozinha") {
+      if (staff.data().workPlace === 'cozinha') {
         setUserPage(() => <BrowserRouter>
         <Redirect to='/kitchen'/>
       <Switch>
-        <Route path="/kitchen" component={Kitchen} />
+        <Route path='/kitchen' component={Kitchen} />
         <Route path='*' component={Page404} />
       </Switch>
     </BrowserRouter>)
       }
-      if (staff.data().workPlace === "salão") {
+      if (staff.data().workPlace === 'salão') {
         setUserPage(() => <BrowserRouter>
           <Redirect to='/saloon'/>
         <Switch>
-          <Route path="/saloon" component={Saloon} />
+          <Route path='/saloon' component={Saloon} />
           <Route path='*' component={Page404} />
         </Switch>
       </BrowserRouter>)
       }
     });
   }
-
-
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -45,8 +43,8 @@ const App = () => {
         console.log('to deslogado')
         setUserPage(() => <BrowserRouter>
           <Switch>
-            <Route path="/" exact={true} component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path='/' exact={true} component={Login} />
+            <Route path='/register' component={Register} />
             <Route path='*' component={Page404} />
           </Switch>
         </BrowserRouter>)
