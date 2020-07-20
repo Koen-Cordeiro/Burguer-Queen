@@ -50,11 +50,12 @@ const Register = () => {
             <p>ou</p>
             <Input type='radio' value={'salão'} name={'radio'} text={'Salão'} />
           </div>
+          <Link to='/'>Voltar</Link>
           <button className='button' type='submit' onClick={(e) => {
             e.preventDefault()
             password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
           }}>Registre-se</button>
-          <div>{error}</div>
+          <span>{error}</span>
         </form>
       </section>
       <section> Lateral</section>
