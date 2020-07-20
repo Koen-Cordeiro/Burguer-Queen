@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import firebase from 'firebase'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from '../src/Pages/login/login'
 import Kitchen from '../src/Pages/kitchen/kitchen'
 import Saloon from '../src/Pages/saloon/saloon'
@@ -14,10 +14,22 @@ const App = () => {
     const userCollection = firebase.firestore().collection("users-info").doc(user.uid);
     userCollection.get().then((staff) => {
       if (staff.data().workPlace === "cozinha") {
-        setUserPage(<Kitchen />)
+        setUserPage(() => <BrowserRouter>
+        <Redirect to='/kitchen'/>
+      <Switch>
+        <Route path="/kitchen" component={Kitchen} />
+        <Route path='*' component={Page404} />
+      </Switch>
+    </BrowserRouter>)
       }
       if (staff.data().workPlace === "salão") {
-        setUserPage(<Saloon/>)
+        setUserPage(() => <BrowserRouter>
+          <Redirect to='/saloon'/>
+        <Switch>
+          <Route path="/saloon" component={Saloon} />
+          <Route path='*' component={Page404} />
+        </Switch>
+      </BrowserRouter>)
       }
     });
   }
