@@ -42,11 +42,11 @@ const Login = () => {
         <h1>Burguer Queen</h1>
         <form className={}>
           {arrText.map((e, index) => (
-            <Input key={index} text={e.text} type={e.type} handleChange={e.handleChange}/>
+            <Input key={index} text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           <button type="submit" onClick={(e) => {
             e.preventDefault()
-            login(email, password)}}>
+            login({email, password})}}>
             Entrar
           </button>
         </form>
