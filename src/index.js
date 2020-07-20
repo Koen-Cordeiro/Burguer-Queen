@@ -2,8 +2,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from '../src/Pages/login'
-import Register from '../src/Pages/register'
+import Register from '../src/Pages/register/register'
 import Page404 from '../src/Pages/404'
+import './firebase'
 
 render(
     <BrowserRouter>

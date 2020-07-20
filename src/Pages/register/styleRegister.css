@@ -1,0 +1,38 @@
+.flex-center {
+    display: flex;
+    justify-content: space-around;
+    height: 97vh;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    align-items: center;
+}
+
+.input-style {
+    margin: 5px 0 20px;
+    height: 30px;
+    width: 320px
+}
+
+.h-rule {
+    height: 2px;
+    width: 400px;
+    background-color: black;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.button {
+    height: 30px;
+    width: 100px;
+}
