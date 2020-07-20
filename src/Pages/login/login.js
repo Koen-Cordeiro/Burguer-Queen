@@ -47,9 +47,10 @@ const Login = () => {
           <button type="submit" onClick={(e) => {
             e.preventDefault()
             login(email, password)}}>
-            Login
+            Entrar
           </button>
         </form>
+        <p>Não possui uma conta?<br/><Link to='/'>Registre-se</Link></p>
       </section>
       <section>Lateral</section>
     </main>
