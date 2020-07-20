@@ -25,7 +25,6 @@ const Register = () => {
         const uid = firebase.auth().currentUser.uid;
         userCollection.doc(uid).set(document);
       })
-      .then(() => window.history.pushState({}, null, '/kitchen'))
       .catch((error) => {
         // const errorResult = errorRegister.filter(item => item.code === error.code);
         // errorFunc(errorResult[0].message);
