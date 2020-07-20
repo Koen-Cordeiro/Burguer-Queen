@@ -4,11 +4,27 @@ import Input from "../Components/input";
 
 const Login = () => {
   
+  
+
+  const login = (staff) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(staff.email, staff.password)
+      .then((user) => {
+        callback(user);
+        checkUser(user);
+      })
+      .catch((error) => {
+        callback(error);
+      });
+    };
+  }
+
   const arrText = [
     { text: "E-mail", type: "email" },
     { text: "Senha", type: "password" },
   ];
-
+  
   return (
     <main>
       <section>
@@ -39,11 +55,10 @@ const toggleSignIn = ({ email, password }, callback) => {
     .catch((error) => {
       callback(error);
     });
-};
 
 // check if user exists on firebase salão & cozinha
 const checkUser = (user) => {
-  const load = firebase.firestore().collection("users").doc(user.uid);
+  const load = firebase.firestore().collection("users-info").doc(user.uid);
   load.get().then((doc) => {
     if (!doc.exists) {
       newUser(user);
