@@ -40,9 +40,9 @@ const App = () => {
         checkWorkPlace(user)
 
       } else {
-        console.log('to deslogado')
+        console.log(window.location.pathname)
         setUserPage(() => <BrowserRouter>
-        <Redirect to='/'/>
+        <Redirect to={window.location.pathname ==='/register'?'/register': '/'}/>
           <Switch>
             <Route path='/' exact={true} component={Login} />
             <Route path='/register' component={Register} />
