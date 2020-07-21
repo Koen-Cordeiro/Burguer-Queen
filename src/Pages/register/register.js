@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import firebase from 'firebase'
 import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
+import Button from '../../Components/button'
 import './styleRegister.css'
 import '../reset.css'
 
@@ -52,10 +53,10 @@ const Register = () => {
           </div>
             <hr className='h-rule'/>
             </label>
-          <button className='button' type='submit' onClick={(e) => {
+          <Button buttonClass='button' type='submit' text='Registre-se' handleClick={(e) => {
             e.preventDefault()
             password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
-          }}>Registre-se</button>
+          }}/>
           <span>{error}</span>
         </form>
       <div className='change-register-login text-center'> Já possui uma conta? <Link to='/'>ENTRAR</Link></div>
