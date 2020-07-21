@@ -6,8 +6,10 @@
     align-items: center;
 }
 
-.flex {
+.radio-input-div {
     display: flex;
+    width: 328px;
+    justify-content: space-around;
 }
 
 .flex-column {
@@ -30,8 +32,7 @@
 }
 
 .h-rule {
-    height: 2px;
-    width: 400px;
+    width: 327px;
     background-color: black;
     align-self: center;
     margin-bottom: 10px;
