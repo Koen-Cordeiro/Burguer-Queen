@@ -25,6 +25,11 @@
     align-items: center;
 }
 
+.box{
+    border: 2px solid black;
+    padding: 35px;
+}
+
 .input-style {
     margin: 5px 0 20px;
     height: 30px;
