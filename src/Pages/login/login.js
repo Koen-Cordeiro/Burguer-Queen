@@ -29,9 +29,9 @@ const Login = () => {
   return (
       <section className='flex-center'>
         <img alt='logo chase burguer' src={logo}/>
-        <form>
+        <form className='flex-column center border-form'>
           {arrText.map((e, index) => (
-            <Input key={index} text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='flex-column' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           <button type="submit" onClick={(e) => {
             e.preventDefault()
@@ -39,7 +39,7 @@ const Login = () => {
             Entrar
           </button>
         </form>
-        <p>Não possui uma conta?<br/><Link to='/register'>Registre-se</Link></p>
+        <p className='change-register-login text-center'>Não possui uma conta?<br/><Link to='/register'>Registre-se</Link></p>
       </section>
   );
 
