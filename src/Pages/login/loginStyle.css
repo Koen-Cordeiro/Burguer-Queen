@@ -1,0 +1,58 @@
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 97vh;
+  align-items: center;
+  width: 100%;
+}
+
+.radio-input-div {
+  display: flex;
+  width: 328px;
+  justify-content: space-around;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center {
+  align-items: center;
+}
+
+.border-form{
+  border: 2px solid black;
+  padding: 35px;
+}
+
+.change-register-login{
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  padding: 25px;
+  width: 349px;
+}
+
+.input-style {
+  margin: 5px 0 20px;
+  height: 30px;
+  width: 320px
+}
+
+.h-rule {
+  width: 327px;
+  background-color: black;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.button {
+  height: 30px;
+  width: 100%;
+}
