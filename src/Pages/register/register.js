@@ -41,7 +41,6 @@ const Register = () => {
   return (
     <main className='flex-center'>
       <section className='flex-column'>
-        <h2 className='text-center'>Criar uma nova conta</h2>
         <form className='flex-column center'>
           {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
           <hr className='h-rule'/>
