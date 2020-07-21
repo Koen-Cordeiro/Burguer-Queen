@@ -1,5 +1,6 @@
 .flex-center {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     height: 97vh;
     align-items: center;
