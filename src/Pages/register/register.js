@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
 import './styleRegister.css'
+import '../reset.css'
 
 
 const Register = () => {
