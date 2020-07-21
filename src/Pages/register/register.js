@@ -42,14 +42,15 @@ const Register = () => {
     <main className='flex-center'>
       <section className='flex-column'>
         <h2 className='text-center'>Criar uma nova conta</h2>
-        <div className='h-rule' />
         <form className='flex-column center'>
           {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-          <div onChange={event => setWorkPlace(event.target.value)} className='flex'>
-            <Input type='radio' value={'cozinha'} name={'radio'} text={'Cozinha'} />
+          <hr className='h-rule'/>
+          <div onChange={event => setWorkPlace(event.target.value)} className='radio-input-div'>
+            <Input type='radio' value={'cozinha'} name={'radio'} textRadio={'Cozinha'} />
             <p>ou</p>
-            <Input type='radio' value={'salão'} name={'radio'} text={'Salão'} />
+            <Input type='radio' value={'salão'} name={'radio'} textRadio={'Salão'} />
           </div>
+            <hr className='h-rule'/>
           <Link to='/'>Voltar</Link>
           <button className='button' type='submit' onClick={(e) => {
             e.preventDefault()
