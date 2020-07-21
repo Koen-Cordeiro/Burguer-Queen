@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
 import './styleRegister.css'
 
@@ -43,7 +43,7 @@ const Register = () => {
         <h2 className='text-center'>Criar uma nova conta</h2>
         <div className='h-rule' />
         <form className='flex-column center'>
-          {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
+          {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
           <div onChange={event => setWorkPlace(event.target.value)}>
             <Input type='radio' value={'cozinha'} name={'radio'} text={'Cozinha'} />
             <p>ou</p>
