@@ -43,6 +43,7 @@ const Register = () => {
       <section className='flex-column'>
         <form className='flex-column center border-form'>
           {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
+          <label>Área de trabalho
           <hr className='h-rule'/>
           <div onChange={event => setWorkPlace(event.target.value)} className='radio-input-div'>
             <Input type='radio' value={'cozinha'} name={'radio'} textRadio={'Cozinha'} />
@@ -50,6 +51,7 @@ const Register = () => {
             <Input type='radio' value={'salão'} name={'radio'} textRadio={'Salão'} />
           </div>
             <hr className='h-rule'/>
+            </label>
           <Link to='/'>Voltar</Link>
           <button className='button' type='submit' onClick={(e) => {
             e.preventDefault()
