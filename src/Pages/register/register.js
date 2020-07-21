@@ -58,7 +58,7 @@ const Register = () => {
           }}>Registre-se</button>
           <span>{error}</span>
         </form>
-      <div className='change-register-login'> Já possui uma conta? <Link to='/'>Entrar</Link></div>
+      <div className='change-register-login text-center'> Já possui uma conta? <Link to='/'>Entrar</Link></div>
       </section>
     </main>
   )
