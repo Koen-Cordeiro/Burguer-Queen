@@ -52,7 +52,6 @@ const Register = () => {
           </div>
             <hr className='h-rule'/>
             </label>
-          <Link to='/'>Voltar</Link>
           <button className='button' type='submit' onClick={(e) => {
             e.preventDefault()
             password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
