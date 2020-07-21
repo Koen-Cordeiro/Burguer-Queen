@@ -44,7 +44,7 @@ const Register = () => {
         <div className='h-rule' />
         <form className='flex-column center'>
           {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-          <div onChange={event => setWorkPlace(event.target.value)}>
+          <div onChange={event => setWorkPlace(event.target.value)} className='flex'>
             <Input type='radio' value={'cozinha'} name={'radio'} text={'Cozinha'} />
             <p>ou</p>
             <Input type='radio' value={'salão'} name={'radio'} text={'Salão'} />
