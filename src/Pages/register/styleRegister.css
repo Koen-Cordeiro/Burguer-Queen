@@ -1,7 +1,7 @@
 .flex-center {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     height: 97vh;
     align-items: center;
 }
@@ -52,5 +52,5 @@
 
 .button {
     height: 30px;
-    width: 100px;
+    width: 100%;
 }
