@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
+import Button from '../../Components/button'
 import './styleRegister.css'
+import '../reset.css'
 
 
 const Register = () => {
@@ -38,27 +40,26 @@ const Register = () => {
     { text: "Confirme sua senha", type: "password", value: confirmPassword, handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
-    <main className='flex-center'>
-      <section className='flex-column'>
-        <h2 className='text-center'>Criar uma nova conta</h2>
-        <div className='h-rule' />
+      <section className=' flex-center border-form'>
         <form className='flex-column center'>
-          {arrText.map((e, index) => <Input key={index} value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-          <div onChange={event => setWorkPlace(event.target.value)}>
-            <Input type='radio' value={'cozinha'} name={'radio'} text={'Cozinha'} />
+          {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
+          <label>Área de trabalho
+          <hr className='h-rule'/>
+          <div onChange={event => setWorkPlace(event.target.value)} className='radio-input-div'>
+            <Input type='radio' value={'cozinha'} name={'radio'} textRadio={'Cozinha'} />
             <p>ou</p>
-            <Input type='radio' value={'salão'} name={'radio'} text={'Salão'} />
+            <Input type='radio' value={'salão'} name={'radio'} textRadio={'Salão'} />
           </div>
-          <Link to='/'>Voltar</Link>
-          <button className='button' type='submit' onClick={(e) => {
+            <hr className='h-rule'/>
+            </label>
+          <Button buttonClass='button' type='submit' text='Registre-se' handleClick={(e) => {
             e.preventDefault()
             password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
-          }}>Registre-se</button>
+          }}/>
           <span>{error}</span>
         </form>
+      <div className='change-register-login text-center'> Já possui uma conta? <Link to='/'>ENTRAR</Link></div>
       </section>
-      <section> Lateral</section>
-    </main>
   )
 }
 
