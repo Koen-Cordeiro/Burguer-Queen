@@ -4,7 +4,7 @@
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-primary), var(--font-secondary);
-  background-color: var(--light-gray);
+  background: url(../../img/pattern-detective.png) repeat;
 }
 
 main {
