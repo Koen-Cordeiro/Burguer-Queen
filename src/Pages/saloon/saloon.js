@@ -6,11 +6,13 @@ import firebase from 'firebase'
 const Saloon = () => {
   const [breakfast, setBreakfast] = useState([])
   const [snacks, setSnacks] = useState([])
+  const [drinks, setDrinks] = useState([])
+  const [burguers, setBurguers] = useState([])
   const [breakfastClick, setBreakfastClick] = useState(false)
   const [alldayClick, setAllDayClick] = useState(false)
 
   useEffect(() => {
-    firebase.firestore().collection('menu').doc('Breakfast').collection('bebidas').get().then((snap => {
+    firebase.firestore().collection('menu').doc('Breakfast').collection('pratos').get().then((snap => {
       const getMenu = snap.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
@@ -25,8 +27,27 @@ const Saloon = () => {
         id: doc.id,
         ...doc.data()
       }))
-      console.log(getSnacks)
       setSnacks(() => getSnacks);
+    })
+    )
+  }, [])
+  useEffect(() => {
+    firebase.firestore().collection('menu').doc('All-day').collection('bebidas').get().then((snap => {
+      const getDrinks = snap.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setDrinks(() => getDrinks);
+    })
+    )
+  }, [])
+  useEffect(() => {
+    firebase.firestore().collection('menu').doc('All-day').collection('hamburgueres').get().then((snap => {
+      const getBurguer = snap.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setBurguers(() => getBurguer);
     })
     )
   }, [])
@@ -44,11 +65,13 @@ const Saloon = () => {
   <li>
     {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks}/>}
   </li>
-  
-  
+  <li>
+    {alldayClick && <MenuItems text='Bebidas' arr={drinks}/>}
+  </li>
+  <li>
+    {alldayClick && <MenuItems text='Hamburgueres' arr={burguers}/>}
+  </li>
   </ul>
-
-
     </main>
   );
 };
