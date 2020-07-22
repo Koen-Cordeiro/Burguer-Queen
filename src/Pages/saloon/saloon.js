@@ -40,11 +40,7 @@ const Saloon = () => {
         <Button text='Resto do dia' handleClick={() => setAllDayClick(!alldayClick)}/>
     
   <ul>
-    {breakfastClick && breakfast.map((e,index) =>( 
-    <li key={index}>
-    <div key={e.price}>{e.price}</div>
-    <div key={e.type}>{e.type}</div>
-  </li>))}
+    {breakfastClick && <MenuItems arr={breakfast}/>}
   <li>
     {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks}/>}
   </li>
