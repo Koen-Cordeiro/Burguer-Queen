@@ -24,6 +24,7 @@ const Saloon = () => {
         id: doc.id,
         ...doc.data()
       }))
+      console.log(getSnacks)
       setSnacks(() => getSnacks);
     })
     )
@@ -43,11 +44,16 @@ const Saloon = () => {
     <div key={e.price}>{e.price}</div>
     <div key={e.type}>{e.type}</div>
   </li>))}
-    {alldayClick && snacks.map((e,index) =>( 
-    <li key={index}>
-    <div key={e.price}>{e.price}</div>
+  <li>
+    {alldayClick && <div>
+      <h1>Acompanhamentos</h1>
+      {snacks.map((e,index) =>( 
+    <div key={index}>
+    <div key={e.price}>R${e.price}</div>
     <div key={e.type}>{e.type}</div>
-  </li>))}
+  </div>))}
+  </div>}
+  </li>
   
   
   </ul>
