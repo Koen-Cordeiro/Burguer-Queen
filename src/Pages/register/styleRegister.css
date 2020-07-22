@@ -1,10 +1,17 @@
+main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .flex-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 97vh;
+    height: 450px;
     align-items: center;
-    width: 100%;
+    width: 350px;
 }
 
 .radio-input-div {
@@ -32,10 +39,8 @@
 }
 
 .change-register-login{
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    padding: 25px;
+    border-top: 2px solid black;
+    padding: 25px 35px;
     width: 349px;
 }
 
@@ -46,7 +51,7 @@
 }
 
 .h-rule {
-    width: 327px;
+    width: 100%;
     background-color: black;
     align-self: center;
     margin-bottom: 10px;
@@ -55,4 +60,5 @@
 .button {
     height: 30px;
     width: 100%;
+    margin-bottom: 20px;
 }

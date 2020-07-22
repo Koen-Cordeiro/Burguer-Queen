@@ -40,8 +40,8 @@ const Register = () => {
     { text: "Confirme sua senha", type: "password", value: confirmPassword, handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
-      <section className=' flex-center'>
-        <form className='flex-column center border-form'>
+      <section className=' flex-center border-form'>
+        <form className='flex-column center'>
           {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
           <label>Área de trabalho
           <hr className='h-rule'/>
