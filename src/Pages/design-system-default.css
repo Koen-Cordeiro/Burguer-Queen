@@ -13,20 +13,11 @@
 
   /* sizes */
   --text-base-size: 1em;
-}
 
-/* TYPOGRAPHY */
-
-/* Weights */
-.font-weight-semibold {
-  font-weight: 500;
-}
-.font-weight-bold {
-  font-weight: 700;
-}
-.font-weight-extrabold {
-  font-weight: 800;
-}
-.font-weight-black {
-  font-weight: 900;
+  /* weights */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 }
