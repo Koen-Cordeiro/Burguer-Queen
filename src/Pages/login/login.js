@@ -36,7 +36,7 @@ const Login = () => {
       <section className='flex-center form-background'>
         <form className='flex-column center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='flex-column' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='flex-column input-form space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           <Button buttonClass='submit-button inherit-center space-after' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
