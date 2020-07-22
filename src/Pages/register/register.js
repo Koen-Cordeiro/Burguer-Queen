@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
 import Button from '../../Components/button'
 import './styleRegister.css'
-import '../reset.css'
-
 
 const Register = () => {
   const [name, setName] = useState('');

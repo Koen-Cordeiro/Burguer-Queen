@@ -1,64 +1,9 @@
-main {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.flex-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 450px;
-    align-items: center;
-    width: 350px;
+@import "../reset.css";
+@import "../design-system-default.css";
+
+body {
+  font-size: var(--text-base-size);
+  font-family: var(--font-primary), var(--font-secondary);
 }
 
-.radio-input-div {
-    display: flex;
-    width: 328px;
-    justify-content: space-around;
-}
 
-.flex-column {
-    display: flex;
-    flex-direction: column
-}
-
-.text-center {
-    text-align: center;
-}
-
-.center {
-    align-items: center;
-}
-
-.border-form{
-    border: 2px solid black;
-    padding: 35px;
-}
-
-.change-register-login{
-    border-top: 2px solid black;
-    padding: 25px 35px;
-    width: 349px;
-}
-
-.input-style {
-    margin: 5px 0 20px;
-    height: 30px;
-    width: 320px
-}
-
-.h-rule {
-    width: 100%;
-    background-color: black;
-    align-self: center;
-    margin-bottom: 10px;
-}
-
-.button {
-    height: 30px;
-    width: 100%;
-    margin-bottom: 20px;
-}
