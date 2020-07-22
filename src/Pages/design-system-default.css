@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap');
+
+:root {
+
+/* COLORS */
+  --red:#D70000;
+  --gray:#A0A0A0;
+  --light-gray: rgba(160, 160, 160, 0.2);
+
+/* TIPOGRAPHY */
+  --font-primary:"Poppins";
+  --font-secondary: sans-serif;
+
+  /* sizes */
+  --text-base-size: 1em;
+
+  /* weights */
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* radius */
+  --border-angle: 5px;
+}
