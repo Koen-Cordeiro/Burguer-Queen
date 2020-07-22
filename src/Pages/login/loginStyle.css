@@ -4,6 +4,7 @@
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-primary), var(--font-secondary);
+  background-color: var(--light-gray);
 }
 
 main {
@@ -14,12 +15,12 @@ main {
   justify-content: center;
   align-items: center;
 }
+
 .flex-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 350px;
 }
 
 .radio-input-div {
@@ -33,16 +34,14 @@ main {
   flex-direction: column
 }
 
-.text-center {
-  text-align: center;
+.inherit-center {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
 }
 
 .center {
   align-items: center;
-}
-
-.border-form{
-  border: 2px solid black;
 }
 
 .change-register-login{
@@ -64,8 +63,40 @@ main {
   margin-bottom: 10px;
 }
 
-.button {
-  height: 30px;
-  width: 100%;
-  margin-bottom: 20px;
+.space-after{
+  margin-bottom: 3vh;
+}
+
+.form-background {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: 38vw;
+  height: 44vh;
+}
+
+.form-base {
+  background: black;
+  color: white;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.85em;
+  border-radius: 0px 0px 5px 5px;
+  width: inherit;
+  height: 8vh;
+}
+
+a {
+  color: white;
+}
+
+.submit-button {
+  background-color: var(--red);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: var(--font-weight-bold);
+  font-size: 1em;
+  width: 30vw;
+  height: 5vh;
+  letter-spacing: 0.05em;
 }
