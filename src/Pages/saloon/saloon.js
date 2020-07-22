@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../../Components/button'
+import MenuItems from '../../Components/acompanhamentos'
 import firebase from 'firebase'
 
 const Saloon = () => {
@@ -45,14 +46,7 @@ const Saloon = () => {
     <div key={e.type}>{e.type}</div>
   </li>))}
   <li>
-    {alldayClick && <div>
-      <h1>Acompanhamentos</h1>
-      {snacks.map((e,index) =>( 
-    <div key={index}>
-    <div key={e.price}>R${e.price}</div>
-    <div key={e.type}>{e.type}</div>
-  </div>))}
-  </div>}
+    {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks}/>}
   </li>
   
   
