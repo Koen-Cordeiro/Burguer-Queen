@@ -38,14 +38,14 @@ const Login = () => {
           {arrText.map((e, index) => (
             <Input key={index} componentClass='flex-column input-form space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
-          <Button buttonClass='submit-button inherit-center space-after' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button buttonClass='inherit-center submit-button space-after' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
         </form>
-          <p className='form-base inherit-center'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
+          <p className='inherit-center form-base'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
       </section>
-      </>
+    </>
   );
 
 };

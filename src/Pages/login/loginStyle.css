@@ -40,50 +40,53 @@ main {
 }
 
 .space-after{
-  margin-bottom: 3vh;
+  margin-bottom: 20px;
 }
 
 /* Form */
 .logo {
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 175px;
 }
 
 .img-logo {
-  width: 360px;
+  width: 240px;
 }
 
 .form-background {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: var(--border-angle);
-  width: 38vw;
-  height: 37vh;
-  padding-top: 3.5vh;
+  width: 260px;
+  height: 260px;
+  padding-top: 25px;
 }
 
 .input-form {
   color: var(--gray);
   font-weight: var(--font-weight-semibold);
-  font-size: 0.9em;
+  font-size: 0.85em;
+}
+
+.input-form input, .submit-button {
+  width: 210px;
+  height: 35px;
+  font-size: 0.95em;
+  border-radius: var(--border-angle);
 }
 
 .input-form input {
   background-color: var(--light-gray);
   border: 1px solid var(--light-gray);
-  border-radius: var(--border-angle);
   box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
   box-sizing: border-box;
-  width: 30vw;
-  height: 5vh;
-  margin-top: 8.5px;
   color: var(--gray);
   font-weight: var(--font-weight-medium);
-  font-size: 1em;
-  padding-left: 1vw;
+  margin-top: 8.5px;
+  padding-left: 10px;
 }
 
-.input-form input:focus {
+.input-form input:focus, .submit-button:focus {
   border: 2px solid var(--red);
   -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
@@ -94,12 +97,8 @@ main {
 .submit-button {
   background-color: var(--red);
   border: none;
-  border-radius: var(--border-angle);
   color: white;
   font-weight: var(--font-weight-bold);
-  font-size: 1em;
-  width: 30vw;
-  height: 5vh;
   letter-spacing: 0.05em;
 }
 
@@ -107,10 +106,10 @@ main {
   background: black;
   color: white;
   font-weight: var(--font-weight-medium);
-  font-size: 0.85em;
+  font-size: 0.75em;
   border-radius: 0px 0px var(--border-angle) var(--border-angle);
   width: inherit;
-  height: 8vh;
+  height: 55px;
 }
 
 a {
