@@ -113,6 +113,11 @@ main {
   text-align: center;
 }
 
+.log-base-div{
+  display: flex;
+  width: 100%;
+}
+
 a {
   color: white;
 }
