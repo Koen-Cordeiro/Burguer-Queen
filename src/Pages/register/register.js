@@ -32,32 +32,30 @@ const Register = () => {
   }
 
   const arrText = [
-    { text: "Digite seu nome", type: "text", value: name, handleChange: (e) => setName(e.currentTarget.value) },
-    { text: "Digite seu e-mail", type: "email", value: email, handleChange: (e) => setEmail(e.currentTarget.value) },
-    { text: "Digite sua senha", type: "password", value: password, handleChange: (e) => setPassword(e.currentTarget.value) },
+    { text: "Nome", type: "text", value: name, handleChange: (e) => setName(e.currentTarget.value) },
+    { text: "E-mail", type: "email", value: email, handleChange: (e) => setEmail(e.currentTarget.value) },
+    { text: "Senha", type: "password", value: password, handleChange: (e) => setPassword(e.currentTarget.value) },
     { text: "Confirme sua senha", type: "password", value: confirmPassword, handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
-      <section className=' flex-center border-form'>
-        <form className='flex-column center'>
-          {arrText.map((e, index) => <Input key={index} componentClass='flex-column' value={e.value} handleChange={e.handleChange} inputClass={'input-style'} type={e.type} text={e.text} />)}
-          <label>Área de trabalho
-          <hr className='h-rule'/>
-          <div onChange={event => setWorkPlace(event.target.value)} className='radio-input-div'>
-            <Input type='radio' value={'cozinha'} name={'radio'} textRadio={'Cozinha'} />
+    <section className='reg-flex reg-background'>
+      <form className='reg-column reg-center'>
+        {arrText.map((e, index) => <Input key={index} componentClass='reg-column reg-space-after reg-input' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} />)}
+        <label className='work-label reg-space-after'>Área de trabalho
+          <div onChange={event => setWorkPlace(event.target.value)} className='reg-center reg-row radio-input-div'>
+            <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
             <p>ou</p>
-            <Input type='radio' value={'salão'} name={'radio'} textRadio={'Salão'} />
+            <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
           </div>
-            <hr className='h-rule'/>
-            </label>
-          <Button buttonClass='button' type='submit' text='Registre-se' handleClick={(e) => {
-            e.preventDefault()
-            password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
-          }}/>
-          <span>{error}</span>
-        </form>
-      <div className='change-register-login text-center'> Já possui uma conta? <Link to='/'>ENTRAR</Link></div>
-      </section>
+        </label>
+        <Button buttonClass='reg-space-after send-button' type='submit' text='ENVIAR' handleClick={(e) => {
+          e.preventDefault()
+          password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
+        }}/>
+        <span>{error}</span>
+      </form>
+      <p className='reg-inherit-align reg-base-p'>Já possui uma conta? <Link to='/'>ENTRAR</Link></p>
+    </section>
   )
 }
 

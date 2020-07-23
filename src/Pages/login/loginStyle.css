@@ -17,29 +17,29 @@ main {
 }
 
 /* Alignment */
-.flex-center {
+.log-flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.flex-column {
+.log-column {
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
-.inherit-center {
+.log-inherit-align {
   display: inherit;
   align-items: center;
   justify-content: center;
 }
 
-.center {
+.log-center {
   align-items: center;
 }
 
-.space-after{
+.log-space-after {
   margin-bottom: 30px;
 }
 
@@ -53,7 +53,7 @@ main {
   width: 340px;
 }
 
-.form-background {
+.log-background {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: var(--border-angle);
@@ -62,20 +62,20 @@ main {
   padding-top: 35px;
 }
 
-.input-form {
+.log-input {
   color: var(--gray);
   font-weight: var(--font-weight-semibold);
   font-size: 1.1em;
 }
 
-.input-form input, .submit-button {
+.log-input input, .submit-button {
   width: 340px;
   height: 52px;
   font-size: 1.1em;
   border-radius: var(--border-angle);
 }
 
-.input-form input {
+.log-input input {
   background-color: var(--light-gray);
   border: 1px solid var(--light-gray);
   box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
@@ -86,7 +86,7 @@ main {
   padding-left: 15px;
 }
 
-.input-form input:focus, .submit-button:focus {
+.log-input input:focus, .submit-button:focus {
   border: 2px solid var(--red);
   -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
@@ -102,7 +102,7 @@ main {
   letter-spacing: 0.05em;
 }
 
-.form-base {
+.log-base-p {
   background: black;
   color: white;
   font-weight: var(--font-weight-medium);
@@ -118,7 +118,7 @@ a {
 
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
-  .space-after{
+  .log-space-after{
     margin-bottom: 24px;
   }
 
@@ -131,30 +131,30 @@ a {
     width: 255px;
   }
   
-  .form-background {
+  .log-background {
     width: 280px;
     height: 300px;
     padding-top: 26px;
   }
   
-  .input-form {
+  .log-input {
     font-size: 0.85em;
   }
   
-  .input-form input, .submit-button {
+  .log-input input, .submit-button {
     width: 230px;
     height: 42px;
     font-size: 1em;
   }
   
-  .input-form input {
+  .log-input input {
     margin-top: 11px;
     padding-left: 15px;
     margin-top: 9px;
     padding-left: 10px;
   }
   
-  .form-base {
+  .log-base-p {
     font-size: 0.75em;
     height: 70px;
   }
