@@ -43,7 +43,9 @@ const Login = () => {
             login({ email, password })
           }}/>
         </form>
+        <div className='log-base-div'>
         <p className='log-inherit-align log-base-p'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
+        </div>
       </section>
     </>
   );
