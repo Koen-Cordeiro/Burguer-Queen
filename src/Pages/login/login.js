@@ -30,20 +30,20 @@ const Login = () => {
 
   return (
     <>
-      <figure className='flex-center logo'>
+      <figure className='log-flex logo'>
         <img className='img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
-      <section className='flex-center form-background'>
-        <form className='flex-column center'>
+      <section className='log-center log-background'>
+        <form className='log-column log-center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='flex-column input-form space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='log-column log-input log-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
-          <Button buttonClass='inherit-center submit-button space-after' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button buttonClass='submit-button log-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
         </form>
-          <p className='inherit-center form-base'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
+        <p className='log-inherit-align log-base-p'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
       </section>
     </>
   );
