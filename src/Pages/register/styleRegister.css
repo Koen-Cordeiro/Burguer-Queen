@@ -100,6 +100,7 @@ input[type="radio"] {
   height: 15px;
   padding: 3px;
   /* background-color only for content */
+  outline: none;
   background-clip: content-box;
   border: 1px solid green;
   background-color:red;
