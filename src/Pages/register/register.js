@@ -41,7 +41,7 @@ const Register = () => {
       <form className='log-reg-column log-reg-center'>
         {arrText.map((e, index) => <Input key={index} componentClass='log-reg-column log-reg-space-after log-reg-input' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} />)}
         <label className='reg-work-label log-reg-space-after'>Área de trabalho
-          <div onChange={event => setWorkPlace(event.target.value)} className='log-reg-center reg-row radio-input-div'>
+          <div onChange={event => setWorkPlace(event.target.value)} className='log-reg-center reg-row reg-radio-input-div'>
             <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
             <p>ou</p>
             <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
@@ -53,7 +53,9 @@ const Register = () => {
         }}/>
         <span>{error}</span>
       </form>
+      <div className='log-base-div'>
       <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta? <Link to='/'>Entrar</Link></p>
+      </div>
     </section>
   )
 }
