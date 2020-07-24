@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Form from '../../Components/form'
 import Button from '../../Components/button'
 import logo from '../../img/logo.png'
-import './loginStyle.css'
 import { errorsLogin } from './errorsLogin'
 import Input from '../../Components/input'
 
