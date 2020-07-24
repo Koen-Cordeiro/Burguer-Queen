@@ -16,7 +16,7 @@ const Login = () => {
       .auth()
       .signInWithEmailAndPassword(staff.email, staff.password)
       .then((user) => {
-        console.log("to logado")
+        //user
       })
       .catch((error) => {
         // callback(error);
@@ -43,7 +43,9 @@ const Login = () => {
             login({ email, password })
           }}/>
         </form>
-        <p className='log-inherit-align log-base-p'>Não possui uma conta?<Link to='/register'>Registre-se</Link></p>
+        <div className='log-base-div'>
+        <p className='log-inherit-align log-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
+        </div>
       </section>
     </>
   );

@@ -89,6 +89,24 @@ main {
   outline: none;
 }
 
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 3px;
+  /* background-color only for content */
+  outline: none;
+  background-clip: content-box;
+  border: 1px solid green;
+  background-color:red;
+  border-radius: 50%;
+}
+
 .work-label {
   width: 340px;
   height: 83px;
@@ -112,6 +130,7 @@ main {
 
 .radio-input-div input:checked{
   background-color: var(--red);
+  outline: none;
 }
 
 .send-button {
