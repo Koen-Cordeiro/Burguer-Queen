@@ -40,27 +40,27 @@ main {
 }
 
 
-
-
-
-/* Form */
-.logo {
-  width: 400px;
-  height: 230px;
+.log {
+  &-background {
+    @include background(365px)
+  }
+  &-img-logo {
+    width: 340px;
+  }
+  &-logo {
+    width: 400px;
+    height: 230px;
+  }
 }
 
-.img-logo {
-  width: 340px;
-}
+.reg {
+  &-background {
+    @include background(700px)
+  }
+  }
 
-.log-background {
-  background: white;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: $border-angle;
-  width: 400px;
-  height: 365px;
-  padding-top: 35px;
-}
+
+
 
 .log-input {
   color: $gray;

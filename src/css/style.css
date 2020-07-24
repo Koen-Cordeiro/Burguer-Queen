@@ -36,20 +36,27 @@ main {
 .log-reg-space-after {
   margin-bottom: 30px; }
 
-/* Form */
-.logo {
-  width: 400px;
-  height: 230px; }
-
-.img-logo {
-  width: 340px; }
-
 .log-background {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   width: 400px;
   height: 365px;
+  padding-top: 35px; }
+
+.log-img-logo {
+  width: 340px; }
+
+.log-logo {
+  width: 400px;
+  height: 230px; }
+
+.reg-background {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: 400px;
+  height: 700px;
   padding-top: 35px; }
 
 .log-input {
