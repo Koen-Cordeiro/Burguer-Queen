@@ -1,9 +1,7 @@
-@import url(../reset.css);
-@import url(../design-system-default.css);
 body {
   font-size: var(--text-base-size);
   font-family: var(--font-primary), var(--font-secondary);
-  background: url(../../img/pattern-detective.png) repeat; }
+  background: url(../img/pattern-detective.png) repeat; }
 
 main {
   height: 100vh;
