@@ -61,7 +61,7 @@ main {
 }
 
 .log-input {
-  color: var(--gray);
+  color: $gray;
   font-weight: var(--font-weight-semibold);
   font-size: 1.1em;
 }
@@ -74,18 +74,18 @@ main {
 }
 
 .log-input input {
-  background-color: var(--light-gray);
-  border: 1px solid var(--light-gray);
+  background-color: $light-gray;
+  border: 1px solid $light-gray;
   box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
   box-sizing: border-box;
-  color: var(--gray);
+  color: $gray;
   font-weight: var(--font-weight-medium);
   margin-top: 11px;
   padding-left: 15px;
 }
 
 .log-input input:focus, .submit-button:focus {
-  border: 2px solid var(--red);
+  border: 2px solid $red;
   -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
@@ -93,7 +93,7 @@ main {
 }
 
 .submit-button {
-  background-color: var(--red);
+  background-color: $red;
   border: none;
   color: white;
   font-weight: var(--font-weight-bold);
