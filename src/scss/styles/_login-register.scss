@@ -49,7 +49,7 @@ main {
 
 .log {
   &-background {
-    @include background(365px);
+    @include background(320px);
   }
   &-img-logo {
     width: 340px;
@@ -66,7 +66,7 @@ main {
 
 .reg {
   &-background {
-    @include background(700px);
+    @include background(610px);
   }
   &-row {
     display: flex;
@@ -74,13 +74,13 @@ main {
   }
   &-work-label {
     @include input-and-label;
-    width: 340px;
-    height: 83px;
+    width: 320px;
+    height: 73px;
   }
   &-radio-input-div {
     margin-top: 11px;
-    width: 340px;
-    height: 52px;
+    width: 320px;
+    height: 45px;
     border-top: 2px solid var(--light-gray);
     border-bottom: 2px solid var(--light-gray);
     justify-content: space-evenly;
@@ -117,7 +117,7 @@ main {
     align-items: center;
   }
   &-space-after {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
   &-input {
     @include input-and-label;
@@ -144,10 +144,10 @@ main {
     background: black;
     color: white;
     font-weight: $font-weight-medium;
-    font-size: 1em;
+    font-size: 0.9em;
     border-radius: 0px 0px $border-angle $border-angle;
     width: inherit;
-    height: 80px;
+    height: 60px;
     text-align: center;
     a {
       color: white;
@@ -158,8 +158,8 @@ main {
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
   .log-reg {
-    &-after {
-      margin-bottom: 24px;
+    &-space-after {
+      margin-bottom: 20px;
     }
     &-input {
       font-size: 0.85em;
@@ -181,13 +181,13 @@ main {
     }
     &-base-p {
       font-size: 0.75em;
-      height: 70px;
+      height: 55px;
     }
   }
 
   .log {
     &-background {
-      @include responsive-background(300px);
+      @include responsive-background(270px);
     }
     &-img-logo {
       width: 255px;
@@ -200,7 +200,7 @@ main {
 
   .reg {
     &-background {
-      @include responsive-background(570px);
+      @include responsive-background(515px);
     }
     &-work-label {
       font-size: 0.85em;
@@ -209,7 +209,7 @@ main {
     }
     &-radio-input-div {
       width: 230px;
-      height: 42px;
+      height: 37px;
     }
   }
 

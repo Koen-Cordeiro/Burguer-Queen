@@ -54,7 +54,7 @@ const Register = () => {
         <span>{error}</span>
       </form>
       <div className='log-base-div'>
-      <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta? <Link to='/'>Entrar</Link></p>
+      <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta?{"\u00a0"}<Link to='/'>Entrar</Link></p>
       </div>
     </section>
   )
