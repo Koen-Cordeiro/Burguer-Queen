@@ -1,6 +1,9 @@
+/* sizes */
+/* weights */
+/* radius */
 body {
-  font-size: var(--text-base-size);
-  font-family: var(--font-primary), var(--font-secondary);
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
   background: url(../img/pattern-detective.png) repeat; }
 
 main {
@@ -44,52 +47,52 @@ main {
 .log-background {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: var(--border-angle);
+  border-radius: 5px;
   width: 400px;
   height: 365px;
   padding-top: 35px; }
 
 .log-input {
-  color: var(--gray);
-  font-weight: var(--font-weight-semibold);
+  color: #A0A0A0;
+  font-weight: 600;
   font-size: 1.1em; }
 
 .log-input input, .submit-button {
   width: 340px;
   height: 52px;
   font-size: 1.1em;
-  border-radius: var(--border-angle); }
+  border-radius: 5px; }
 
 .log-input input {
-  background-color: var(--light-gray);
-  border: 1px solid var(--light-gray);
+  background-color: rgba(160, 160, 160, 0.2);
+  border: 1px solid rgba(160, 160, 160, 0.2);
   box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
   box-sizing: border-box;
-  color: var(--gray);
-  font-weight: var(--font-weight-medium);
+  color: #A0A0A0;
+  font-weight: 500;
   margin-top: 11px;
   padding-left: 15px; }
 
 .log-input input:focus, .submit-button:focus {
-  border: 2px solid var(--red);
+  border: 2px solid #D70000;
   -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
   outline: none; }
 
 .submit-button {
-  background-color: var(--red);
+  background-color: #D70000;
   border: none;
   color: white;
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   letter-spacing: 0.05em; }
 
 .log-base-p {
   background: black;
   color: white;
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   font-size: 1em;
-  border-radius: 0px 0px var(--border-angle) var(--border-angle);
+  border-radius: 0px 0px 5px 5px;
   width: inherit;
   height: 80px;
   text-align: center; }
