@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
 import { Link } from "react-router-dom";
+import Form from '../../Components/form'
 import Button from '../../Components/button'
 import logo from '../../img/logo.png'
-import Input from '../../Components/input'
 import './loginStyle.css'
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const login = (staff) => {
     firebase
@@ -20,6 +21,13 @@ const Login = () => {
       })
       .catch((error) => {
         // callback(error);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+          if (errorCode == 'auth/weak-password') {
+            alert('The password is too weak.');
+          } else {
+            alert(errorMessage);
+          }
       });
   }
 
@@ -34,15 +42,8 @@ const Login = () => {
         <img className='img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
       <section className='log-center log-background'>
-        <form className='log-column log-center'>
-          {arrText.map((e, index) => (
-            <Input key={index} componentClass='log-column log-input log-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
-          ))}
-          <Button buttonClass='submit-button log-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
-            e.preventDefault()
-            login({ email, password })
-          }}/>
-        </form>
+        <Form formClass='log-column log-center' arrInput={arrText}>
+        </Form>
         <div className='log-base-div'>
         <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>
         </div>
