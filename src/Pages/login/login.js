@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
 import { Link } from "react-router-dom";
+import Form from '../../Components/form'
 import Button from '../../Components/button'
 import logo from '../../img/logo.png'
+import './loginStyle.css'
+import { errorsLogin } from './errorsLogin'
 import Input from '../../Components/input'
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const login = (staff) => {
     firebase
@@ -18,7 +22,8 @@ const Login = () => {
         //user
       })
       .catch((error) => {
-        // callback(error);
+        let errorCode = error.code;
+        console.log(errorsLogin.errorCode)
       });
   }
 
@@ -32,6 +37,11 @@ const Login = () => {
       <figure className='log-reg-flex log-logo'>
         <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
+      {/*<section className='log-center log-background'>
+        <Form formClass='log-column log-center' arrInput={arrText}>
+        </Form>
+        <div className='log-base-div'>
+        <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>*/}
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
