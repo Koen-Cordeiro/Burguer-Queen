@@ -6,6 +6,7 @@ import Button from '../../Components/button'
 import logo from '../../img/logo.png'
 import './loginStyle.css'
 import { errorsLogin } from './errorsLogin'
+import Input from '../../Components/input'
 
 const Login = () => {
 
@@ -33,14 +34,26 @@ const Login = () => {
 
   return (
     <>
-      <figure className='log-flex logo'>
-        <img className='img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
+      <figure className='log-reg-flex log-logo'>
+        <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
-      <section className='log-center log-background'>
+      {/*<section className='log-center log-background'>
         <Form formClass='log-column log-center' arrInput={arrText}>
         </Form>
         <div className='log-base-div'>
-        <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>
+        <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>*/}
+      <section className='log-reg-center log-background'>
+        <form className='log-reg-column log-reg-center'>
+          {arrText.map((e, index) => (
+            <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+          ))}
+          <Button buttonClass='submit-button log-reg-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
+            e.preventDefault()
+            login({ email, password })
+          }}/>
+        </form>
+        <div className='log-base-div'>
+        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
         </div>
       </section>
     </>
