@@ -52,7 +52,7 @@ const Login = () => {
           }}/>
         </form>
         <div className='log-base-div'>
-        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
+        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>
         </div>
       </section>
     </>

@@ -15,9 +15,9 @@ main {
   align-items: center; }
 
 .submit-button {
-  width: 340px;
-  height: 52px;
-  font-size: 1.1em;
+  width: 320px;
+  height: 45px;
+  font-size: 1em;
   border-radius: 5px;
   background-color: #D70000;
   border: none;
@@ -35,9 +35,9 @@ main {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  width: 400px;
-  height: 365px;
-  padding-top: 35px; }
+  width: 380px;
+  height: 320px;
+  padding-top: 28px; }
 
 .log-img-logo {
   width: 340px; }
@@ -54,9 +54,9 @@ main {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  width: 400px;
-  height: 700px;
-  padding-top: 35px; }
+  width: 380px;
+  height: 610px;
+  padding-top: 28px; }
 
 .reg-row {
   display: flex;
@@ -65,14 +65,14 @@ main {
 .reg-work-label {
   color: #A0A0A0;
   font-weight: 600;
-  font-size: 1.1em;
-  width: 340px;
-  height: 83px; }
+  font-size: 0.95em;
+  width: 320px;
+  height: 73px; }
 
 .reg-radio-input-div {
   margin-top: 11px;
-  width: 340px;
-  height: 52px;
+  width: 320px;
+  height: 45px;
   border-top: 2px solid var(--light-gray);
   border-bottom: 2px solid var(--light-gray);
   justify-content: space-evenly; }
@@ -104,16 +104,16 @@ main {
   align-items: center; }
 
 .log-reg-space-after {
-  margin-bottom: 30px; }
+  margin-bottom: 25px; }
 
 .log-reg-input {
   color: #A0A0A0;
   font-weight: 600;
-  font-size: 1.1em; }
+  font-size: 0.95em; }
   .log-reg-input input {
-    width: 340px;
-    height: 52px;
-    font-size: 1.1em;
+    width: 320px;
+    height: 45px;
+    font-size: 1em;
     border-radius: 5px;
     background-color: rgba(160, 160, 160, 0.2);
     border: 1px solid rgba(160, 160, 160, 0.2);
@@ -134,24 +134,24 @@ main {
   background: black;
   color: white;
   font-weight: 500;
-  font-size: 1em;
+  font-size: 0.9em;
   border-radius: 0px 0px 5px 5px;
   width: inherit;
-  height: 80px;
+  height: 60px;
   text-align: center; }
   .log-reg-base-p a {
     color: white; }
 
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
-  .log-reg-after {
-    margin-bottom: 24px; }
+  .log-reg-space-after {
+    margin-bottom: 20px; }
   .log-reg-input {
     font-size: 0.85em; }
     .log-reg-input input {
       width: 230px;
-      height: 42px;
-      font-size: 1em;
+      height: 37px;
+      font-size: 0.9em;
       margin-top: 11px;
       padding-left: 15px;
       margin-top: 9px;
@@ -164,10 +164,10 @@ main {
     width: 100%; }
   .log-reg-base-p {
     font-size: 0.75em;
-    height: 70px; }
+    height: 55px; }
   .log-background {
     width: 280px;
-    height: 300px;
+    height: 270px;
     padding-top: 26px; }
   .log-img-logo {
     width: 255px; }
@@ -176,7 +176,7 @@ main {
     height: 180px; }
   .reg-background {
     width: 280px;
-    height: 570px;
+    height: 515px;
     padding-top: 26px; }
   .reg-work-label {
     font-size: 0.85em;
@@ -184,8 +184,8 @@ main {
     height: 70px; }
   .reg-radio-input-div {
     width: 230px;
-    height: 42px; }
+    height: 37px; }
   .submit-button {
     width: 230px;
-    height: 42px;
-    font-size: 1em; } }
+    height: 37px;
+    font-size: 0.9em; } }
