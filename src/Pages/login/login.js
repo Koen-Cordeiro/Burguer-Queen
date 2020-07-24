@@ -29,8 +29,8 @@ const Login = () => {
 
   return (
     <>
-      <figure className='log-reg-flex logo'>
-        <img className='img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
+      <figure className='log-reg-flex log-logo'>
+        <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
