@@ -35,7 +35,7 @@ const Login = () => {
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='log-reg-column log-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           <Button buttonClass='submit-button log-reg-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
@@ -43,7 +43,7 @@ const Login = () => {
           }}/>
         </form>
         <div className='log-base-div'>
-        <p className='log-reg-inherit-align log-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
+        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
         </div>
       </section>
     </>

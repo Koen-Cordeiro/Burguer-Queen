@@ -39,21 +39,21 @@ const Register = () => {
   return (
     <section className='log-reg-flex reg-background'>
       <form className='log-reg-column log-reg-center'>
-        {arrText.map((e, index) => <Input key={index} componentClass='log-reg-column log-reg-space-after reg-input' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} />)}
-        <label className='work-label log-reg-space-after'>Área de trabalho
+        {arrText.map((e, index) => <Input key={index} componentClass='log-reg-column log-reg-space-after log-reg-input' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} />)}
+        <label className='reg-work-label log-reg-space-after'>Área de trabalho
           <div onChange={event => setWorkPlace(event.target.value)} className='log-reg-center reg-row radio-input-div'>
             <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
             <p>ou</p>
             <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
           </div>
         </label>
-        <Button buttonClass='log-reg-space-after send-button' type='submit' text='ENVIAR' handleClick={(e) => {
+        <Button buttonClass='log-reg-space-after submit-button' type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
         }}/>
         <span>{error}</span>
       </form>
-      <p className='log-reg-inherit-align reg-base-p'>Já possui uma conta? <Link to='/'>Entrar</Link></p>
+      <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta? <Link to='/'>Entrar</Link></p>
     </section>
   )
 }
