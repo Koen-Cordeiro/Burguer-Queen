@@ -14,6 +14,59 @@ main {
   justify-content: center;
   align-items: center; }
 
+.submit-button {
+  width: 340px;
+  height: 52px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  background-color: #D70000;
+  border: none;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.05em; }
+  .submit-button:focus {
+    border: 2px solid #D70000;
+    -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    outline: none; }
+
+.log-background {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: 400px;
+  height: 365px;
+  padding-top: 35px; }
+
+.log-img-logo {
+  width: 340px; }
+
+.log-logo {
+  width: 400px;
+  height: 230px; }
+
+.log-base-div {
+  display: flex;
+  width: 100%; }
+
+.reg-background {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  width: 400px;
+  height: 700px;
+  padding-top: 35px; }
+
+.reg-row {
+  display: flex;
+  flex-direction: row; }
+
+.reg-work-label {
+  color: #A0A0A0;
+  font-weight: 600;
+  font-size: 1.1em; }
+
 /* Alignment */
 .log-reg-flex {
   display: flex;
@@ -36,65 +89,31 @@ main {
 .log-reg-space-after {
   margin-bottom: 30px; }
 
-.log-background {
-  background: white;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  width: 400px;
-  height: 365px;
-  padding-top: 35px; }
-
-.log-img-logo {
-  width: 340px; }
-
-.log-logo {
-  width: 400px;
-  height: 230px; }
-
-.reg-background {
-  background: white;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  width: 400px;
-  height: 700px;
-  padding-top: 35px; }
-
-.log-input {
+.log-reg-input {
   color: #A0A0A0;
   font-weight: 600;
   font-size: 1.1em; }
+  .log-reg-input input {
+    width: 340px;
+    height: 52px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    background-color: rgba(160, 160, 160, 0.2);
+    border: 1px solid rgba(160, 160, 160, 0.2);
+    box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+    box-sizing: border-box;
+    color: #A0A0A0;
+    font-weight: 500;
+    margin-top: 11px;
+    padding-left: 15px; }
+    .log-reg-input input:focus {
+      border: 2px solid #D70000;
+      -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      outline: none; }
 
-.log-input input, .submit-button {
-  width: 340px;
-  height: 52px;
-  font-size: 1.1em;
-  border-radius: 5px; }
-
-.log-input input {
-  background-color: rgba(160, 160, 160, 0.2);
-  border: 1px solid rgba(160, 160, 160, 0.2);
-  box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-  box-sizing: border-box;
-  color: #A0A0A0;
-  font-weight: 500;
-  margin-top: 11px;
-  padding-left: 15px; }
-
-.log-input input:focus, .submit-button:focus {
-  border: 2px solid #D70000;
-  -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-  -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-  box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-  outline: none; }
-
-.submit-button {
-  background-color: #D70000;
-  border: none;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 0.05em; }
-
-.log-base-p {
+.log-reg-base-p {
   background: black;
   color: white;
   font-weight: 500;
@@ -103,13 +122,8 @@ main {
   width: inherit;
   height: 80px;
   text-align: center; }
-
-.log-base-div {
-  display: flex;
-  width: 100%; }
-
-a {
-  color: white; }
+  .log-reg-base-p a {
+    color: white; }
 
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
@@ -126,7 +140,8 @@ a {
     padding-top: 26px; }
   .log-input {
     font-size: 0.85em; }
-  .log-input input, .submit-button {
+  .log-input input,
+  .submit-button {
     width: 230px;
     height: 42px;
     font-size: 1em; }

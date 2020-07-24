@@ -6,3 +6,16 @@
   height: $height;
   padding-top: 35px;
 }
+
+@mixin inputAndLabel {
+  color: $gray;
+    font-weight: $font-weight-semibold;
+    font-size: 1.1em;
+}
+
+@mixin submit-button {
+  width: 340px;
+  height: 52px;
+  font-size: 1.1em;
+  border-radius: $border-angle;
+}
