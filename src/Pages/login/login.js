@@ -5,6 +5,7 @@ import Form from '../../Components/form'
 import Button from '../../Components/button'
 import logo from '../../img/logo.png'
 import './loginStyle.css'
+import { errorsLogin } from './errorsLogin'
 
 const Login = () => {
 
@@ -20,14 +21,8 @@ const Login = () => {
         //user
       })
       .catch((error) => {
-        // callback(error);
-        var errorCode = error.code;
-        var errorMessage = error.message;
-          if (errorCode == 'auth/weak-password') {
-            alert('The password is too weak.');
-          } else {
-            alert(errorMessage);
-          }
+        let errorCode = error.code;
+        console.log(errorsLogin.errorCode)
       });
   }
 
