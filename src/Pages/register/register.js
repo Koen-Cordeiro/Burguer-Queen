@@ -3,7 +3,6 @@ import firebase from 'firebase'
 import { Link } from 'react-router-dom'
 import Input from '../../Components/input'
 import Button from '../../Components/button'
-import './styleRegister.css'
 
 const Register = () => {
   const [name, setName] = useState('');
