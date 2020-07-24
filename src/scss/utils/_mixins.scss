@@ -1,0 +1,8 @@
+@mixin background($height) {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: $border-angle;
+  width: 400px;
+  height: $height;
+  padding-top: 35px;
+}
