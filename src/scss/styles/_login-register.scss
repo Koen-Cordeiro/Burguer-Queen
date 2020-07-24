@@ -1,7 +1,7 @@
 
 body {
-  font-size: var(--text-base-size);
-  font-family: var(--font-primary), var(--font-secondary);
+  font-size: $text-base-size;
+  font-family: $font-primary, $font-secondary;
   background: url(../img/pattern-detective.png) repeat;
 }
 
@@ -54,7 +54,7 @@ main {
 .log-background {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: var(--border-angle);
+  border-radius: $border-angle;
   width: 400px;
   height: 365px;
   padding-top: 35px;
@@ -62,7 +62,7 @@ main {
 
 .log-input {
   color: $gray;
-  font-weight: var(--font-weight-semibold);
+  font-weight: $font-weight-semibold;
   font-size: 1.1em;
 }
 
@@ -70,7 +70,7 @@ main {
   width: 340px;
   height: 52px;
   font-size: 1.1em;
-  border-radius: var(--border-angle);
+  border-radius: $border-angle;
 }
 
 .log-input input {
@@ -79,7 +79,7 @@ main {
   box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
   box-sizing: border-box;
   color: $gray;
-  font-weight: var(--font-weight-medium);
+  font-weight: $font-weight-medium;
   margin-top: 11px;
   padding-left: 15px;
 }
@@ -96,16 +96,16 @@ main {
   background-color: $red;
   border: none;
   color: white;
-  font-weight: var(--font-weight-bold);
+  font-weight: $font-weight-bold;
   letter-spacing: 0.05em;
 }
 
 .log-base-p {
   background: black;
   color: white;
-  font-weight: var(--font-weight-medium);
+  font-weight: $font-weight-medium;
   font-size: 1em;
-  border-radius: 0px 0px var(--border-angle) var(--border-angle);
+  border-radius: 0px 0px $border-angle $border-angle;
   width: inherit;
   height: 80px;
   text-align: center;
