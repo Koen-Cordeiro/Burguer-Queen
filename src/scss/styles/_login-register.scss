@@ -1,0 +1,219 @@
+body {
+  font-size: $text-base-size;
+  font-family: $font-primary, $font-secondary;
+  background: url(../img/pattern-detective.png) repeat;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// input[type="radio"] {
+//   /* remove standard background appearance */
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//   /* create custom radiobutton appearance */
+//   display: inline-block;
+//   width: 15px;
+//   height: 15px;
+//   padding: 3px;
+//   /* background-color only for content */
+//   outline: none;
+//   background-clip: content-box;
+//   border: 1px solid green;
+//   background-color:red;
+//   border-radius: 50%;
+// }
+
+.submit-button {
+  @include submit-button;
+  background-color: $red;
+  border: none;
+  color: white;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.05em;
+  &:focus {
+    border: 2px solid $red;
+    -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+    outline: none;
+  }
+}
+
+.log {
+  &-background {
+    @include background(365px);
+  }
+  &-img-logo {
+    width: 340px;
+  }
+  &-logo {
+    width: 400px;
+    height: 230px;
+  }
+  &-base-div {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.reg {
+  &-background {
+    @include background(700px);
+  }
+  &-row {
+    display: flex;
+    flex-direction: row;
+  }
+  &-work-label {
+    @include input-and-label;
+    width: 340px;
+    height: 83px;
+  }
+  &-radio-input-div {
+    margin-top: 11px;
+    width: 340px;
+    height: 52px;
+    border-top: 2px solid var(--light-gray);
+    border-bottom: 2px solid var(--light-gray);
+    justify-content: space-evenly;
+    input {
+      margin-right: 10px;
+      background-color: var(--light-gray);
+      border: 1px solid var(--light-gray);
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      &:checked {
+        background-color: var(--red);
+        outline: none;
+      }
+    }
+  }
+}
+
+.log-reg {
+  &-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &-column {
+    display: flex;
+    flex-direction: column;
+  }
+  &-inherit-align {
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+  }
+  &-center {
+    align-items: center;
+  }
+  &-space-after {
+    margin-bottom: 30px;
+  }
+  &-input {
+    @include input-and-label;
+    input {
+      @include submit-button;
+      background-color: $light-gray;
+      border: 1px solid $light-gray;
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      box-sizing: border-box;
+      color: $gray;
+      font-weight: $font-weight-medium;
+      margin-top: 11px;
+      padding-left: 15px;
+      &:focus {
+        border: 2px solid $red;
+        -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        outline: none;
+      }
+    }
+  }
+  &-base-p {
+    background: black;
+    color: white;
+    font-weight: $font-weight-medium;
+    font-size: 1em;
+    border-radius: 0px 0px $border-angle $border-angle;
+    width: inherit;
+    height: 80px;
+    text-align: center;
+    a {
+      color: white;
+    }
+  }
+}
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 767px) {
+  .log-reg {
+    &-after {
+      margin-bottom: 24px;
+    }
+    &-input {
+      font-size: 0.85em;
+      input {
+        @include submit-button-responsive;
+        margin-top: 11px;
+        padding-left: 15px;
+        margin-top: 9px;
+        padding-left: 10px;
+      }
+    }
+    &-reg-base-p {
+      font-size: 0.75em;
+      height: 70px;
+    }
+    &-base-div {
+      display: flex;
+      width: 100%;
+    }
+    &-base-p {
+      font-size: 0.75em;
+      height: 70px;
+    }
+  }
+
+  .log {
+    &-background {
+      @include responsive-background(300px);
+    }
+    &-img-logo {
+      width: 255px;
+    }
+    &-logo {
+      width: 280px;
+      height: 180px;
+    }
+  }
+
+  .reg {
+    &-background {
+      @include responsive-background(570px);
+    }
+    &-work-label {
+      font-size: 0.85em;
+      width: 230px;
+      height: 70px;
+    }
+    &-radio-input-div {
+      width: 230px;
+      height: 42px;
+    }
+  }
+
+  .submit-button {
+    @include submit-button-responsive
+  }
+}
