@@ -1,0 +1,172 @@
+@import "../reset.css";
+@import "../design-system-default.css";
+
+body {
+  font-size: var(--text-base-size);
+  font-family: var(--font-primary), var(--font-secondary);
+  background: url(../../img/pattern-detective.png) repeat;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Alignment */
+.log-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-inherit-align {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-center {
+  align-items: center;
+}
+
+.log-space-after {
+  margin-bottom: 30px;
+}
+
+/* Form */
+.logo {
+  width: 400px;
+  height: 230px;
+}
+
+.img-logo {
+  width: 340px;
+}
+
+.log-background {
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  border-radius: var(--border-angle);
+  width: 400px;
+  height: 365px;
+  padding-top: 35px;
+}
+
+.log-input {
+  color: var(--gray);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1.1em;
+}
+
+.log-input input, .submit-button {
+  width: 340px;
+  height: 52px;
+  font-size: 1.1em;
+  border-radius: var(--border-angle);
+}
+
+.log-input input {
+  background-color: var(--light-gray);
+  border: 1px solid var(--light-gray);
+  box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+  box-sizing: border-box;
+  color: var(--gray);
+  font-weight: var(--font-weight-medium);
+  margin-top: 11px;
+  padding-left: 15px;
+}
+
+.log-input input:focus, .submit-button:focus {
+  border: 2px solid var(--red);
+  -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  outline: none;
+}
+
+.submit-button {
+  background-color: var(--red);
+  border: none;
+  color: white;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+}
+
+.log-base-p {
+  background: black;
+  color: white;
+  font-weight: var(--font-weight-medium);
+  font-size: 1em;
+  border-radius: 0px 0px var(--border-angle) var(--border-angle);
+  width: inherit;
+  height: 80px;
+  text-align: center;
+}
+
+.log-base-div{
+  display: flex;
+  width: 100%;
+}
+
+a {
+  color: white;
+}
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 767px) {
+  .log-space-after{
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .img-logo {
+    width: 255px;
+  }
+  
+  .log-background {
+    width: 280px;
+    height: 300px;
+    padding-top: 26px;
+  }
+  
+  .log-input {
+    font-size: 0.85em;
+  }
+  
+  .log-input input, .submit-button {
+    width: 230px;
+    height: 42px;
+    font-size: 1em;
+  }
+  
+  .log-input input {
+    margin-top: 11px;
+    padding-left: 15px;
+    margin-top: 9px;
+    padding-left: 10px;
+  }
+
+  .log-base-div{
+    display: flex;
+    width: 100%;
+  }
+  
+  .log-base-p {
+    font-size: 0.75em;
+    height: 70px;
+  }
+}
