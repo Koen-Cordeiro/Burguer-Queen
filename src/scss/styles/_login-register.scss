@@ -73,11 +73,30 @@ main {
     flex-direction: row;
   }
   &-work-label {
-    @include inputAndLabel;
+    @include input-and-label;
+    width: 340px;
+    height: 83px;
+  }
+  &-radio-input-div {
+    margin-top: 11px;
+    width: 340px;
+    height: 52px;
+    border-top: 2px solid var(--light-gray);
+    border-bottom: 2px solid var(--light-gray);
+    justify-content: space-evenly;
+    input {
+      margin-right: 10px;
+      background-color: var(--light-gray);
+      border: 1px solid var(--light-gray);
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      &:checked {
+        background-color: var(--red);
+        outline: none;
+      }
+    }
   }
 }
 
-/* Alignment */
 .log-reg {
   &-flex {
     display: flex;
@@ -101,7 +120,7 @@ main {
     margin-bottom: 30px;
   }
   &-input {
-    @include inputAndLabel;
+    @include input-and-label;
     input {
       @include submit-button;
       background-color: $light-gray;
@@ -132,58 +151,69 @@ main {
     text-align: center;
     a {
       color: white;
-  }
+    }
   }
 }
 
-
-
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
-  .log-space-after {
-    margin-bottom: 24px;
+  .log-reg {
+    &-after {
+      margin-bottom: 24px;
+    }
+    &-input {
+      font-size: 0.85em;
+      input {
+        @include submit-button-responsive;
+        margin-top: 11px;
+        padding-left: 15px;
+        margin-top: 9px;
+        padding-left: 10px;
+      }
+    }
+    &-reg-base-p {
+      font-size: 0.75em;
+      height: 70px;
+    }
+    &-base-div {
+      display: flex;
+      width: 100%;
+    }
+    &-base-p {
+      font-size: 0.75em;
+      height: 70px;
+    }
   }
 
-  .logo {
-    width: 280px;
-    height: 180px;
+  .log {
+    &-background {
+      @include responsive-background(300px);
+    }
+    &-img-logo {
+      width: 255px;
+    }
+    &-logo {
+      width: 280px;
+      height: 180px;
+    }
   }
 
-  .img-logo {
-    width: 255px;
+  .reg {
+    &-background {
+      @include responsive-background(570px);
+    }
+    &-work-label {
+      font-size: 0.85em;
+      width: 230px;
+      height: 70px;
+    }
+    &-radio-input-div {
+      width: 230px;
+      height: 42px;
+    }
   }
 
-  .log-background {
-    width: 280px;
-    height: 300px;
-    padding-top: 26px;
-  }
-
-  .log-input {
-    font-size: 0.85em;
-  }
-
-  .log-input input,
   .submit-button {
-    width: 230px;
-    height: 42px;
-    font-size: 1em;
-  }
-
-  .log-input input {
-    margin-top: 11px;
-    padding-left: 15px;
-    margin-top: 9px;
-    padding-left: 10px;
-  }
-
-  .log-base-div {
-    display: flex;
-    width: 100%;
-  }
-
-  .log-base-p {
-    font-size: 0.75em;
-    height: 70px;
+    @include submit-button-responsive
   }
 }

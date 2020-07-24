@@ -65,9 +65,26 @@ main {
 .reg-work-label {
   color: #A0A0A0;
   font-weight: 600;
-  font-size: 1.1em; }
+  font-size: 1.1em;
+  width: 340px;
+  height: 83px; }
 
-/* Alignment */
+.reg-radio-input-div {
+  margin-top: 11px;
+  width: 340px;
+  height: 52px;
+  border-top: 2px solid var(--light-gray);
+  border-bottom: 2px solid var(--light-gray);
+  justify-content: space-evenly; }
+  .reg-radio-input-div input {
+    margin-right: 10px;
+    background-color: var(--light-gray);
+    border: 1px solid var(--light-gray);
+    box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15); }
+    .reg-radio-input-div input:checked {
+      background-color: var(--red);
+      outline: none; }
+
 .log-reg-flex {
   display: flex;
   flex-direction: column;
@@ -127,32 +144,48 @@ main {
 
 /* Mobile */
 @media (min-width: 320px) and (max-width: 767px) {
-  .log-space-after {
+  .log-reg-after {
     margin-bottom: 24px; }
-  .logo {
-    width: 280px;
-    height: 180px; }
-  .img-logo {
-    width: 255px; }
+  .log-reg-input {
+    font-size: 0.85em; }
+    .log-reg-input input {
+      width: 230px;
+      height: 42px;
+      font-size: 1em;
+      margin-top: 11px;
+      padding-left: 15px;
+      margin-top: 9px;
+      padding-left: 10px; }
+  .log-reg-reg-base-p {
+    font-size: 0.75em;
+    height: 70px; }
+  .log-reg-base-div {
+    display: flex;
+    width: 100%; }
+  .log-reg-base-p {
+    font-size: 0.75em;
+    height: 70px; }
   .log-background {
     width: 280px;
     height: 300px;
     padding-top: 26px; }
-  .log-input {
-    font-size: 0.85em; }
-  .log-input input,
+  .log-img-logo {
+    width: 255px; }
+  .log-logo {
+    width: 280px;
+    height: 180px; }
+  .reg-background {
+    width: 280px;
+    height: 570px;
+    padding-top: 26px; }
+  .reg-work-label {
+    font-size: 0.85em;
+    width: 230px;
+    height: 70px; }
+  .reg-radio-input-div {
+    width: 230px;
+    height: 42px; }
   .submit-button {
     width: 230px;
     height: 42px;
-    font-size: 1em; }
-  .log-input input {
-    margin-top: 11px;
-    padding-left: 15px;
-    margin-top: 9px;
-    padding-left: 10px; }
-  .log-base-div {
-    display: flex;
-    width: 100%; }
-  .log-base-p {
-    font-size: 0.75em;
-    height: 70px; } }
+    font-size: 1em; } }

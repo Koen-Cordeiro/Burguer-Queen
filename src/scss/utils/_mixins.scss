@@ -7,10 +7,10 @@
   padding-top: 35px;
 }
 
-@mixin inputAndLabel {
+@mixin input-and-label {
   color: $gray;
-    font-weight: $font-weight-semibold;
-    font-size: 1.1em;
+  font-weight: $font-weight-semibold;
+  font-size: 1.1em;
 }
 
 @mixin submit-button {
@@ -18,4 +18,16 @@
   height: 52px;
   font-size: 1.1em;
   border-radius: $border-angle;
+}
+
+@mixin submit-button-responsive {
+  width: 230px;
+  height: 42px;
+  font-size: 1em;
+}
+
+@mixin responsive-background($height) {
+  width: 280px;
+  height: $height;
+  padding-top: 26px;
 }
