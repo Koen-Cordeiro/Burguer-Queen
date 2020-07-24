@@ -29,21 +29,21 @@ const Login = () => {
 
   return (
     <>
-      <figure className='log-flex logo'>
+      <figure className='log-reg-flex logo'>
         <img className='img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </figure>
-      <section className='log-center log-background'>
-        <form className='log-column log-center'>
+      <section className='log-reg-center log-background'>
+        <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='log-column log-input log-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='log-reg-column log-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
-          <Button buttonClass='submit-button log-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button buttonClass='submit-button log-reg-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
         </form>
         <div className='log-base-div'>
-        <p className='log-inherit-align log-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
+        <p className='log-reg-inherit-align log-base-p'>Não possui uma conta? {"\u00a0"}<Link to='/register'> Registre-se</Link></p>
         </div>
       </section>
     </>

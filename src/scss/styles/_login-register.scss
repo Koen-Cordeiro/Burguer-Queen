@@ -15,31 +15,33 @@ main {
 }
 
 /* Alignment */
-.log-flex {
+.log-reg{
+  &-flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-.log-column {
+&-column {
   display: flex;
   flex-direction: column;
 }
-
-.log-inherit-align {
+&-inherit-align {
   display: inherit;
   align-items: center;
   justify-content: center;
 }
-
-.log-center {
+&-center {
   align-items: center;
 }
-
-.log-space-after {
+&-space-after {
   margin-bottom: 30px;
 }
+}
+
+
+
+
 
 /* Form */
 .logo {

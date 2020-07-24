@@ -15,25 +15,25 @@ main {
   align-items: center; }
 
 /* Alignment */
-.log-flex {
+.log-reg-flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
 
-.log-column {
+.log-reg-column {
   display: flex;
   flex-direction: column; }
 
-.log-inherit-align {
+.log-reg-inherit-align {
   display: inherit;
   align-items: center;
   justify-content: center; }
 
-.log-center {
+.log-reg-center {
   align-items: center; }
 
-.log-space-after {
+.log-reg-space-after {
   margin-bottom: 30px; }
 
 /* Form */
