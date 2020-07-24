@@ -13,6 +13,10 @@ main {
   align-items: center;
 }
 
+// testar um :after e um :before
+// brincar com position para posicionar por cima
+// quando tiver checked o after fica branquinho
+
 // input[type="radio"] {
 //   /* remove standard background appearance */
 //   -webkit-appearance: none;
@@ -156,6 +160,7 @@ main {
 }
 
 /* Mobile */
+// mudar todos os break-point direto na raiz
 @media (min-width: 320px) and (max-width: 767px) {
   .log-reg {
     &-space-after {
