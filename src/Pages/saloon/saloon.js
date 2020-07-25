@@ -10,6 +10,8 @@ const Saloon = () => {
   const [burguers, setBurguers] = useState([])
   const [breakfastClick, setBreakfastClick] = useState(false)
   const [alldayClick, setAllDayClick] = useState(false)
+  const [order, setOrder] = useState([])
+  const [quantity, setQuantity] = useState({})
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -21,11 +23,25 @@ const Saloon = () => {
     })
     )
   }
-
+  useEffect(()=> {
+    let takeType = order.map((item) =>  item.type);
+    let countTypes = takeType.reduce(function (allTypes, atualType) {
+        if (atualType in allTypes) {
+            allTypes[atualType]++;
+        } else {
+            allTypes[atualType] = 1;
+        }
+        return allTypes;
+    }, {})
+    setQuantity(countTypes)}, [order])
+  useEffect(() =>console.log(order), [quantity])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
+
+
+
 
   return (
     <main>
@@ -34,10 +50,21 @@ const Saloon = () => {
 
       <Button text='Café da manhã' handleClick={() => setBreakfastClick(!breakfastClick)} />
       <Button text='Resto do dia' handleClick={() => setAllDayClick(!alldayClick)} />
-
+  {order.map((e, index)=> (
+    <div key={index}>
+      <h2 key={e.type}>{e.type}</h2>
+      <h2 key={e.price}>{e.price}</h2>
+    </div>
+  ))}
       <ul>
         <li>
-          {breakfastClick && <MenuItems arr={breakfast} />}
+          {breakfastClick && <MenuItems arr={breakfast} handleClick={(event) => {
+            const arr = Array.from(event.currentTarget.children)
+            const array = []
+            const price = arr[0].innerText
+              setOrder([ ...order, {type: arr[1].innerText, price:Number(price.match(/\d/)[0]), quantidade: quantity[arr[1].innerText] === undefined? quantity[arr[1].innerText] = 1: Number(quantity[arr[1].innerText]) + 1 }])
+            
+          }} />}
         </li>
         <li>
           {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} />}
