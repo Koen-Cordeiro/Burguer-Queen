@@ -52,12 +52,18 @@ const Saloon = () => {
 
 
   return (
-    <main>
+    <>
       <h1>Bem vindo senhor das mesas</h1>
       <button onClick={() => firebase.auth().signOut()}> Sair</button>
 
-      <Button text='Café da manhã' handleClick={() => setBreakfastClick(!breakfastClick)} />
-      <Button text='Resto do dia' handleClick={() => setAllDayClick(!alldayClick)} />
+      <Button text='Café da manhã' handleClick={() => {
+        setBreakfastClick(!breakfastClick)
+        setAllDayClick(false)}} />
+      <Button text='Resto do dia' handleClick={() => {
+        setAllDayClick(!alldayClick)
+        setBreakfastClick(false)}} />
+      <section>
+      <div>
       {menu.map((e, index) => (
         <div key={index}>
           <h2 key={e.type}>{e.type}</h2>
@@ -65,6 +71,8 @@ const Saloon = () => {
           <h2 key={e.count + e.type}>{e.count}</h2>
         </div>
       ))}
+      </div>
+      
       <ul>
         <li>
           {breakfastClick && <MenuItems arr={breakfast} handleClick={(event) => {
@@ -95,7 +103,8 @@ const Saloon = () => {
           }} />}
         </li>
       </ul>
-    </main>
+      </section>
+    </>
   );
 };
 
