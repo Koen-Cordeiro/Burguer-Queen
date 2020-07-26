@@ -5,6 +5,7 @@ import firebase from 'firebase'
 
 const Saloon = () => {
   const [breakfast, setBreakfast] = useState([])
+  const [menu, setMenu] = useState([])
   const [snacks, setSnacks] = useState([])
   const [drinks, setDrinks] = useState([])
   const [burguers, setBurguers] = useState([])
@@ -12,6 +13,7 @@ const Saloon = () => {
   const [alldayClick, setAllDayClick] = useState(false)
   const [order, setOrder] = useState([])
   const [quantity, setQuantity] = useState({})
+  const [price, setPrice] = useState({})
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -19,6 +21,7 @@ const Saloon = () => {
         id: doc.id,
         ...doc.data()
       }))
+      // console.log(getBurguer.map(e => ({[e.type] : e.price})))
       document.set(() => getBurguer);
     })
     )
@@ -33,8 +36,15 @@ const Saloon = () => {
         }
         return allTypes;
     }, {})
+    const menu = Object.entries(countTypes)
+    if(menu.length>0) {
+      setMenu(menu.map(e => ({type:e[0], count: e[1], price: price[e[0]]})))
+  }
     setQuantity(countTypes)}, [order])
-  useEffect(() =>console.log(order), [quantity])
+  useEffect(() =>{
+    const menu = Array.of(breakfast,burguers,drinks,snacks)
+    setPrice(menu.flat().reduce((obj, item) => ({...obj, [item.type]: item.price}) ,{})) 
+   },[breakfast, snacks, drinks, burguers])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
@@ -50,19 +60,18 @@ const Saloon = () => {
 
       <Button text='Café da manhã' handleClick={() => setBreakfastClick(!breakfastClick)} />
       <Button text='Resto do dia' handleClick={() => setAllDayClick(!alldayClick)} />
-  {order.map((e, index)=> (
+  {menu.map((e, index)=> (
     <div key={index}>
       <h2 key={e.type}>{e.type}</h2>
       <h2 key={e.price}>{e.price}</h2>
+      <h2 key={e.count+e.type}>{e.count}</h2>
     </div>
   ))}
       <ul>
         <li>
           {breakfastClick && <MenuItems arr={breakfast} handleClick={(event) => {
             const arr = Array.from(event.currentTarget.children)
-            const array = []
-            const price = arr[0].innerText
-              setOrder([ ...order, {type: arr[1].innerText, price:Number(price.match(/\d/)[0]), quantidade: quantity[arr[1].innerText] === undefined? quantity[arr[1].innerText] = 1: Number(quantity[arr[1].innerText]) + 1 }])
+              setOrder([ ...order, {type: arr[1].innerText}])
             
           }} />}
         </li>
