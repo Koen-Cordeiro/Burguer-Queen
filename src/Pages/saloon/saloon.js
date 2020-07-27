@@ -54,13 +54,10 @@ const Saloon = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
-
-
-
   return (
     <>
       <h1>Bem vindo senhor das mesas</h1>
-      <button onClick={() => firebase.auth().signOut()}> Sair</button>
+      <Button handleClick={() => firebase.auth().signOut()} text='Sair'/> 
 
       <Button text='Café da manhã' handleClick={() => {
         setBreakfastClick(!breakfastClick)
@@ -82,15 +79,10 @@ const Saloon = () => {
         </div>
 
         <ul>
-
           {breakfastClick && <MenuItems arr={breakfast} handleClick={addOrder} />}
-
           {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
-
           {alldayClick && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
-
           {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
-
         </ul>
       </section>
     </>
