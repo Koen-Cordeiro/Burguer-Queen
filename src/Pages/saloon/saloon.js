@@ -55,7 +55,7 @@ const Saloon = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
   return (
-    <>
+    <div className='menu-row-reverse'>
       <div>
           {menu.map((e, index) => (
             <div key={index}>
@@ -86,7 +86,7 @@ const Saloon = () => {
           {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
         </ul>
       </section>
-    </>
+    </div>
   );
 };
 
