@@ -77,6 +77,15 @@ const Saloon = () => {
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
               <h2 key={e.price}>{e.price}</h2>
+              {/* <h3 onClick={()=> {
+                setClientOrder(clientOrder.map(item=> {
+                  if(item.type === e.type) {
+                    e.count+=1
+                  } 
+                  return {type:e.type, price: e.price, count:e.count}
+                  }))
+                // console.log(e.type)
+              }}>+</h3> */}
               <h2 key={e.count + e.type}>{e.count}</h2>
             </div>
           ))}
