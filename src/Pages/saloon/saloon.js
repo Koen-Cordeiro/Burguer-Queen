@@ -27,7 +27,7 @@ const Saloon = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order,arr[1].innerText ])
+    setOrder([...order, arr[1].innerText])
 
   }
   useEffect(() => {
@@ -64,35 +64,34 @@ const Saloon = () => {
 
       <Button text='Café da manhã' handleClick={() => {
         setBreakfastClick(!breakfastClick)
-        setAllDayClick(false)}} />
+        setAllDayClick(false)
+      }} />
       <Button text='Resto do dia' handleClick={() => {
         setAllDayClick(!alldayClick)
-        setBreakfastClick(false)}} />
-      <section>
-      <div>
-      {menu.map((e, index) => (
-        <div key={index}>
-          <h2 key={e.type}>{e.type}</h2>
-          <h2 key={e.price}>{e.price}</h2>
-          <h2 key={e.count + e.type}>{e.count}</h2>
+        setBreakfastClick(false)
+      }} />
+      <section className='menu-row-reverse'>
+        <div>
+          {menu.map((e, index) => (
+            <div key={index}>
+              <h2 key={e.type}>{e.type}</h2>
+              <h2 key={e.price}>{e.price}</h2>
+              <h2 key={e.count + e.type}>{e.count}</h2>
+            </div>
+          ))}
         </div>
-      ))}
-      </div>
-      
-      <ul>
-        <li>
+
+        <ul>
+
           {breakfastClick && <MenuItems arr={breakfast} handleClick={addOrder} />}
-        </li>
-        <li>
+
           {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
-        </li>
-        <li>
+
           {alldayClick && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
-        </li>
-        <li>
+
           {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
-        </li>
-      </ul>
+
+        </ul>
       </section>
     </>
   );
