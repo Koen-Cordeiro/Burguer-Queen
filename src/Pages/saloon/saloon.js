@@ -56,6 +56,17 @@ const Saloon = () => {
 
   return (
     <>
+      <div>
+          {menu.map((e, index) => (
+            <div key={index}>
+              <h2 key={e.type}>{e.type}</h2>
+              <h2 key={e.price}>{e.price}</h2>
+              <h2 key={e.count + e.type}>{e.count}</h2>
+            </div>
+          ))}
+        </div>
+      <section >
+
       <h1>Bem vindo senhor das mesas</h1>
       <Button handleClick={() => firebase.auth().signOut()} text='Sair'/> 
 
@@ -67,16 +78,6 @@ const Saloon = () => {
         setAllDayClick(!alldayClick)
         setBreakfastClick(false)
       }} />
-      <section className='menu-row-reverse'>
-        <div>
-          {menu.map((e, index) => (
-            <div key={index}>
-              <h2 key={e.type}>{e.type}</h2>
-              <h2 key={e.price}>{e.price}</h2>
-              <h2 key={e.count + e.type}>{e.count}</h2>
-            </div>
-          ))}
-        </div>
 
         <ul>
           {breakfastClick && <MenuItems arr={breakfast} handleClick={addOrder} />}
