@@ -6,15 +6,17 @@ import firebase from 'firebase'
 
 const Saloon = () => {
   const [breakfast, setBreakfast] = useState([])
-  const [menu, setMenu] = useState([])
+  const [clientOrder, setClientOrder] = useState([])
   const [snacks, setSnacks] = useState([])
   const [drinks, setDrinks] = useState([])
   const [burguers, setBurguers] = useState([])
   const [breakfastClick, setBreakfastClick] = useState(false)
-  const [alldayClick, setAllDayClick] = useState(false)
+  const [alldayClick, setAllDayClick] = useState(true)
   const [order, setOrder] = useState([])
   const [price, setPrice] = useState({})
   const [orderNumber, setOrderNumber] = useState()
+  const [table, setTable] = useState()
+  const [clientName, setClientName] = useState('')
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -30,8 +32,15 @@ const Saloon = () => {
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
     setOrder([...order, arr[1].innerText])
-
   }
+
+  const sendOrder = (post) => {
+    firebase.firestore().collection('orders').add(post)
+      .then(() => {
+        console.log('Pedido enviado, olhe a firestore')
+      });
+  }
+
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
   useEffect(() => {
     let countTypes = order.reduce(function (allTypes, atualType) {
@@ -44,7 +53,7 @@ const Saloon = () => {
     }, {})
     const menu = Object.entries(countTypes)
     if (menu.length > 0) {
-      setMenu(menu.map(e => ({ type: e[0], count: e[1], price: price[e[0]] })))
+      setClientOrder(menu.map(e => ({ type: e[0], count: e[1], price: price[e[0]]})))
     }
   }, [order])
 
@@ -61,16 +70,21 @@ const Saloon = () => {
     <div className='menu-row-reverse'>
       <form className='log-reg-flex'>
         <h1>Pedido {orderNumber}</h1>
-        <Input type='text' text='Nome do Cliente' />
-        <Input type='number' text='Mesa' />
+        <Input type='text' text='Nome do Cliente' handleChange={(e)=> setClientName(e.currentTarget.value)} />
+        <Input type='number' text='Mesa' handleChange={(e)=> setTable(e.currentTarget.value)} />
         <div>
-          {menu.map((e, index) => (
+          {clientOrder.map((e, index) => (
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
               <h2 key={e.price}>{e.price}</h2>
               <h2 key={e.count + e.type}>{e.count}</h2>
             </div>
           ))}
+
+          <Button text='Enviar pedido' handleClick={(event)=> {
+            event.preventDefault()
+            sendOrder({orderNumber, clientName, table, clientOrder, orderStatus: 'pending' })
+            }}/>
         </div>
 
       </form>
