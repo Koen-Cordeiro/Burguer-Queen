@@ -13,6 +13,7 @@ const Saloon = () => {
   const [alldayClick, setAllDayClick] = useState(false)
   const [order, setOrder] = useState([])
   const [price, setPrice] = useState({})
+  const [orderNumber, setOrderNumber] = useState()
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -30,6 +31,7 @@ const Saloon = () => {
     setOrder([...order, arr[1].innerText])
 
   }
+  useEffect(()=> setOrderNumber((Math.random() * 100000).toFixed(0)), [])
   useEffect(() => {
     let countTypes = order.reduce(function (allTypes, atualType) {
       if (atualType in allTypes) {
@@ -56,7 +58,8 @@ const Saloon = () => {
 
   return (
     <div className='menu-row-reverse'>
-      <div>
+      <form>
+        <h1>Pedido {orderNumber}</h1>
           {menu.map((e, index) => (
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
@@ -64,7 +67,7 @@ const Saloon = () => {
               <h2 key={e.count + e.type}>{e.count}</h2>
             </div>
           ))}
-        </div>
+        </form>
       <section >
 
       <h1>Bem vindo senhor das mesas</h1>
