@@ -189,3 +189,11 @@ main {
     width: 230px;
     height: 37px;
     font-size: 0.9em; } }
+
+.menu-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around; }
