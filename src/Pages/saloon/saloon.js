@@ -14,7 +14,7 @@ const Saloon = () => {
   const [alldayClick, setAllDayClick] = useState(true)
   const [order, setOrder] = useState([])
   const [orderNumber, setOrderNumber] = useState()
-  const [table, setTable] = useState()
+  const [table, setTable] = useState('')
   const [clientName, setClientName] = useState('')
 
   const requestData = (document) => {
@@ -30,7 +30,7 @@ const Saloon = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, {type: arr[1].innerText, price: arr[0].innerText } ])
+    setOrder([...order, { type: arr[1].innerText, price: arr[0].innerText }])
   }
 
   const sendOrder = (post) => {
@@ -42,12 +42,12 @@ const Saloon = () => {
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
   useEffect(() => {
-    setClientOrder( order.reduce(function (allTypes, atualType) {
-      const index = allTypes.findIndex(x=> x.type === atualType.type)
+    setClientOrder(order.reduce(function (allTypes, atualType) {
+      const index = allTypes.findIndex(x => x.type === atualType.type)
       if (index !== -1) {
         allTypes[index].count++
       } else {
-        allTypes.push({type: atualType.type, price: atualType.price, count: 1})
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
       }
       return allTypes;
     }, []))
@@ -57,28 +57,28 @@ const Saloon = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
- 
+
 
   return (
     <div className='menu-row-reverse'>
       <form className='log-reg-flex'>
         <h1>Pedido {orderNumber}</h1>
-        <Input type='text' text='Nome do Cliente' handleChange={(e)=> setClientName(e.currentTarget.value)} />
-        <Input type='number' text='Mesa' handleChange={(e)=> setTable(e.currentTarget.value)} />
+        <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
+        <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
         <div>
           {clientOrder.map((e, index) => (
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
               <h2 key={e.price}>{e.price}</h2>
-              <h3 onClick={(event)=> { }}>+</h3>
+              <h3 onClick={(event) => { }}>+</h3>
               <h2 key={e.count + e.type}>{e.count}</h2>
             </div>
           ))}
 
-          <Button text='Enviar pedido' handleClick={(event)=> {
+          <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
-            sendOrder({orderNumber, clientName, table, clientOrder, orderStatus: 'pending' })
-            }}/>
+            sendOrder({ orderNumber, clientName, table, clientOrder, orderStatus: 'pending' })
+          }} />
         </div>
 
       </form>
