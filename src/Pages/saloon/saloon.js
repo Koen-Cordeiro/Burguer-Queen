@@ -13,7 +13,6 @@ const Saloon = () => {
   const [breakfastClick, setBreakfastClick] = useState(false)
   const [alldayClick, setAllDayClick] = useState(true)
   const [order, setOrder] = useState([])
-  const [price, setPrice] = useState({})
   const [orderNumber, setOrderNumber] = useState()
   const [table, setTable] = useState()
   const [clientName, setClientName] = useState('')
@@ -31,7 +30,7 @@ const Saloon = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, arr[1].innerText])
+    setOrder([...order, {type: arr[1].innerText, price: arr[0].innerText } ])
   }
 
   const sendOrder = (post) => {
@@ -43,28 +42,22 @@ const Saloon = () => {
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
   useEffect(() => {
-    let countTypes = order.reduce(function (allTypes, atualType) {
-      if (atualType in allTypes) {
-        allTypes[atualType]++;
+    setClientOrder( order.reduce(function (allTypes, atualType) {
+      const index = allTypes.findIndex(x=> x.type === atualType.type)
+      if (index !== -1) {
+        allTypes[index].count++
       } else {
-        allTypes[atualType] = 1;
+        allTypes.push({type: atualType.type, price: atualType.price, count: 1})
       }
       return allTypes;
-    }, {})
-    const menu = Object.entries(countTypes)
-    if (menu.length > 0) {
-      setClientOrder(menu.map(e => ({ type: e[0], count: e[1], price: price[e[0]]})))
-    }
+    }, []))
   }, [order])
-
-  useEffect(() => {
-    const menu = Array.of(breakfast, burguers, drinks, snacks)
-    setPrice(menu.flat().reduce((obj, item) => ({ ...obj, [item.type]: item.price }), {}))
-  }, [breakfast, snacks, drinks, burguers])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
+
+ 
 
   return (
     <div className='menu-row-reverse'>
@@ -77,15 +70,7 @@ const Saloon = () => {
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
               <h2 key={e.price}>{e.price}</h2>
-              {/* <h3 onClick={()=> {
-                setClientOrder(clientOrder.map(item=> {
-                  if(item.type === e.type) {
-                    e.count+=1
-                  } 
-                  return {type:e.type, price: e.price, count:e.count}
-                  }))
-                // console.log(e.type)
-              }}>+</h3> */}
+              <h3 onClick={(event)=> { }}>+</h3>
               <h2 key={e.count + e.type}>{e.count}</h2>
             </div>
           ))}
