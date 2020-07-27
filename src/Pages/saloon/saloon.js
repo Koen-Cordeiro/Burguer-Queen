@@ -30,7 +30,7 @@ const Saloon = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, { type: arr[1].innerText, price: arr[0].innerText }])
+    setOrder([...order, { type: arr[1].innerText, price: Number(arr[0].innerText) }])
   }
 
   const sendOrder = (post) => {
@@ -57,7 +57,12 @@ const Saloon = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
-
+  const reloadData = (event, greater) => {
+    const element = event.currentTarget.parentElement.firstChild.textContent
+    const index = order.findIndex(x => x.type === element)
+    greater ? order.push(order[index]) : order.pop(order[index])
+    setOrder([...order])
+  }
 
   return (
     <div className='menu-row-reverse'>
@@ -70,8 +75,9 @@ const Saloon = () => {
             <div key={index}>
               <h2 key={e.type}>{e.type}</h2>
               <h2 key={e.price}>{e.price}</h2>
-              <h3 onClick={(event) => { }}>+</h3>
+              <h3 onClick={(event) => reloadData(event, true)}>+</h3>
               <h2 key={e.count + e.type}>{e.count}</h2>
+              <h3 onClick={(event) => reloadData(event, false)}>-</h3>
             </div>
           ))}
 
