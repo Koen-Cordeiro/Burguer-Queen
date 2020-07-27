@@ -189,3 +189,7 @@ main {
     width: 230px;
     height: 37px;
     font-size: 0.9em; } }
+
+.menu-row-reverse {
+  display: flex;
+  flex-direction: row-reverse; }
