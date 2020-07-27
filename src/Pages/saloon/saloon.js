@@ -24,9 +24,14 @@ const Saloon = () => {
     })
     )
   }
+
+  const addOrder = (event) => {
+    const arr = Array.from(event.currentTarget.children)
+    setOrder([...order,arr[1].innerText ])
+
+  }
   useEffect(() => {
-    let takeType = order.map((item) => item.type);
-    let countTypes = takeType.reduce(function (allTypes, atualType) {
+    let countTypes = order.reduce(function (allTypes, atualType) {
       if (atualType in allTypes) {
         allTypes[atualType]++;
       } else {
@@ -39,6 +44,7 @@ const Saloon = () => {
       setMenu(menu.map(e => ({ type: e[0], count: e[1], price: price[e[0]] })))
     }
   }, [order])
+
   useEffect(() => {
     const menu = Array.of(breakfast, burguers, drinks, snacks)
     setPrice(menu.flat().reduce((obj, item) => ({ ...obj, [item.type]: item.price }), {}))
@@ -75,32 +81,16 @@ const Saloon = () => {
       
       <ul>
         <li>
-          {breakfastClick && <MenuItems arr={breakfast} handleClick={(event) => {
-            const arr = Array.from(event.currentTarget.children)
-            setOrder([...order, { type: arr[1].innerText }])
-
-          }} />}
+          {breakfastClick && <MenuItems arr={breakfast} handleClick={addOrder} />}
         </li>
         <li>
-          {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(event) => {
-            const arr = Array.from(event.currentTarget.children)
-            setOrder([...order, { type: arr[1].innerText }])
-
-          }} />}
+          {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
         </li>
         <li>
-          {alldayClick && <MenuItems text='Bebidas' arr={drinks} handleClick={(event) => {
-            const arr = Array.from(event.currentTarget.children)
-            setOrder([...order, { type: arr[1].innerText }])
-
-          }} />}
+          {alldayClick && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
         </li>
         <li>
-          {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={(event) => {
-            const arr = Array.from(event.currentTarget.children)
-            setOrder([...order, { type: arr[1].innerText }])
-
-          }} />}
+          {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
         </li>
       </ul>
       </section>
