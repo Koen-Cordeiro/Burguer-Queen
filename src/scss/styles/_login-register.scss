@@ -13,11 +13,6 @@ main {
   align-items: center;
 }
 
-// testar um :after e um :before
-// brincar com position para posicionar por cima
-// quando tiver checked o after fica branquinho
-
-
 .submit-button {
   @include submit-button;
   background-color: $red;
@@ -44,6 +39,18 @@ main {
   }
 }
 
+.alert {
+  font-size: 0.65em;
+  font-weight: $font-weight-medium;
+  padding-bottom: 15px;
+  color: $red;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  @include mobile {
+    font-size: 0.55em;
+  }
+}
+
 .log {
   &-background {
     @include background(320px);
@@ -60,9 +67,10 @@ main {
   &-logo {
     width: 400px;
     height: 230px;
-    @include mobile;
+    @include mobile {
       width: 280px;
       height: 180px;
+    }
   }
   &-base-div {
     display: flex;
@@ -98,29 +106,30 @@ main {
     border-top: 2px solid $light-gray;
     border-bottom: 2px solid $light-gray;
     justify-content: center;
-    align-items: center;
     @include mobile {
       width: 230px;
-      height: 37px;
+      height: 40px;
     }
     input[type='radio'] {
       -webkit-appearance: none;
       -moz-appearance: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      outline: none;
       margin: 0;
-      padding: 0;
-      width: inherit;
       cursor: pointer;
     }
     label {
       display: contents;
-      margin-left: 8px;
       ::before {
         content: '';
         display: inline-block;
         border-radius: 50%;
         width: 22px;
         height: 22px;
-        margin: 0 8px 0 0;
+        margin-right: 8px;
         background: $light-gray;
         border: 1px solid $light-gray;
         box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
@@ -131,17 +140,18 @@ main {
         }
       }
       :checked::before {
-        background: white;
+        background: radial-gradient(white 30%, $red 40%);
         box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-        border: 5px solid $red;
-        box-sizing: inherit;
         @include mobile {
-          border: 4.5px solid $red;
+          background: radial-gradient(white 30%, $red 40%);
         }
       }
     }
     p {
       margin: 0 20px;
+      @include mobile {
+        margin: 0 15px;
+      }
     }
   }
 }
@@ -173,6 +183,9 @@ main {
   }
   &-input {
     @include input-and-label;
+    ::placeholder {
+      color: $gray;
+    }
     input {
       @include submit-button;
       background-color: $light-gray;
@@ -197,7 +210,7 @@ main {
         -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         outline: none;
-        }
+      }
     }
   }
   &-base-p {
