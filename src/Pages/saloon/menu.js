@@ -39,7 +39,7 @@ const Menu = () => {
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
   useEffect(() => {
-    setClientOrder(order.reduce(function (allTypes, atualType) {
+    setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
       if (index !== -1) {
         allTypes[index].count++
