@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Button from '../../Components/button'
+import Button from '../../Components/button/button'
 import Input from '../../Components/input'
 import MenuItems from '../../Components/dishes'
 import firebase from 'firebase'
@@ -49,7 +49,7 @@ const Menu = () => {
       return allTypes;
     }, []))
   }, [order])
-  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count+allTypes, 0 )), [clientOrder])
+  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0 )), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
