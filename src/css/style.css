@@ -103,21 +103,49 @@ main {
   margin-top: 11px;
   width: 320px;
   height: 45px;
-  border-top: 2px solid var(--light-gray);
-  border-bottom: 2px solid var(--light-gray);
-  justify-content: space-evenly; }
+  border-top: 2px solid rgba(160, 160, 160, 0.2);
+  border-bottom: 2px solid rgba(160, 160, 160, 0.2);
+  justify-content: center;
+  align-items: center; }
   @media (min-width: 320px) and (max-width: 767px) {
     .reg-radio-input-div {
       width: 230px;
       height: 37px; } }
-  .reg-radio-input-div input {
-    margin-right: 10px;
-    background-color: var(--light-gray);
-    border: 1px solid var(--light-gray);
-    box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15); }
-    .reg-radio-input-div input:checked {
-      background-color: var(--red);
-      outline: none; }
+  .reg-radio-input-div input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    padding: 0;
+    width: inherit;
+    cursor: pointer; }
+  .reg-radio-input-div label {
+    display: contents;
+    margin-left: 8px; }
+    .reg-radio-input-div label ::before {
+      content: '';
+      display: inline-block;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      margin: 0 8px 0 0;
+      background: rgba(160, 160, 160, 0.2);
+      border: 1px solid rgba(160, 160, 160, 0.2);
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      box-sizing: content-box; }
+      @media (min-width: 320px) and (max-width: 767px) {
+        .reg-radio-input-div label ::before {
+          width: 18px;
+          height: 18px; } }
+    .reg-radio-input-div label :checked::before {
+      background: white;
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      border: 5px solid #D70000;
+      box-sizing: inherit; }
+      @media (min-width: 320px) and (max-width: 767px) {
+        .reg-radio-input-div label :checked::before {
+          border: 4.5px solid #D70000; } }
+  .reg-radio-input-div p {
+    margin: 0 20px; }
 
 .log-reg-flex {
   display: flex;
@@ -170,12 +198,12 @@ main {
         padding-left: 15px;
         margin-top: 9px;
         padding-left: 10px; } }
-  .log-reg-input:focus {
-    border: 2px solid #D70000;
-    -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-    -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-    box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-    outline: none; }
+    .log-reg-input input:focus {
+      border: 2px solid #D70000;
+      -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+      outline: none; }
 
 .log-reg-base-p {
   background: black;
