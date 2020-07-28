@@ -16,7 +16,7 @@ const Saloon = () => {
   const [orderNumber, setOrderNumber] = useState()
   const [table, setTable] = useState('')
   const [clientName, setClientName] = useState('')
-  const [orderValue, setOrderValue] = useState(0)
+  const [finalPrice, setFinalPrice] = useState(0)
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -50,7 +50,7 @@ const Saloon = () => {
       return allTypes;
     }, []))
   }, [order])
-  useEffect(() => setOrderValue(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count+allTypes, 0 )), [clientOrder])
+  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count+allTypes, 0 )), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
@@ -79,12 +79,12 @@ const Saloon = () => {
               <h3 onClick={(event) => reloadData(event, false)}>-</h3>
             </div>
           ))}
-          <h2>R${orderValue}</h2> 
+          <h2>R${finalPrice}</h2> 
 
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
             const orderNumberValue = `${clientName}-${table}-${orderNumber}`
-            sendOrder({ orderNumber: orderNumberValue, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
+            sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
           }} />
         </div>
 
