@@ -83,7 +83,7 @@ const Saloon = () => {
 
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
-            sendOrder({ orderNumber, clientName, table, clientOrder, orderStatus: 'pending' })
+            sendOrder({ orderNumber, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
           }} />
         </div>
 
