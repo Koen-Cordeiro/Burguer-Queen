@@ -32,4 +32,8 @@
   padding-top: 26px;
 }
 
-// Criar um mixin de media querie
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}

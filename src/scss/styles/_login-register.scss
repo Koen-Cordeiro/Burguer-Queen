@@ -42,6 +42,9 @@ main {
   color: white;
   font-weight: $font-weight-bold;
   letter-spacing: 0.05em;
+  @include mobile {
+    @include submit-button-responsive;
+  }
   &:focus {
     border: 2px solid $red;
     -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
@@ -51,16 +54,32 @@ main {
   }
 }
 
+.grow { 
+  transition: .2s; 
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
 .log {
   &-background {
     @include background(320px);
+    @include mobile {
+      @include responsive-background(270px);
+    }
   }
   &-img-logo {
     width: 340px;
+    @include mobile {
+      width: 255px;
+    }
   }
   &-logo {
     width: 400px;
     height: 230px;
+    @include mobile;
+      width: 280px;
+      height: 180px;
   }
   &-base-div {
     display: flex;
@@ -71,6 +90,9 @@ main {
 .reg {
   &-background {
     @include background(610px);
+    @include mobile {
+      @include responsive-background(515px);
+    }
   }
   &-row {
     display: flex;
@@ -80,6 +102,11 @@ main {
     @include input-and-label;
     width: 320px;
     height: 73px;
+    @include mobile {
+      font-size: 0.85em;
+      width: 230px;
+      height: 70px;
+    }
   }
   &-radio-input-div {
     margin-top: 11px;
@@ -88,6 +115,10 @@ main {
     border-top: 2px solid var(--light-gray);
     border-bottom: 2px solid var(--light-gray);
     justify-content: space-evenly;
+    @include mobile {
+      width: 230px;
+      height: 37px;
+    }
     input {
       margin-right: 10px;
       background-color: var(--light-gray);
@@ -122,6 +153,9 @@ main {
   }
   &-space-after {
     margin-bottom: 25px;
+    @include mobile {
+      margin-bottom: 20px;
+    }
   }
   &-input {
     @include input-and-label;
@@ -135,14 +169,22 @@ main {
       font-weight: $font-weight-medium;
       margin-top: 11px;
       padding-left: 15px;
+      @include mobile {
+        font-size: 0.85em;
+          @include submit-button-responsive;
+          margin-top: 11px;
+          padding-left: 15px;
+          margin-top: 9px;
+          padding-left: 10px;
+        }
+      }
       &:focus {
         border: 2px solid $red;
         -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         outline: none;
-      }
-    }
+        }
   }
   &-base-p {
     background: black;
@@ -153,72 +195,12 @@ main {
     width: inherit;
     height: 60px;
     text-align: center;
+    @include mobile {
+      font-size: 0.75em;
+      height: 55px;
+      }
     a {
       color: white;
     }
-  }
-}
-
-/* Mobile */
-// mudar todos os break-point direto na raiz
-@media (min-width: 320px) and (max-width: 767px) {
-  .log-reg {
-    &-space-after {
-      margin-bottom: 20px;
-    }
-    &-input {
-      font-size: 0.85em;
-      input {
-        @include submit-button-responsive;
-        margin-top: 11px;
-        padding-left: 15px;
-        margin-top: 9px;
-        padding-left: 10px;
-      }
-    }
-    &-reg-base-p {
-      font-size: 0.75em;
-      height: 70px;
-    }
-    &-base-div {
-      display: flex;
-      width: 100%;
-    }
-    &-base-p {
-      font-size: 0.75em;
-      height: 55px;
-    }
-  }
-
-  .log {
-    &-background {
-      @include responsive-background(270px);
-    }
-    &-img-logo {
-      width: 255px;
-    }
-    &-logo {
-      width: 280px;
-      height: 180px;
-    }
-  }
-
-  .reg {
-    &-background {
-      @include responsive-background(515px);
-    }
-    &-work-label {
-      font-size: 0.85em;
-      width: 230px;
-      height: 70px;
-    }
-    &-radio-input-div {
-      width: 230px;
-      height: 37px;
-    }
-  }
-
-  .submit-button {
-    @include submit-button-responsive
   }
 }

@@ -33,9 +33,9 @@ const Login = () => {
 
   return (
     <>
-      <figure className='log-reg-flex log-logo'>
+      <div className='log-reg-flex log-logo'>
         <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
-      </figure>
+      </div>
       {/*<section className='log-center log-background'>
         <Form formClass='log-column log-center' arrInput={arrText}>
         </Form>
@@ -46,7 +46,7 @@ const Login = () => {
           {arrText.map((e, index) => (
             <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
-          <Button buttonClass='submit-button log-reg-space-after' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button buttonClass='submit-button log-reg-space-after grow' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
