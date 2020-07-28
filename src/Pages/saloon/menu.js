@@ -10,8 +10,7 @@ const Menu = () => {
   const [snacks, setSnacks] = useState([])
   const [drinks, setDrinks] = useState([])
   const [burguers, setBurguers] = useState([])
-  const [breakfastClick, setBreakfastClick] = useState(false)
-  const [alldayClick, setAllDayClick] = useState(true)
+  const [menu, setMenu] = useState(false)
   const [order, setOrder] = useState([])
   const [orderNumber, setOrderNumber] = useState()
   const [table, setTable] = useState('')
@@ -95,19 +94,17 @@ const Menu = () => {
         <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
 
         <Button text='Café da manhã' handleClick={() => {
-          setBreakfastClick(!breakfastClick)
-          setAllDayClick(false)
+          setMenu(!menu)
         }} />
         <Button text='Resto do dia' handleClick={() => {
-          setAllDayClick(!alldayClick)
-          setBreakfastClick(false)
+          setMenu(!menu)
         }} />
 
         <ul>
-          {breakfastClick && <MenuItems arr={breakfast} handleClick={addOrder} />}
-          {alldayClick && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
-          {alldayClick && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
-          {alldayClick && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
+          {menu && <MenuItems arr={breakfast} handleClick={addOrder} />}
+          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
+          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
+          {!menu && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
         </ul>
       </section>
     </div>
