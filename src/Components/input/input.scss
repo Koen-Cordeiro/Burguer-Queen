@@ -1,0 +1,36 @@
+@import '../../scss/utils/mixins';
+@import '../../scss/utils/colors';
+@import '../../scss/utils/typhography';
+
+.input {
+  &-form {
+    @include input-and-label;
+    input {
+      @include submit-button;
+      background-color: $light-gray;
+      border: 1px solid $light-gray;
+      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+      box-sizing: border-box;
+      color: $gray;
+      font-weight: $font-weight-medium;
+      margin-top: 11px;
+      padding-left: 15px;
+      @include mobile {
+        font-size: 0.85em;
+          @include submit-button-responsive;
+          margin-top: 11px;
+          padding-left: 15px;
+          margin-top: 9px;
+          padding-left: 10px;
+        }
+      }
+      &:focus {
+        border: 2px solid $red;
+        -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+        outline: none;
+        }
+  }
+
+}
