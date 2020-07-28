@@ -34,10 +34,7 @@ const Saloon = () => {
   }
 
   const sendOrder = (post) => {
-    firebase.firestore().collection('orders').add(post)
-      .then(() => {
-        console.log('Pedido enviado, olhe a firestore')
-      });
+    firebase.firestore().collection('orders').doc(post.orderNumber).set(post)
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
@@ -83,7 +80,8 @@ const Saloon = () => {
 
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
-            sendOrder({ orderNumber, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
+            const orderNumberValue = `${clientName}-${table}-${orderNumber}`
+            sendOrder({ orderNumber: orderNumberValue, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
           }} />
         </div>
 
