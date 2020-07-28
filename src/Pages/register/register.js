@@ -47,7 +47,7 @@ const Register = () => {
             <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
           </div>
         </label>
-        <Button buttonClass='log-reg-space-after submit-button' type='submit' text='ENVIAR' handleClick={(e) => {
+        <Button buttonClass='log-reg-space-after submit-button grow' type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
         }}/>
