@@ -39,64 +39,6 @@
         outline: none;
       }
     }
-    }
-    &-radio {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-        margin-top: 11px;
-        width: 320px;
-        height: 45px;
-        border-top: 2px solid $light-gray;
-        border-bottom: 2px solid $light-gray;
-        justify-content: center;
-        @include mobile {
-          width: 230px;
-          height: 40px;
-        }
-        input[type='radio'] {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          outline: none;
-          margin: 0;
-          cursor: pointer;
-        }
-        label {
-          display: contents;
-          ::before {
-            content: '';
-            display: inline-block;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            margin-right: 8px;
-            background: $light-gray;
-            border: 1px solid $light-gray;
-            box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-            box-sizing: content-box;
-            @include mobile {
-              width: 18px;
-              height: 18px;
-            }
-          }
-          :checked::before {
-            background: radial-gradient(white 30%, $red 40%);
-            box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-            @include mobile {
-              background: radial-gradient(white 30%, $red 40%);
-            }
-          }
-        }
-        p {
-          margin: 0 20px;
-          @include mobile {
-            margin: 0 15px;
-          }
-        }
-      }
-    }
-}
+  }
+}}
+
