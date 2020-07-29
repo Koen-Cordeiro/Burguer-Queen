@@ -6,10 +6,16 @@ const BaseForm = (props) => {
   const inputClass = `input-${props.use}-${props.specific}`
 
   return (
-    <div className='base-form-div'>
-        <p className='base-form-inherit-align'>{props.text}{"\u00a0"}<Link to={props.link}>{props.anchorText}</Link></p>
+    <div className={props.classDiv}>
+        <p className={props.classP}>{props.text}{"\u00a0"}<Link to={props.link}>{props.anchorText}</Link></p>
     </div>
   )
+}
+
+BaseForm.defaultProps =  {
+  classDiv: 'base-form-div',
+  classP: 'base-form-inherit-align'
+
 }
 
 export default BaseForm
