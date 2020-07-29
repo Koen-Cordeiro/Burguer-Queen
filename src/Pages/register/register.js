@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <section className='log-reg-flex reg-background'>
       <form className='log-reg-column log-reg-center'>
-        {arrText.map((e, index) => <Input key={index} componentClass=' input-sign-data' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
+        {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
         <label className='reg-work-label log-reg-space-after'>Área de trabalho
           <div onChange={event => setWorkPlace(event.target.value)} className='input-sign-radio'>
             <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
