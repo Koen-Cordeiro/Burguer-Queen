@@ -45,7 +45,7 @@ const Login = () => {
             <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           {error && <span className='alert'>{error}</span>}
-          <Button buttonClass='button-submit' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
