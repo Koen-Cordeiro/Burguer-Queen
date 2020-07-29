@@ -23,3 +23,9 @@ import Button from './button'
 {/* <fieldset className={props.fieldsetClass}>
       <legend>{props.legend}</legend>
     </fieldset> */}
+
+{/*<section className='log-center log-background'>
+  <Form formClass='log-column log-center' arrInput={arrText}>
+  </Form>
+  <div className='log-base-div'>
+  <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>*/}
