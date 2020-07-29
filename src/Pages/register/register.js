@@ -33,23 +33,23 @@ const Register = () => {
   }
 
   const arrText = [
-    { text: "Nome", type: "text", value: name, placeholder:"Seu nome de detetive", handleChange: (e) => setName(e.currentTarget.value) },
-    { text: "E-mail", type: "email", value: email, placeholder:"detetive@exemplo.com.br", handleChange: (e) => setEmail(e.currentTarget.value) },
-    { text: "Senha", type: "password", value: password, placeholder:"Cifra de até 6 caracteres", handleChange: (e) => setPassword(e.currentTarget.value) },
-    { text: "Confirme sua senha", type: "password", value: confirmPassword, placeholder: 'Confirme sua cifra' , handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
+    { text: "Nome", type: "text", value: name, placeholder: "Seu nome de detetive", handleChange: (e) => setName(e.currentTarget.value) },
+    { text: "E-mail", type: "email", value: email, placeholder: "detetive@exemplo.com.br", handleChange: (e) => setEmail(e.currentTarget.value) },
+    { text: "Senha", type: "password", value: password, placeholder: "Cifra de até 6 caracteres", handleChange: (e) => setPassword(e.currentTarget.value) },
+    { text: "Confirme sua senha", type: "password", value: confirmPassword, placeholder: 'Confirme sua cifra', handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
     <section className='log-reg-flex reg-background'>
       <form className='log-reg-column log-reg-center'>
         {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
-        <RadioInputArea labelText='Área de trabalho' setValue={setWorkPlace} valueFieldTwo='kitchen' valueFieldOne='saloon' textInputOne='Salão' textInputTwo='Cozinha'/>
+        <RadioInputArea setValue={setWorkPlace} />
         {error && <span className='alert'>{error}</span>}
         <Button type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
-        }}/>
+        }} />
       </form>
-      <BaseForm text='Já possui uma conta?' anchorText='Entrar' link='/'/>
+      <BaseForm text='Já possui uma conta?' anchorText='Entrar' link='/' />
     </section>
   )
 }
