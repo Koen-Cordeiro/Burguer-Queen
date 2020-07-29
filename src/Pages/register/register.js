@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { errorsRegister } from './errorsRegister'
 import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
+import BaseForm from '../../Components/base-form/baseform'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -54,9 +55,7 @@ const Register = () => {
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
         }}/>
       </form>
-      <div className='log-base-div'>
-      <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta?{"\u00a0"}<Link to='/'>Entrar</Link></p>
-      </div>
+      <BaseForm text='Já possui uma conta?' anchorText='Entrar' link='/'/>
     </section>
   )
 }
