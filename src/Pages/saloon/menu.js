@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../../Components/button/button'
-import Input from '../../Components/input'
+import Input from '../../Components/input/input'
 import MenuItems from '../../Components/dishes'
 import firebase from 'firebase'
 

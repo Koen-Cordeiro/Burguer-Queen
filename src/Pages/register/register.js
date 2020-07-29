@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import firebase from 'firebase'
 import { Link } from 'react-router-dom'
 import { errorsRegister } from './errorsRegister'
-import Input from '../../Components/input'
+import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 
 const Register = () => {
