@@ -4,6 +4,7 @@ import { errorsRegister } from './errorsRegister'
 import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
+import RadioInputArea from '../../Components/radio-input/radioInput'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -41,13 +42,7 @@ const Register = () => {
     <section className='log-reg-flex reg-background'>
       <form className='log-reg-column log-reg-center'>
         {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
-        <label className='reg-work-label log-reg-space-after'>Área de trabalho
-          <div onChange={event => setWorkPlace(event.target.value)} className='input-sign-radio'>
-            <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
-            <p>ou</p>
-            <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
-          </div>
-        </label>
+        <RadioInputArea labelText='Área de trabalho' setValue={setWorkPlace} valueFieldTwo='kitchen' valueFieldOne='saloon' textInputOne='Salão' textInputTwo='Cozinha'/>
         {error && <span className='alert'>{error}</span>}
         <Button type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
