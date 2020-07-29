@@ -21,7 +21,11 @@ const Login = () => {
       })
       .catch((error) => {
         let errorCode = error.code;
-        console.log(errorsLogin.errorCode)
+        if (!errorsLogin[errorCode]) {
+          setError('Ocorreu um erro');
+        } else {
+          setError(errorsLogin[errorCode]);
+        }
       });
   }
 
@@ -35,16 +39,12 @@ const Login = () => {
       <div className='log-reg-flex log-logo'>
         <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
       </div>
-      {/*<section className='log-center log-background'>
-        <Form formClass='log-column log-center' arrInput={arrText}>
-        </Form>
-        <div className='log-base-div'>
-        <p className='log-inherit-align log-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>*/}
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
             <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
+          {error && <span className='alert'>{error}</span>}
           <Button buttonClass='submit-button log-reg-space-after grow' type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
