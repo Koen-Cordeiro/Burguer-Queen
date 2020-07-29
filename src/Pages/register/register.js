@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
-import { Link } from 'react-router-dom'
 import { errorsRegister } from './errorsRegister'
-import Input from '../../Components/input'
-import Button from '../../Components/button'
+import Input from '../../Components/input/input'
+import Button from '../../Components/button/button'
+import BaseForm from '../../Components/base-form/baseform'
+import RadioInputArea from '../../Components/radio-input/radioInput'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -32,31 +33,23 @@ const Register = () => {
   }
 
   const arrText = [
-    { text: "Nome", type: "text", value: name, placeholder:"Seu nome de detetive", handleChange: (e) => setName(e.currentTarget.value) },
-    { text: "E-mail", type: "email", value: email, placeholder:"detetive@exemplo.com.br", handleChange: (e) => setEmail(e.currentTarget.value) },
-    { text: "Senha", type: "password", value: password, placeholder:"Cifra de até 6 caracteres", handleChange: (e) => setPassword(e.currentTarget.value) },
-    { text: "Confirme sua senha", type: "password", value: confirmPassword, handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
+    { text: "Nome", type: "text", value: name, placeholder: "Seu nome de detetive", handleChange: (e) => setName(e.currentTarget.value) },
+    { text: "E-mail", type: "email", value: email, placeholder: "detetive@exemplo.com.br", handleChange: (e) => setEmail(e.currentTarget.value) },
+    { text: "Senha", type: "password", value: password, placeholder: "Cifra de até 6 caracteres", handleChange: (e) => setPassword(e.currentTarget.value) },
+    { text: "Confirme sua senha", type: "password", value: confirmPassword, placeholder: 'Confirme sua cifra', handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
     <section className='log-reg-flex reg-background'>
       <form className='log-reg-column log-reg-center'>
-        {arrText.map((e, index) => <Input key={index} componentClass='log-reg-column log-reg-space-after log-reg-input' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
-        <label className='reg-work-label log-reg-space-after'>Área de trabalho
-          <div onChange={event => setWorkPlace(event.target.value)} className='log-reg-center reg-row reg-radio-input-div'>
-            <Input type='radio' value={'saloon'} name={'radio'} textRadio={'Salão'} />
-            <p>ou</p>
-            <Input type='radio' value={'kitchen'} name={'radio'} textRadio={'Cozinha'} />
-          </div>
-        </label>
+        {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} text={e.text} placeholder={e.placeholder} />)}
+        <RadioInputArea setValue={setWorkPlace} />
         {error && <span className='alert'>{error}</span>}
-        <Button buttonClass='log-reg-space-after submit-button grow' type='submit' text='ENVIAR' handleClick={(e) => {
+        <Button type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
-        }}/>
+        }} />
       </form>
-      <div className='log-base-div'>
-      <p className='log-reg-inherit-align log-reg-base-p'>Já possui uma conta?{"\u00a0"}<Link to='/'>Entrar</Link></p>
-      </div>
+      <BaseForm text='Já possui uma conta?' anchorText='Entrar' link='/' />
     </section>
   )
 }

@@ -13,7 +13,7 @@ const App = () => {
   const checkWorkPlace = (user) => {
     const userCollection = firebase.firestore().collection('users-info').doc(user.uid);
     userCollection.get().then((staff) => {
-      if (staff.data().workPlace === 'kitchen') {
+      if (staff.data().workPlace === 'Cozinha') {
         setUserPage(() => <BrowserRouter>
         <Redirect to='/kitchen'/>
       <Switch>
@@ -21,8 +21,7 @@ const App = () => {
         <Route path='*' component={Page404} />
       </Switch>
     </BrowserRouter>)
-      }
-      if (staff.data().workPlace === 'saloon') {
+      } else  if (staff.data().workPlace === 'Salão') {
         setUserPage(() => <BrowserRouter>
           <Redirect to='/saloon'/>
         <Switch>
@@ -30,6 +29,9 @@ const App = () => {
           <Route path='*' component={Page404} />
         </Switch>
       </BrowserRouter>)
+      } else {
+        setUserPage(() =><Route path='/error' component={404} />)
+      
       }
     });
   }

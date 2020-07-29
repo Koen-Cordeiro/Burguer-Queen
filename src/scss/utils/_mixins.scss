@@ -13,14 +13,14 @@
   font-size: 0.95em;
 }
 
-@mixin submit-button {
+@mixin submit {
   width: 320px;
   height: 45px;
   font-size: 1em;
   border-radius: $border-angle;
 }
 
-@mixin submit-button-responsive {
+@mixin submit-responsive {
   width: 230px;
   height: 37px;
   font-size: 0.9em;

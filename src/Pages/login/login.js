@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
-import { Link } from 'react-router-dom'
-import Button from '../../Components/button'
+import Input from '../../Components/input/input'
+import Button from '../../Components/button/button'
+import BaseForm from '../../Components/base-form/baseform'
 import logo from '../../img/logo.png'
 import { errorsLogin } from './errorsLogin'
-import Input from '../../Components/input'
 
 const Login = () => {
 
@@ -42,17 +42,15 @@ const Login = () => {
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} use='sign' specific='data' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           {error && <span className='alert'>{error}</span>}
-          <Button buttonClass='submit-button log-reg-space-after grow' type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>
         </form>
-        <div className='log-base-div'>
-        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>
-        </div>
+        <BaseForm text='Não possui uma conta?' anchorText='Registre-se' link='/register'/>
       </section>
     </>
   );
