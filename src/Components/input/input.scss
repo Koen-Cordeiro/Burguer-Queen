@@ -1,12 +1,19 @@
-@import '../../scss/utils/mixins';
-@import '../../scss/utils/colors';
-@import '../../scss/utils/typhography';
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
 
 .input {
-  &-form {
-    @include input-and-label;
+  &-sign {
+    &-data {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 25px;
+      @include input-and-label;
+    ::placeholder {
+      color: $gray;
+    }
     input {
-      @include submit-button;
+      @include submit;
       background-color: $light-gray;
       border: 1px solid $light-gray;
       box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
@@ -17,20 +24,79 @@
       padding-left: 15px;
       @include mobile {
         font-size: 0.85em;
-          @include submit-button-responsive;
+        margin-bottom: 20px;
+          @include submit-responsive;
           margin-top: 11px;
           padding-left: 15px;
           margin-top: 9px;
           padding-left: 10px;
         }
-      }
       &:focus {
         border: 2px solid $red;
         -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
         outline: none;
+      }
+    }
+    }
+    &-radio {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+        margin-top: 11px;
+        width: 320px;
+        height: 45px;
+        border-top: 2px solid $light-gray;
+        border-bottom: 2px solid $light-gray;
+        justify-content: center;
+        @include mobile {
+          width: 230px;
+          height: 40px;
         }
-  }
-
+        input[type='radio'] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          outline: none;
+          margin: 0;
+          cursor: pointer;
+        }
+        label {
+          display: contents;
+          ::before {
+            content: '';
+            display: inline-block;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            margin-right: 8px;
+            background: $light-gray;
+            border: 1px solid $light-gray;
+            box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+            box-sizing: content-box;
+            @include mobile {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          :checked::before {
+            background: radial-gradient(white 30%, $red 40%);
+            box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+            @include mobile {
+              background: radial-gradient(white 30%, $red 40%);
+            }
+          }
+        }
+        p {
+          margin: 0 20px;
+          @include mobile {
+            margin: 0 15px;
+          }
+        }
+      }
+    }
 }
