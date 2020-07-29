@@ -42,7 +42,7 @@ const Login = () => {
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
-            <Input key={index} componentClass='log-reg-column log-reg-input log-reg-space-after' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} componentClass='input-sign-data' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           {error && <span className='alert'>{error}</span>}
           <Button type='submit' text='ENTRAR' handleClick={(e) => {
