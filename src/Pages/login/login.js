@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import firebase from 'firebase'
 import { Link } from "react-router-dom";
+import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
+import BaseForm from '../../Components/base-form/baseform'
 import logo from '../../img/logo.png'
 import { errorsLogin } from './errorsLogin'
-import Input from '../../Components/input/input'
 
 const Login = () => {
 
@@ -50,9 +51,7 @@ const Login = () => {
             login({ email, password })
           }}/>
         </form>
-        <div className='log-base-div'>
-        <p className='log-reg-inherit-align log-reg-base-p'>Não possui uma conta?{"\u00a0"}<Link to='/register'>Registre-se</Link></p>
-        </div>
+        <BaseForm text='Não possui uma conta?' anchorText='Registre-se' link='/register'/>
       </section>
     </>
   );
