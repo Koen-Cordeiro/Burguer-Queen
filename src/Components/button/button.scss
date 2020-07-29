@@ -11,6 +11,7 @@
     color: white;
     font-weight: $font-weight-bold;
     letter-spacing: 0.05em;
+    transition: 1000ms; 
     @include mobile {
       @include submit-button-responsive;
     }
@@ -21,5 +22,8 @@
       box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
       outline: none;
     }
+    &:hover {
+      transform: scale(1.03);
+  }
   }
 }
