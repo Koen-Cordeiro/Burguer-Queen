@@ -5,7 +5,7 @@
 
 .button {
   &-submit {
-    @include submit-button;
+    @include submit;
     background-color: $red;
     border: none;
     color: white;
@@ -14,7 +14,7 @@
     transition: 1000ms; 
     margin-bottom: 25px;
     @include mobile {
-      @include submit-button-responsive;
+      @include submit-responsive;
       margin-bottom: 20px;
     }
     &:focus {

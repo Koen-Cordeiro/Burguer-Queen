@@ -161,7 +161,7 @@ main {
       color: $gray;
     }
     input {
-      @include submit-button;
+      @include submit;
       background-color: $light-gray;
       border: 1px solid $light-gray;
       box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
@@ -172,7 +172,7 @@ main {
       padding-left: 15px;
       @include mobile {
         font-size: 0.85em;
-          @include submit-button-responsive;
+          @include submit-responsive;
           margin-top: 11px;
           padding-left: 15px;
           margin-top: 9px;
