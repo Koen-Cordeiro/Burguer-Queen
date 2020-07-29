@@ -49,7 +49,7 @@ const Register = () => {
           </div>
         </label>
         {error && <span className='alert'>{error}</span>}
-        <Button buttonClass=' log-reg-space-after button-submit' type='submit' text='ENVIAR' handleClick={(e) => {
+        <Button buttonClass='button-submit' type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
         }}/>

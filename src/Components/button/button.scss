@@ -12,8 +12,10 @@
     font-weight: $font-weight-bold;
     letter-spacing: 0.05em;
     transition: 1000ms; 
+    margin-bottom: 25px;
     @include mobile {
       @include submit-button-responsive;
+      margin-bottom: 20px;
     }
     &:focus {
       border: 2px solid $red;
