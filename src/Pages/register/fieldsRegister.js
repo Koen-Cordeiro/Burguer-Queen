@@ -1,30 +1,34 @@
 export const fieldsRegister = [
   { 
-    text: "Nome", 
-    type: "text", 
-    value: name, 
-    placeholder: "Seu nome de detetive", 
-    handleChange: (e) => setName(e.currentTarget.value) 
+    label: 'Nome', 
+    type: 'text', 
+    name: 'name',
+    placeholder: 'Seu nome de detetive', 
+    // value: name, 
+    // handleChange: (e) => setName(e.currentTarget.value) 
   },
   { 
-    text: "E-mail", 
-    type: "email", 
-    value: email, 
-    placeholder: "detetive@exemplo.com.br", 
-    handleChange: (e) => setEmail(e.currentTarget.value) 
+    label: 'E-mail', 
+    type: 'email', 
+    name: 'email',
+    placeholder: 'detetive@exemplo.com.br', 
+    // value: email, 
+    // handleChange: (e) => setEmail(e.currentTarget.value) 
   },
   { 
-    text: "Senha", 
-    type: "password", 
-    value: password, 
-    placeholder: "Cifra de até 6 caracteres", 
-    handleChange: (e) => setPassword(e.currentTarget.value) 
+    label: 'Senha', 
+    type: 'password',
+    name: 'password', 
+    placeholder: 'Cifra de até 6 caracteres', 
+    // value: password, 
+    // handleChange: (e) => setPassword(e.currentTarget.value) 
   },
   { 
-    text: "Confirme sua senha", 
-    type: "password", 
-    value: confirmPassword, 
-    placeholder: 'Confirme sua cifra', 
-    handleChange: (e) => setConfirmPassword(e.currentTarget.value) 
+    label: 'Confirme sua senha', 
+    type: 'password',
+    name: 'password', 
+    placeholder: 'Reescreva sua cifra',
+    // value: confirmPassword,  
+    // handleChange: (e) => setConfirmPassword(e.currentTarget.value) 
   },
 ]
