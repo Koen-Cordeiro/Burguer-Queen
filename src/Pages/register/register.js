@@ -5,6 +5,7 @@ import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
 import RadioInputArea from '../../Components/radio-input/radioInput'
+import ErrorSpan from '../../Components/error/error'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -43,7 +44,7 @@ const Register = () => {
       <form className='log-reg-column log-reg-center'>
         {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} label={e.label} placeholder={e.placeholder} />)}
         <RadioInputArea setValue={setWorkPlace} />
-        {error && <span className='alert'>{error}</span>}
+        {error && <ErrorSpan errorText={error}/>}
         <Button type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
