@@ -5,8 +5,8 @@ const Input = (props) => {
   const inputClass = `input-${props.use}-${props.specific}`
 
   return (
-    <label className={inputClass}>{props.text}
-      <input value={props.value} name={props.name} onChange={props.handleChange} type={props.type} placeholder={props.placeholder} required />
+    <label className={inputClass}>{props.label}
+      <input type={props.type} name={props.name} placeholder={props.placeholder} value={props.value} onChange={props.handleChange} required />
       {props.textRadio}
     </label>
   )

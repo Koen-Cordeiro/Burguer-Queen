@@ -30,8 +30,8 @@ const Login = () => {
   }
 
   const arrText = [
-    { text: "E-mail", type: "email", value: email, handleChange: (e) => setEmail(e.currentTarget.value) },
-    { text: "Senha", type: "password", value: password, handleChange: (e) => setPassword(e.currentTarget.value) },
+    { label: "E-mail", type: "email", value: email, handleChange: (e) => setEmail(e.currentTarget.value) },
+    { label: "Senha", type: "password", value: password, handleChange: (e) => setPassword(e.currentTarget.value) },
   ];
 
   return (
@@ -42,7 +42,7 @@ const Login = () => {
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (
-            <Input key={index} use='sign' specific='data' text={e.text} type={e.type} value={e.value} handleChange={e.handleChange} />
+            <Input key={index} use='sign' specific='data' label={e.label} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           {error && <span className='alert'>{error}</span>}
           <Button type='submit' text='ENTRAR' handleClick={(e) => {
