@@ -20,6 +20,7 @@ const Menu = () => {
   const [finalPrice, setFinalPrice] = useState(0)
   const [burguerValue, setBurguerValue] = useState(false)
   const [burguerMeat, setBurguerMeat] = useState('')
+  const [extras, setExtras] = useState({ Ovo: false, Queijo: false})
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -49,7 +50,7 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
-  useEffect(() =>  console.log(burguerMeat), [burguerMeat])
+  useEffect(() =>  console.log(extras), [extras])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -111,6 +112,8 @@ const Menu = () => {
           arr={burguers} 
           burguer={burguerValue} 
           setValue={setBurguerMeat}
+          setCheckbox= {setExtras}
+          checkbox={extras}
           handleClick={ (e) => {
             setBurguerValue(!burguerValue)}} />}
           {/* {burguerValue && <BurguerArea labelText='Escolha o tipo da carne'/>} */}
