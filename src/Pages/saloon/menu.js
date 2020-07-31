@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
+import FinalOrder from '../../Components/final-order/final-order'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -38,7 +39,7 @@ const Menu = () => {
   }
 
   const reloadData = (event, greater) => {
-    const element = event.currentTarget.parentElement.secondChild.textContent
+    const element = event.currentTarget.parentElement.children[0].textContent
     const index = order.findIndex(x => x.type === element)
     greater ? order.push(order[index]) : order.pop(order[index])
     setOrder([...order])
@@ -51,7 +52,7 @@ const Menu = () => {
       if (index !== -1) {
         allTypes[index].count++
       } else {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1})
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
       }
       return allTypes;
     }, []))
@@ -68,16 +69,14 @@ const Menu = () => {
         <h1>Pedido {orderNumber}</h1>
         <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
         <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
-        <div>
-          {clientOrder.map((e, index) => (
-            <div key={index}>
-              <h2 key={e.type}>{e.type}</h2>
-              <h2 key={e.price}>{e.price}</h2>
-              <h3 onClick={(event) => reloadData(event, true)}>+</h3>
-              <h2 key={e.count + e.type}>{e.count}</h2>
-              <h3 onClick={(event) => reloadData(event, false)}>-</h3>
-            </div>
-          ))}
+        <fieldset>
+          {clientOrder.map((e, index) => <FinalOrder key={index+10} data={{
+            price: e.price,
+            type: e.type,
+            count: e.count,
+            key: index, 
+            func: reloadData
+          }}/>)}
           <h2>R${finalPrice}</h2>
 
           <Button text='Enviar pedido' handleClick={(event) => {
@@ -85,7 +84,7 @@ const Menu = () => {
             const orderNumberValue = `${clientName}-${table}-${orderNumber}`
             sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
           }} />
-        </div>
+        </fieldset>
 
       </form>
       <section >
