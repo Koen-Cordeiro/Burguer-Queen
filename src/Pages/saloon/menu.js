@@ -3,6 +3,7 @@ import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
 import FinalOrder from '../../Components/final-order/final-order'
+import BurguerArea from '../../Components/burguer-area/burguer-area'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -17,6 +18,8 @@ const Menu = () => {
   const [table, setTable] = useState('')
   const [clientName, setClientName] = useState('')
   const [finalPrice, setFinalPrice] = useState(0)
+  const [burguerValue, setBurguerValue] = useState(false)
+  const [burguerMeat, setBurguerMeat] = useState('')
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -46,6 +49,7 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
+  useEffect(() =>  console.log(burguerMeat), [burguerMeat])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -100,10 +104,16 @@ const Menu = () => {
         }} />
 
         <ul>
-          {menu && <MenuItems arr={breakfast} handleClick={addOrder} />}
-          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={addOrder} />}
-          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={addOrder} />}
-          {!menu && <MenuItems text='Hamburgueres' arr={burguers} handleClick={addOrder} />}
+          {menu && <MenuItems arr={breakfast} handleClick={(e)=> addOrder(e)} />}
+          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
+          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />}
+          {!menu && <MenuItems text='Hamburgueres' 
+          arr={burguers} 
+          burguer={burguerValue} 
+          setValue={setBurguerMeat}
+          handleClick={ (e) => {
+            setBurguerValue(!burguerValue)}} />}
+          {/* {burguerValue && <BurguerArea labelText='Escolha o tipo da carne'/>} */}
         </ul>
       </section>
     </div>
