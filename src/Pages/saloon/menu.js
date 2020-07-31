@@ -51,7 +51,7 @@ const Menu = () => {
       if (index !== -1) {
         allTypes[index].count++
       } else {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, img: 'img.png' })
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1})
       }
       return allTypes;
     }, []))
