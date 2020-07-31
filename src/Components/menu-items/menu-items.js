@@ -9,7 +9,7 @@ const MenuItems = (props) => (
     <p>R$<span key={e.price}>{e.price}</span></p>
     <div key={e.type} name='type'>{e.type}</div>
   </div>))}
-  {props.burguer && <BurguerArea checkbox={props.checkbox} setCheckbox={props.setCheckbox} setValue={props.setValue}/>}
+  {props.burguer && <BurguerArea burguerClick={props.burguerClick} checkbox={props.checkbox} setCheckbox={props.setCheckbox} setValue={props.setValue}/>}
   </li>
 )
 
