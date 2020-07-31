@@ -3,7 +3,6 @@ import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
 import FinalOrder from '../../Components/final-order/final-order'
-import BurguerArea from '../../Components/burguer-area/burguer-area'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -20,7 +19,8 @@ const Menu = () => {
   const [finalPrice, setFinalPrice] = useState(0)
   const [burguerValue, setBurguerValue] = useState(false)
   const [burguerMeat, setBurguerMeat] = useState('')
-  const [extras, setExtras] = useState({ Ovo: false, Queijo: false})
+  const [extras, setExtras] = useState({ Ovo: false, Queijo: false })
+  const [burguerType, setBurguerType] = useState({})
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -31,6 +31,10 @@ const Menu = () => {
       document.set(() => getBurguer);
     })
     )
+  }
+
+  const addBurguer = () => {
+    setOrder([...order, { type: burguerType.type, price: burguerType.price, extras, meat: burguerMeat }])
   }
 
   const addOrder = (event) => {
@@ -50,17 +54,24 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
-  useEffect(() =>  console.log(extras), [extras])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
-      if (index !== -1) {
+      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat)
+      // Diferentes tipos de extra, como lidar e carne
+      console.log(indexMeat)
+      if(atualType.extras && index === -1 && indexMeat === -1) {
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, meat: atualType.meat})
+
+      }
+      else if (index !== -1) {
         allTypes[index].count++
       } else {
         allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
       }
       return allTypes;
     }, []))
+    console.log(order)
   }, [order])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
@@ -75,13 +86,13 @@ const Menu = () => {
         <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
         <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
         <fieldset>
-          {clientOrder.map((e, index) => <FinalOrder key={index+10} data={{
+          {/* {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
             price: e.price,
             type: e.type,
             count: e.count,
-            key: index, 
+            key: index,
             func: reloadData
-          }}/>)}
+          }} />)} */}
           <h2>R${finalPrice}</h2>
 
           <Button text='Enviar pedido' handleClick={(event) => {
@@ -105,17 +116,20 @@ const Menu = () => {
         }} />
 
         <ul>
-          {menu && <MenuItems arr={breakfast} handleClick={(e)=> addOrder(e)} />}
+          {menu && <MenuItems arr={breakfast} handleClick={(e) => addOrder(e)} />}
           {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
           {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />}
-          {!menu && <MenuItems text='Hamburgueres' 
-          arr={burguers} 
-          burguer={burguerValue} 
-          setValue={setBurguerMeat}
-          setCheckbox= {setExtras}
-          checkbox={extras}
-          handleClick={ (e) => {
-            setBurguerValue(!burguerValue)}} />}
+          {!menu && <MenuItems text='Hamburgueres'
+            arr={burguers}
+            burguer={burguerValue}
+            setValue={setBurguerMeat}
+            setCheckbox={setExtras}
+            burguerClick={addBurguer}
+            checkbox={extras}
+            handleClick={(e) => {
+              setBurguerType({ type: e.currentTarget.children[2].textContent, price: Number(e.currentTarget.children[1].children[0].textContent) })
+              setBurguerValue(!burguerValue)
+            }} />}
           {/* {burguerValue && <BurguerArea labelText='Escolha o tipo da carne'/>} */}
         </ul>
       </section>
