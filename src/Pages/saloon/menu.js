@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
-import MenuItems from '../../Components/dishes'
+import MenuItems from '../../Components/menu-items/menu-items'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -30,11 +30,18 @@ const Menu = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, { type: arr[1].innerText, price: Number(arr[0].innerText) }])
+    setOrder([...order, { type: arr[2].innerText, price: Number(arr[1].innerText) }])
   }
 
   const sendOrder = (post) => {
     firebase.firestore().collection('orders').doc(post.orderNumber).set(post)
+  }
+
+  const reloadData = (event, greater) => {
+    const element = event.currentTarget.parentElement.secondChild.textContent
+    const index = order.findIndex(x => x.type === element)
+    greater ? order.push(order[index]) : order.pop(order[index])
+    setOrder([...order])
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
@@ -44,23 +51,16 @@ const Menu = () => {
       if (index !== -1) {
         allTypes[index].count++
       } else {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, img: 'img.png' })
       }
       return allTypes;
     }, []))
   }, [order])
-  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0 )), [clientOrder])
+  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
-
-  const reloadData = (event, greater) => {
-    const element = event.currentTarget.parentElement.firstChild.textContent
-    const index = order.findIndex(x => x.type === element)
-    greater ? order.push(order[index]) : order.pop(order[index])
-    setOrder([...order])
-  }
 
   return (
     <div className='menu-row-reverse'>
@@ -78,7 +78,7 @@ const Menu = () => {
               <h3 onClick={(event) => reloadData(event, false)}>-</h3>
             </div>
           ))}
-          <h2>R${finalPrice}</h2> 
+          <h2>R${finalPrice}</h2>
 
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
