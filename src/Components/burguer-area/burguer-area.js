@@ -19,7 +19,7 @@ const setExtras = (e) => {
       <Input textRadio={props.extraOne} name={props.extraOne} handleClick={(e)=> setExtras(e)} type='Checkbox' />
       <Input textRadio={props.extraTwo} name={props.extraTwo}  handleClick={(e)=> setExtras(e)} type='Checkbox'/>
       </label>
-    <Button text='Adicionar' handleClick={()=> console.log('Fui clicado')}/>
+    <Button text='Adicionar' handleClick={props.burguerClick}/>
     </label>
   )
 }
