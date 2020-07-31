@@ -30,7 +30,7 @@ const Menu = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, { type: arr[2].innerText, price: Number(arr[1].innerText) }])
+    setOrder([...order, { type: arr[2].innerText, price: Number(arr[1].children[0].textContent) }])
   }
 
   const sendOrder = (post) => {

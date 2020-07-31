@@ -6,7 +6,7 @@ const MenuItems = (props) => (
       {props.arr.map((e,index) =>( 
     <div key={index} onClick={(e)=>props.handleClick(e)}>
     <img src={e.img}/>
-    <div key={e.price}>{e.price}</div>
+    <p>R$<span key={e.price}>{e.price}</span></p>
     <div key={e.type} name='type'>{e.type}</div>
   </div>))}
   </li>
