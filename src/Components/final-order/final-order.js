@@ -9,9 +9,7 @@ const FinalOrder = ({data}) => {
 {data.extras && <span className={JSON.stringify(data.extras)}>
   {data.extras.Queijo && <p>Queijo</p>}
   {data.extras.Ovo && <p>Ovo</p>}
-
-</span>
-}
+</span>}
   <span onClick={(event) => data.func(event, true)}>+</span>
   <div key={data.count + data.type}>{data.count}</div>
   <span onClick={(event) => data.func(event, false)}>-</span>

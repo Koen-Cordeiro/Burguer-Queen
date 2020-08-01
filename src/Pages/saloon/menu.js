@@ -52,7 +52,7 @@ const Menu = () => {
     const extrasDOM = event.currentTarget.parentElement.children[3].className
     const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM )
     if(indexMeat !== -1 ) {
-      greater ? order.push(order[indexMeat]) : order.pop(order[indexMeat])
+      greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
       setOrder([...order])  
     } else { 
       const index = order.findIndex(x => x.type === element)
