@@ -62,13 +62,14 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
+  // useEffect(() => console.log(clientOrder), [clientOrder])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
       const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras))
       if (atualType.extras && indexMeat === -1) {
         allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
-      } else if (indexMeat !== -1) {
+      } else if ( atualType.extras && indexMeat !== -1) {
         allTypes[indexMeat].count++
       }
       else if (index !== -1) {
@@ -80,9 +81,10 @@ const Menu = () => {
     }, []))
   }, [order])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
-    if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
-    else if (atualType.extras.Ovo || atualType.extras.Queijo) atualType.price++
-
+    if(atualType.extras) {
+      if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
+      else if (atualType.extras.Ovo || atualType.extras.Queijo) atualType.price++
+    }
     return atualType.price * atualType.count + allTypes
   }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
@@ -108,6 +110,10 @@ const Menu = () => {
           }} />)}
           <h2>R${finalPrice}</h2>
 
+          <Button text='Cancelar Pedido' handleClick={(event) => {
+            event.preventDefault()
+            setClientOrder([])
+            }} />
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
             const orderNumberValue = `${clientName}-${table}-${orderNumber}`
@@ -143,7 +149,6 @@ const Menu = () => {
               setBurguerType({ type: e.currentTarget.children[2].textContent, price: Number(e.currentTarget.children[1].children[0].textContent) })
               setBurguerValue(!burguerValue)
             }} />}
-          {/* {burguerValue && <BurguerArea labelText='Escolha o tipo da carne'/>} */}
         </ul>
       </section>
     </div>
