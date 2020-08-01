@@ -91,6 +91,7 @@ const Menu = () => {
             count: e.count,
             key: index,
             meat: e.meat,
+            extras: e.extras,
             func: reloadData
           }} />)}
           <h2>R${finalPrice}</h2>
