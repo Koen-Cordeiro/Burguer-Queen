@@ -85,13 +85,14 @@ const Menu = () => {
         <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
         <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
         <fieldset>
-          {/* {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
+          {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
             price: e.price,
             type: e.type,
             count: e.count,
             key: index,
+            meat: e.meat,
             func: reloadData
-          }} />)} */}
+          }} />)}
           <h2>R${finalPrice}</h2>
 
           <Button text='Enviar pedido' handleClick={(event) => {
