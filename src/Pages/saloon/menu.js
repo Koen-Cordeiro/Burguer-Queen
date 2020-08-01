@@ -80,8 +80,8 @@ const Menu = () => {
     }, []))
   }, [order])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
-    if (atualType.extras.Ovo && atualType.extras.Queijo) allTypes += 2
-    else if (atualType.extras.Ovo || atualType.extras.Queijo) allTypes++
+    if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
+    else if (atualType.extras.Ovo || atualType.extras.Queijo) atualType.price++
 
     return atualType.price * atualType.count + allTypes
   }, 0)), [clientOrder])
