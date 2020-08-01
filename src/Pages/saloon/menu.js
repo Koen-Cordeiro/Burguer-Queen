@@ -50,11 +50,11 @@ const Menu = () => {
     const element = event.currentTarget.parentElement.children[0].textContent
     const meat = event.currentTarget.parentElement.children[2].textContent
     const extrasDOM = event.currentTarget.parentElement.children[3].className
-    const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM )
-    if(indexMeat !== -1 ) {
+    const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM)
+    if (indexMeat !== -1) {
       greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
-      setOrder([...order])  
-    } else { 
+      setOrder([...order])
+    } else {
       const index = order.findIndex(x => x.type === element)
       greater ? order.push(order[index]) : order.pop(order[index])
       setOrder([...order])
@@ -65,10 +65,10 @@ const Menu = () => {
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras) )
-      if(atualType.extras &&  indexMeat=== -1 ) {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1,extras: atualType.extras,  meat: atualType.meat})
-      } else if (indexMeat!== -1 ) {
+      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras))
+      if (atualType.extras && indexMeat === -1) {
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
+      } else if (indexMeat !== -1) {
         allTypes[indexMeat].count++
       }
       else if (index !== -1) {
@@ -79,7 +79,12 @@ const Menu = () => {
       return allTypes;
     }, []))
   }, [order])
-  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0)), [clientOrder])
+  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
+    if (atualType.extras.Ovo && atualType.extras.Queijo) allTypes += 2
+    else if (atualType.extras.Ovo || atualType.extras.Queijo) allTypes++
+
+    return atualType.price * atualType.count + allTypes
+  }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
