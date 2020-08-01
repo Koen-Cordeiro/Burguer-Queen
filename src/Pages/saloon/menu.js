@@ -57,12 +57,11 @@ const Menu = () => {
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat)
-      // Diferentes tipos de extra, como lidar e carne
-      console.log(indexMeat)
-      if(atualType.extras && index === -1 && indexMeat === -1) {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, meat: atualType.meat})
-
+      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras) )
+      if(atualType.extras &&  indexMeat=== -1 ) {
+        allTypes.push({ type: atualType.type, price: atualType.price, count: 1,extras: atualType.extras,  meat: atualType.meat})
+      } else if (indexMeat!== -1 ) {
+        allTypes[indexMeat].count++
       }
       else if (index !== -1) {
         allTypes[index].count++
@@ -71,8 +70,8 @@ const Menu = () => {
       }
       return allTypes;
     }, []))
-    console.log(order)
   }, [order])
+  useEffect(()=>  console.log(clientOrder) ,[clientOrder])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
