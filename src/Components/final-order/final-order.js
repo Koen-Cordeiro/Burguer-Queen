@@ -6,7 +6,7 @@ const FinalOrder = ({data}) => {
   <p key={data.type}>{data.type}</p>
   <p key={data.price}>R${data.price}</p>
   {data.meat && <p>{data.meat}</p>}
-{data.extras && <span>
+{data.extras && <span className={JSON.stringify(data.extras)}>
   {data.extras.Queijo && <p>Queijo</p>}
   {data.extras.Ovo && <p>Ovo</p>}
 

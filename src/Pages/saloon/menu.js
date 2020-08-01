@@ -48,9 +48,17 @@ const Menu = () => {
 
   const reloadData = (event, greater) => {
     const element = event.currentTarget.parentElement.children[0].textContent
-    const index = order.findIndex(x => x.type === element)
-    greater ? order.push(order[index]) : order.pop(order[index])
-    setOrder([...order])
+    const meat = event.currentTarget.parentElement.children[2].textContent
+    const extrasDOM = event.currentTarget.parentElement.children[3].className
+    const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM )
+    if(indexMeat !== -1 ) {
+      greater ? order.push(order[indexMeat]) : order.pop(order[indexMeat])
+      setOrder([...order])  
+    } else { 
+      const index = order.findIndex(x => x.type === element)
+      greater ? order.push(order[index]) : order.pop(order[index])
+      setOrder([...order])
+    }
   }
 
   useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
@@ -71,7 +79,6 @@ const Menu = () => {
       return allTypes;
     }, []))
   }, [order])
-  useEffect(()=>  console.log(clientOrder) ,[clientOrder])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => atualType.price * atualType.count + allTypes, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
