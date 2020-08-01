@@ -16,18 +16,12 @@ const App = () => {
       if (staff.data().workPlace === 'Cozinha') {
         setUserPage(() => <BrowserRouter>
         <Redirect to='/kitchen'/>
-      <Switch>
         <Route path='/kitchen' component={Kitchen} />
-        <Route path='*' component={Page404} />
-      </Switch>
     </BrowserRouter>)
       } else  if (staff.data().workPlace === 'Salão') {
         setUserPage(() => <BrowserRouter>
           <Redirect to='/saloon'/>
-        <Switch>
           <Route path='/saloon' component={Saloon} />
-          <Route path='*' component={Page404} />
-        </Switch>
       </BrowserRouter>)
       } else {
         setUserPage(() =><Route path='/error' component={404} />)
