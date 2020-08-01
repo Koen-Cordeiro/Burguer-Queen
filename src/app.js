@@ -10,24 +10,21 @@ import Page404 from '../src/Pages/404'
 const App = () => {
   const [userPage, setUserPage] = useState();
 
-  const checkWorkPlace = (user) => {
-    const userCollection = firebase.firestore().collection('users-info').doc(user.uid);
-    userCollection.get().then((staff) => {
-      if (staff.data().workPlace === 'Cozinha') {
-        setUserPage(() => <BrowserRouter>
-        <Redirect to='/kitchen'/>
+  const checkWorkPlace = async (user) => {
+    const userInfo = await firebase.firestore().collection('users-info').doc(user.uid).get()
+    if (userInfo.data().workPlace === 'Cozinha') {
+      setUserPage(() => <BrowserRouter>
+        <Redirect to='/kitchen' />
         <Route path='/kitchen' component={Kitchen} />
-    </BrowserRouter>)
-      } else  if (staff.data().workPlace === 'Salão') {
-        setUserPage(() => <BrowserRouter>
-          <Redirect to='/saloon'/>
-          <Route path='/saloon' component={Saloon} />
       </BrowserRouter>)
-      } else {
-        setUserPage(() =><Route path='/error' component={404} />)
-      
-      }
-    });
+    } else if (userInfo.data().workPlace === 'Salão') {
+      setUserPage(() => <BrowserRouter>
+        <Redirect to='/saloon' />
+        <Route path='/saloon' component={Saloon} />
+      </BrowserRouter>)
+    } else {
+      setUserPage(() => <Route path='/error' component={404} />)
+    };
   }
 
   useEffect(() => {
@@ -37,7 +34,7 @@ const App = () => {
 
       } else {
         setUserPage(() => <BrowserRouter>
-        <Redirect to={window.location.pathname ==='/register'?'/register': '/'}/>
+          <Redirect to={window.location.pathname === '/register' ? '/register' : '/'} />
           <Switch>
             <Route path='/' exact={true} component={Login} />
             <Route path='/register' component={Register} />
