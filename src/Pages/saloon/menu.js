@@ -112,7 +112,7 @@ const Menu = () => {
 
           <Button text='Cancelar Pedido' handleClick={(event) => {
             event.preventDefault()
-            setClientOrder([])
+            setOrder([])
             }} />
           <Button text='Enviar pedido' handleClick={(event) => {
             event.preventDefault()
