@@ -5,6 +5,7 @@ import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
 import RadioInputArea from '../../Components/radio-input/radioInput'
+import ErrorSpan from '../../Components/error/error'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -14,22 +15,16 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const register = (document) => {
-    const userCollection = firebase.firestore().collection('users-info');
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(document.email, document.password)
-      .then((cred) => {
-        cred.user.updateProfile({ displayName: document.name });
-      })
-      .then(() => {
-        const uid = firebase.auth().currentUser.uid;
-        userCollection.doc(uid).set(document);
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        setError(errorsRegister[errorCode]);
-      });
+  const register = async (document) => {
+    try {
+      const userCollection = await firebase.firestore().collection('users-info');
+      await firebase.auth().createUserWithEmailAndPassword(document.email, document.password)
+      const uid = firebase.auth().currentUser.uid;
+      userCollection.doc(uid).set(document);
+    } catch (error) {
+      let errorCode = error.code;
+      setError(errorsRegister[errorCode]);
+    }
   }
 
   const arrText = [
@@ -43,7 +38,7 @@ const Register = () => {
       <form className='log-reg-column log-reg-center'>
         {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} label={e.label} placeholder={e.placeholder} />)}
         <RadioInputArea setValue={setWorkPlace} />
-        {error && <span className='alert'>{error}</span>}
+        {error && <ErrorSpan errorText={error} />}
         <Button type='submit' text='ENVIAR' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')

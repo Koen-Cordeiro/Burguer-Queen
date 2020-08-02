@@ -1,0 +1,15 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
+.alert {
+  font-size: 0.65em;
+  font-weight: $font-weight-medium;
+  padding-bottom: 15px;
+  color: $red;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  @include mobile {
+    font-size: 0.55em;
+  }
+}

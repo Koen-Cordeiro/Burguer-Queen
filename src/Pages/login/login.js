@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
+import ErrorSpan from '../../Components/error/error'
 import logo from '../../img/logo.png'
 import { errorsLogin } from './errorsLogin'
 
@@ -12,21 +13,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const login = (staff) => {
-    firebase
+  const login =  async (staff) => {
+    try {
+      await firebase
       .auth()
       .signInWithEmailAndPassword(staff.email, staff.password)
-      .then((user) => {
-        //user
-      })
-      .catch((error) => {
-        let errorCode = error.code;
+    } 
+    catch (error) {
+      let errorCode = error.code;
         if (!errorsLogin[errorCode]) {
           setError('Ocorreu um erro');
         } else {
           setError(errorsLogin[errorCode]);
         }
-      });
+    }
   }
 
   const arrText = [
@@ -44,7 +44,7 @@ const Login = () => {
           {arrText.map((e, index) => (
             <Input key={index} use='sign' specific='data' label={e.label} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
-          {error && <span className='alert'>{error}</span>}
+          {error && <ErrorSpan errorText={error}/>}
           <Button type='submit' text='ENTRAR' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
