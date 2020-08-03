@@ -43,4 +43,15 @@
     background-color: red;
     color: black;
   }
+  &-menu {
+    width: 205px;
+    height: 55px;
+    color: black;
+    background-color: white;
+    border-radius: $border-big $border-big 0px 0px;
+    border: none;
+    font-size: 1.1em;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+  }
 }
