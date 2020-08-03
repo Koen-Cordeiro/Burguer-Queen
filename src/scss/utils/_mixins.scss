@@ -1,10 +1,9 @@
-@mixin background($height) {
+@mixin background($height, $width) {
   background: white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: $border-angle;
-  width: 380px;
+  width: $width;
   height: $height;
-  padding-top: 28px;
 }
 
 @mixin input-and-label {
@@ -26,10 +25,9 @@
   font-size: 0.9em;
 }
 
-@mixin responsive-background($height) {
-  width: 280px;
+@mixin responsive-background($height, $width) {
+  width: $width;
   height: $height;
-  padding-top: 26px;
 }
 
 @mixin mobile {

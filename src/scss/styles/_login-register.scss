@@ -27,9 +27,11 @@ main {
 
 .log {
   &-background {
-    @include background(320px);
+    @include background(320px, 380px);
+    padding-top: 28px;
     @include mobile {
-      @include responsive-background(270px);
+      @include responsive-background(270px, 280px);
+      padding-top: 26px;
     }
   }
   &-img-logo {
