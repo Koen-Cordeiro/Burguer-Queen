@@ -24,3 +24,14 @@
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
 }
+
+.menu {
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .center {
+    width: 360px;
+  }
+}
+
