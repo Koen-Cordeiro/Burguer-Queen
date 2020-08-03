@@ -1,19 +1,25 @@
 import React, { useState } from 'react'
 import Menu from './menu'
 import Orders from './orders'
-import Button from '../../Components/button/button'
-
+import Nav from '../../Components/nav/nav'
+import Logo from '../../Components/logo/logo'
 
 
 const Saloon = () => {
   const [menu, setMenu] = useState(true)
+
+  const arrMenu = [
+    {menuText:'Menu', menuClass:'sidebar', menuClick:() => setMenu(!menu)},
+    {menuText:'Pedidos', menuClass:'sidebar', menuClick:() => setMenu(!menu)},
+  ];
+
   return (
-    <>
-      <Button text='Menu' handleClick={() => setMenu(!menu)} />
-      <Button text='Pedidos' handleClick={() => setMenu(!menu)} />
+    <aside>
+      <Logo use='sidebar'/>
+      <Nav use='sidebar' arr={arrMenu}/>
       {menu && <Menu />}
       {!menu && <Orders />}
-    </>
+    </aside>
   );
 };
 
