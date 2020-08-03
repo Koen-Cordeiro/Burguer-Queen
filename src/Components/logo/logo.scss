@@ -21,10 +21,10 @@
   }
   &-sidebar {
     @extend %flex;
-    width: 320px;
-    height: 230px;
+    width: 240px;
+    height: 240px;
     &-img {
-      width: 260px;
+      width: 195px;
     }
   }
 }
