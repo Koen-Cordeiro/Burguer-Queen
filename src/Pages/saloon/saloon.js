@@ -7,10 +7,15 @@ import '../../scss/styles/saloon.scss'
 
 const Saloon = () => {
   const [menu, setMenu] = useState(true)
+  const [menuOrder, setMenuOrder] = useState(false)
 
   const arrMenu = [
-    {menuText:'Menu', menuClass:'sidebar', menuClick:() => setMenu(!menu)},
-    {menuText:'Pedidos', menuClass:'sidebar', menuClick:() => setMenu(!menu)},
+    {menuText:'Menu', menuClass:'sidebar', menuClick:() => {
+      setMenuOrder(false)
+      setMenu(true)}},
+    {menuText:'Pedidos', menuClass:'sidebar', menuClick:() => {
+      setMenuOrder(true)
+      setMenu(false)}},
   ];
 
   return (
@@ -20,7 +25,7 @@ const Saloon = () => {
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
       {menu && <Menu />}
-      {!menu && <Orders />}
+      {menuOrder && <Orders />}
     </div>
   );
 };
