@@ -4,8 +4,8 @@ import './nav.scss'
 
 const Nav = (props) => {
   const navClass=`nav-${props.use}`;
-  const ulClass=`nav-ul-${props.use}`;
-  const liClass=`nav-ul-li-${props.use}`;
+  const ulClass=`nav-${props.use}-ul`;
+  const liClass=`nav-${props.use}-ul-li`;
 
   return (
     <nav className={navClass}>
