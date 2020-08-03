@@ -1,0 +1,11 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/placeholder";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
+.title {
+  font-size: 1em;
+  font-weight: $font-weight-bold;
+  padding-bottom: 8px;
+  border-bottom: 3px solid black;
+}
