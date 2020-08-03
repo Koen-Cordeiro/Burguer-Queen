@@ -4,7 +4,7 @@ import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
 import ErrorSpan from '../../Components/error/error'
-import logo from '../../img/logo.png'
+import Logo from '../../Components/logo/logo'
 import { errorsLogin } from './errorsLogin'
 
 const Login = () => {
@@ -36,9 +36,7 @@ const Login = () => {
 
   return (
     <>
-      <div className='log-reg-flex log-logo'>
-        <img className='log-img-logo' alt='Logotipo Chase Burguer, nome em branco com bordas pretas e uma lupa vermelha no canto direito' src={logo} />
-      </div>
+      <Logo use='login'/>
       <section className='log-reg-center log-background'>
         <form className='log-reg-column log-reg-center'>
           {arrText.map((e, index) => (

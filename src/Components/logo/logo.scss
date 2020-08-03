@@ -1,0 +1,30 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/placeholder";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
+.logo {
+  &-login {
+    @extend %flex;
+    width: 380px;
+    height: 230px;
+    @include mobile {
+      width: 280px;
+      height: 180px;
+    }
+    &-img {
+      width: 340px;
+      @include mobile {
+        width: 255px;
+      }
+    }
+  }
+  &-sidebar {
+    @extend %flex;
+    width: 320px;
+    height: 230px;
+    &-img {
+      width: 260px;
+    }
+  }
+}
