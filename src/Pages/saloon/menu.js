@@ -40,7 +40,7 @@ const Menu = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, { type: arr[2].innerText, price: Number(arr[1].children[0].textContent) }])
+    setOrder([...order, { type: arr[1].innerText, price: Number(arr[0].children[0].textContent) }])
   }
 
   const sendOrder = (post) => {
@@ -102,24 +102,22 @@ const Menu = () => {
     <>
       <section className='menu'>
         <Nav use='menu' arr={arrMenu}/>
-        <div className='center'>
-          <ul>
-            {menu && <MenuItems arr={breakfast} handleClick={(e) => addOrder(e)} />}
-            {!menu && <MenuItems text='Hambúrgueres'
-              arr={burguers}
-              burguer={burguerValue}
-              setValue={setBurguerMeat}
-              setCheckbox={setExtras}
-              burguerClick={addBurguer}
-              checkbox={extras}
-              handleClick={(e) => {
-                setBurguerType({ type: e.currentTarget.children[2].textContent, price: Number(e.currentTarget.children[1].children[0].textContent) })
-                setBurguerValue(!burguerValue)
-              }} />}
-            {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
-            {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />} 
-          </ul>
-        </div>
+        <ul className='center'>
+          {menu && <MenuItems arr={breakfast} handleClick={(e) => addOrder(e)} />}
+          {!menu && <MenuItems text='Hambúrgueres'
+            arr={burguers}
+            burguer={burguerValue}
+            setValue={setBurguerMeat}
+            setCheckbox={setExtras}
+            burguerClick={addBurguer}
+            checkbox={extras}
+            handleClick={(e) => {
+              setBurguerType({ type: e.currentTarget.children[1].textContent, price: Number(e.currentTarget.children[0].children[0].textContent) })
+              setBurguerValue(!burguerValue)
+            }} />}
+          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
+          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />} 
+        </ul>
       </section>
       <section>
         <header>
