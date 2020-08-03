@@ -26,6 +26,32 @@
     }
     &:hover {
       transform: scale(1.03);
+    }
   }
+  &-sidebar {
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    width: 200px;
+    height: 70px;
+  }
+  &:target {
+    border: none;
+    background-color: red;
+    color: black;
+  }
+  &-menu {
+    width: 205px;
+    height: 55px;
+    color: black;
+    background-color: white;
+    border-radius: $border-big $border-big 0px 0px;
+    border: none;
+    font-size: 1.1em;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
   }
 }

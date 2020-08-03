@@ -3,6 +3,7 @@ import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
 import FinalOrder from '../../Components/final-order/final-order'
+import Nav from '../../Components/nav/nav'
 import firebase from 'firebase'
 
 const Menu = () => {
@@ -39,7 +40,7 @@ const Menu = () => {
 
   const addOrder = (event) => {
     const arr = Array.from(event.currentTarget.children)
-    setOrder([...order, { type: arr[2].innerText, price: Number(arr[1].children[0].textContent) }])
+    setOrder([...order, { type: arr[1].innerText, price: Number(arr[0].children[0].textContent) }])
   }
 
   const sendOrder = (post) => {
@@ -92,63 +93,18 @@ const Menu = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
+  const arrMenu = [
+    {menuText:'Dia', menuClass:'menu', menuClick:() => {setMenu(!menu)}},
+    {menuText:'Café', menuClass:'menu', menuClick:() => {setMenu(!menu)}},
+  ];
+
   return (
-    <div className='menu-row-reverse'>
-      <form className='log-reg-flex'>
-        <h1>Pedido {orderNumber}</h1>
-        <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
-        <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
-        <fieldset>
-          {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
-            price: e.price,
-            type: e.type,
-            count: e.count,
-            key: index,
-            meat: e.meat,
-            extras: e.extras,
-            func: reloadData
-          }} />)}
-          <h2>R${finalPrice}</h2>
-
-          <Button text='Cancelar Pedido' handleClick={(event) => {
-            event.preventDefault()
-            setOrder([])
-            }} />
-          <Button text='Enviar pedido' handleClick={(event) => {
-            event.preventDefault()
-            const date = new Date()
-            const orderNumberValue = `${clientName}-${table}-${orderNumber}`
-            sendOrder({ orderNumber: orderNumberValue, 
-              finalPrice, 
-              clientName, 
-              table, 
-              clientOrder, 
-              orderStatus: 'pending', 
-              workerName: firebase.auth().currentUser.displayName,
-              timeOrdered: `${date.getHours()}h${date.getMinutes()}`,
-              msOrdered: date.getTime()
-              })
-          }} />
-        </fieldset>
-
-      </form>
-      <section >
-
-        <h1>Bem vindo senhor das mesas</h1>
-        <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
-
-        <Button text='Café da manhã' handleClick={() => {
-          setMenu(!menu)
-        }} />
-        <Button text='Resto do dia' handleClick={() => {
-          setMenu(!menu)
-        }} />
-
-        <ul>
+    <>
+      <section className='menu'>
+        <Nav use='menu' arr={arrMenu}/>
+        <ul className='center'>
           {menu && <MenuItems arr={breakfast} handleClick={(e) => addOrder(e)} />}
-          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
-          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />}
-          {!menu && <MenuItems text='Hamburgueres'
+          {!menu && <MenuItems text='Hambúrgueres'
             arr={burguers}
             burguer={burguerValue}
             setValue={setBurguerMeat}
@@ -156,12 +112,47 @@ const Menu = () => {
             burguerClick={addBurguer}
             checkbox={extras}
             handleClick={(e) => {
-              setBurguerType({ type: e.currentTarget.children[2].textContent, price: Number(e.currentTarget.children[1].children[0].textContent) })
+              setBurguerType({ type: e.currentTarget.children[1].textContent, price: Number(e.currentTarget.children[0].children[0].textContent) })
               setBurguerValue(!burguerValue)
             }} />}
+          {!menu && <MenuItems text='Acompanhamentos' arr={snacks} handleClick={(e) => addOrder(e)} />}
+          {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />} 
         </ul>
       </section>
-    </div>
+      <section>
+        <header>
+          <h1>Puxar o nome do atendente</h1>
+          <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
+        </header>
+        <form className='log-reg-flex'>
+          <h1>Pedido {orderNumber}</h1>
+          <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
+          <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
+          <fieldset>
+            {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
+              price: e.price,
+              type: e.type,
+              count: e.count,
+              key: index,
+              meat: e.meat,
+              extras: e.extras,
+              func: reloadData
+            }} />)}
+            <h2>R${finalPrice}</h2>
+
+            <Button text='Cancelar Pedido' handleClick={(event) => {
+              event.preventDefault()
+              setOrder([])
+              }} />
+            <Button text='Enviar pedido' handleClick={(event) => {
+              event.preventDefault()
+              const orderNumberValue = `${clientName}-${table}-${orderNumber}`
+              sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending', workerName: firebase.auth().currentUser.displayName })
+            }} />
+          </fieldset>
+        </form>
+      </section>
+    </>
   );
 };
 
