@@ -26,6 +26,21 @@
     }
     &:hover {
       transform: scale(1.03);
+    }
   }
+  &-sidebar {
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 1.1em;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    width: 200px;
+    height: 70px;
+  }
+  &:target {
+    border: none;
+    background-color: red;
+    color: black;
   }
 }
