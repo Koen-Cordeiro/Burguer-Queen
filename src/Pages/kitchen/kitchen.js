@@ -4,9 +4,7 @@ import CardBoard from '../../Containers/cardboard/card-board'
 import Button from '../../Components/button/button'
 const Kitchen = () => {
   const [open, setOpen] = useState([])
-  const [pending, setPending] = useState([])
-  const [doing, setDoing] = useState([])
-  const [delivered, setDelivered] = useState([])
+  const [status, setStatus] = useState('pending')
   const [date, setDate] = useState(new Date().getTime())
 
   setInterval(() => setDate(new Date().getTime()), 60000)
@@ -29,10 +27,10 @@ const Kitchen = () => {
   return (
     <>
       <Button text='Sair' handleClick={() => firebase.auth().signOut()} />
-      <Button text='Abertos' handleClick={() => setOpen(pending)} />
-      <Button text='Prontos' handleClick={() => setOpen(doing)} />
-      <Button text='Entregues' handleClick={() => setOpen(delivered)} />
-      <CardBoard arr={open} />
+      <Button text='Abertos' handleClick={() => setStatus('pending')} />
+      <Button text='Prontos' handleClick={() => setStatus('doing')} />
+      <Button text='Entregues' handleClick={() => setStatus('delivered')} />
+      <CardBoard arr={open.filter(e=> e.orderStatus === status)} />
     </>
   );
 };
