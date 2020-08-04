@@ -1,0 +1,9 @@
+@import '../../scss/utils/mixins';
+@import '../../scss/utils/colors';
+@import '../../scss/utils/typhography';
+
+.card {
+  &-border {
+    border: 2px solid black;
+  }
+}
