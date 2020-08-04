@@ -1,8 +1,9 @@
 import React from 'react'
+import firebase from 'firebase'
 import './order-card.scss'
 import chefhat from '../../img/chefhat.svg'
 import clock from '../../img/clock.svg'
-
+import Button from '../button/button'
 
 
 const orderCard = ({e,index}) =>{ 
@@ -27,7 +28,11 @@ const orderCard = ({e,index}) =>{
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
-          {e.orderStatus === 'pending' && <p key={Math.random() * 40} >Pendente</p>}
+          {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Aceitar' handleClick={async ()=> {
+            console.log(e.id)
+            const postCollection = await firebase.firestore().collection('orders')
+            postCollection.doc(e.id).update({orderStatus: 'doing'})
+          }}/>}
   </li>
     
 )}
