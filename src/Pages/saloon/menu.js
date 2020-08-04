@@ -94,8 +94,8 @@ const Menu = () => {
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
 
   const arrMenu = [
-    {menuText:'Dia', menuClass:'menu', menuClick:() => {setMenu(!menu)}},
-    {menuText:'Café', menuClass:'menu', menuClick:() => {setMenu(!menu)}},
+    {menuText:'Dia', menuClass:menu ? 'menu-on' : 'menu', menuClick:() => {setMenu(!menu)}},
+    {menuText:'Café', menuClass:menu ? 'menu' : 'menu-on', menuClick:() => {setMenu(!menu)}},
   ];
 
   return (

@@ -63,14 +63,14 @@
     }
   }
   &-menu {
-    width: 205px;
-    height: 55px;
-    color: black;
-    background-color: white;
-    border: none;
-    font-size: 1.1em;
+    @include button (205px, 55px, white, black);
     border-radius: $border-big $border-big 0px 0px;
-    font-weight: $font-weight-semibold;
+    text-align: center;
     text-transform: uppercase;
+    &-on {
+      @include button (205px, 55px, $gray, white);
+      text-align: center;
+      text-transform: uppercase;
+    }
   }
 }
