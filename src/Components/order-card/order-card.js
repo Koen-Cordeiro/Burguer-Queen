@@ -4,6 +4,7 @@ import chefhat from '../../img/chefhat.svg'
 import clock from '../../img/clock.svg'
 
 
+
 const orderCard = ({e,index}) =>{ 
   return (
     <li key={index } className='card-border'>
@@ -26,6 +27,7 @@ const orderCard = ({e,index}) =>{
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
+          {e.orderStatus === 'pending' && <p key={Math.random() * 40} >Pendente</p>}
   </li>
     
 )}
