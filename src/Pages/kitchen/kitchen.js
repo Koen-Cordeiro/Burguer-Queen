@@ -18,13 +18,13 @@ const Kitchen = () => {
         waitingTime: Number((((new Date().getTime() - doc.data().msOrdered) / 1000) / 60).toFixed(0)),
         ...doc.data()
       }))
-      setPending(getBurguer.filter(e => e.orderStatus === 'pending'))
-      setDoing(getBurguer.filter(e => e.orderStatus === 'doing'))
-      setDelivered(getBurguer.filter(e => e.orderStatus === 'delivered'))
+      
+      setOpen(getBurguer)
     }))
-  }, [date])
+  }, [])
 
-  // useEffect(()=> , [])
+  // useEffect(()=> setInterval(() => setDate(new Date().getTime()), 60000), [open])
+  useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
 
   return (
     <>
