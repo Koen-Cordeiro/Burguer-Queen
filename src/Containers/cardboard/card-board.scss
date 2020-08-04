@@ -1,0 +1,10 @@
+@import '../../scss/utils/mixins';
+@import '../../scss/utils/colors';
+@import '../../scss/utils/typhography';
+
+.cardboard {
+  &-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
