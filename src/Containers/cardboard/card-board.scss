@@ -1,10 +1,13 @@
-@import '../../scss/utils/mixins';
-@import '../../scss/utils/colors';
-@import '../../scss/utils/typhography';
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
 
 .cardboard {
   &-flex {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
   }
 }
