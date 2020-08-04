@@ -6,9 +6,9 @@ const MenuItems = (props) => (
   <li>
     <h2 className='title'>{props.text}</h2>
     <ul>
-      <li className='list'>
+      <li className={props.text=== 'Bebidas' ? 'list-line' : 'list'}>
         {props.arr.map((e,index) =>( 
-          <div className='item' key={index} onClick={props.handleClick}>
+          <div className={props.text=== 'Bebidas' ? 'item-line' : 'item'} key={index} onClick={props.handleClick}>
           <p>R${"\u00a0"}<span key={e.price}>{e.price}</span></p>
           <h3 key={e.type} name='type'>{e.type}</h3>
           {props.text!== 'Bebidas' && <img src={e.img} alt='Ícone do item'/>}
