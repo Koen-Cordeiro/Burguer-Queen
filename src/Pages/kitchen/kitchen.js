@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import firebase from 'firebase'
-import OrderCard from '../../Components/order-card/order-card'
-
+import CardBoard from '../../Containers/cardboard/card-board'
 const Kitchen = () => {
   const [open, setOpen] = useState([])
   const [date, setDate] = useState(new Date().getTime())
@@ -20,14 +19,8 @@ const Kitchen = () => {
   }, [date])
   return (
     <>
-      <h1>Bem vindo rei do masterchef</h1>
       <button onClick={() => firebase.auth().signOut()}> Sair</button>
-      <ul>
-        {open.map((e, index) => {
-          return (<OrderCard e={e} index={index} key={index + 3000} />)
-        })}
-
-      </ul>
+      <CardBoard arr={open}/>
     </>
   );
 };
