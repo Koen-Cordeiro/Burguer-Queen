@@ -29,28 +29,47 @@
     }
   }
   &-sidebar {
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 1.1em;
-    font-weight: $font-weight-semibold;
-    text-align: left;
-    width: 200px;
-    height: 70px;
-  }
-  &:target {
-    border: none;
-    background-color: red;
-    color: black;
+    &-on-menu {
+      @include button (200px, 70px, white, black);
+      @include radius-left ($border-angle);
+      &::before {
+      @include icon;
+      background-image: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd');
+      }
+    }
+    &-menu {
+      @include button (200px, 70px, black, white);
+      @include radius-left ($border-angle);
+      &::before {
+      @include icon;
+      background-image: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fwhite%20burguer.svg?alt=media&token=fc767755-b77d-4e9c-a93e-22dce0bc681a');
+      }
+    }
+    &-on-order {
+      @include button (200px, 70px, white, black);
+      @include radius-left ($border-angle);
+      &::before {
+        @include icon;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5');
+      }
+    }
+    &-order {
+      @include button (200px, 70px, black, white);
+      @include radius-left ($border-angle);
+      &::before {
+        @include icon;
+        background-image: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1');
+      }
+    }
   }
   &-menu {
     width: 205px;
     height: 55px;
     color: black;
     background-color: white;
-    border-radius: $border-big $border-big 0px 0px;
     border: none;
     font-size: 1.1em;
+    border-radius: $border-big $border-big 0px 0px;
     font-weight: $font-weight-semibold;
     text-transform: uppercase;
   }
