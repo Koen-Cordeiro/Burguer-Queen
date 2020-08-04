@@ -1,7 +1,12 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/placeholder";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
 body {
   font-size: $text-base-size;
   font-family: $font-primary, $font-secondary;
-  background: url(../img/pattern-detective.png) repeat;
+  background: url(../../img/pattern-detective.png) repeat;
 }
 
 main {
@@ -56,9 +61,9 @@ main {
 
 .reg {
   &-background {
-    @include background(610px);
+    @include background(610px, 100%);
     @include mobile {
-      @include responsive-background(515px);
+      @include responsive-background(515px, 100%);
     }
   }
   &-row {
