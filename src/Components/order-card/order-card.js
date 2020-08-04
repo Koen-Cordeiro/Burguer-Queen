@@ -28,11 +28,8 @@ const orderCard = ({e,index}) =>{
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
-          {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Aceitar' handleClick={async ()=> {
-            console.log(e.id)
-            const postCollection = await firebase.firestore().collection('orders')
-            postCollection.doc(e.id).update({orderStatus: 'doing'})
-          }}/>}
+          {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
+          {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready to deliver'})}/>}
   </li>
     
 )}
