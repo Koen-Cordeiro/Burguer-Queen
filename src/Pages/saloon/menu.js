@@ -8,6 +8,7 @@ import firebase from 'firebase'
 
 const Menu = () => {
   const [breakfast, setBreakfast] = useState([])
+  const [coffee, setCoffee] = useState([])
   const [clientOrder, setClientOrder] = useState([])
   const [snacks, setSnacks] = useState([])
   const [drinks, setDrinks] = useState([])
@@ -89,6 +90,7 @@ const Menu = () => {
     return atualType.price * atualType.count + allTypes
   }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
+  useEffect(() => requestData({ menu: 'Breakfast', type: 'cafe', set: setCoffee }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
   useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
@@ -103,7 +105,8 @@ const Menu = () => {
       <section className='menu'>
         <Nav use='menu' arr={arrMenu}/>
         <ul className='center'>
-          {menu && <MenuItems arr={breakfast} handleClick={(e) => addOrder(e)} />}
+          {menu && <MenuItems text='Cafés' arr={coffee} handleClick={(e) => addOrder(e)} />}
+          {menu && <MenuItems text='Lanche e Suco' arr={breakfast} handleClick={(e) => addOrder(e)} />}
           {!menu && <MenuItems text='Hambúrgueres'
             arr={burguers}
             burguer={burguerValue}
