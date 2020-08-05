@@ -4,7 +4,7 @@
 
 
 .button {
-  &-submit {
+  &_submit {
     @include submit;
     background-color: $red;
     border: none;
@@ -28,30 +28,50 @@
       transform: scale(1.03);
     }
   }
-  &-sidebar {
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 1.1em;
-    font-weight: $font-weight-semibold;
-    text-align: left;
-    width: 200px;
-    height: 70px;
+  &_sidebar {
+    @include button (200px, 70px, black, white, left);
+    border-radius: $border-angle 0px 0px $border-angle;
+    &.active {
+      @include button (200px, 70px, white, black, left);
+    }
+    &:focus {
+      outline: none;
+    }
   }
-  &:target {
-    border: none;
-    background-color: red;
-    color: black;
-  }
-  &-menu {
-    width: 205px;
-    height: 55px;
-    color: black;
-    background-color: white;
+  &_menu {
+    @include button (205px, 55px, white, black, center);
     border-radius: $border-big $border-big 0px 0px;
-    border: none;
-    font-size: 1.1em;
-    font-weight: $font-weight-semibold;
     text-transform: uppercase;
+    &.active {
+      @include button (205px, 55px, $gray, white, center);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.icon {
+  &-menu {
+    &::before {
+      @include icon;
+      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fwhite%20burguer.svg?alt=media&token=fc767755-b77d-4e9c-a93e-22dce0bc681a');
+      }
+    &.active {
+      &::before {
+        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd');
+      }
+    }
+  }
+  &-order {
+    &::before {
+      @include icon;
+      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1');
+    }
+    &.active {
+      &::before {
+        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5');
+      }
+    }
   }
 }

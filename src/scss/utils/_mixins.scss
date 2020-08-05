@@ -35,3 +35,19 @@
     @content;
   }
 }
+
+@mixin button ($width, $height, $bg-color, $color, $align) {
+  border: none;
+  background-color: $bg-color;
+  color: $color;
+  font-size: 1.2em;
+  font-weight: $font-weight-semibold;
+  text-align: $align;
+  width: $width;
+  height: $height;
+}
+
+@mixin icon {
+  margin: 0px 12.5px 0px 30px;
+  vertical-align: sub;
+}

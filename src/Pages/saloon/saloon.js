@@ -7,14 +7,14 @@ import '../../scss/styles/saloon.scss'
 
 const Saloon = () => {
   const [menu, setMenu] = useState(true)
-  const [menuOrder, setMenuOrder] = useState(false)
+  const [order, setOrder] = useState(false)
 
   const arrMenu = [
-    {menuText:'Menu', menuClass:'sidebar', menuClick:() => {
-      setMenuOrder(false)
+    {menuText:'Menu', menuClass:menu ? 'sidebar active icon-menu' : 'sidebar icon-menu', menuClick:() => {
+      setOrder(false)
       setMenu(true)}},
-    {menuText:'Pedidos', menuClass:'sidebar', menuClick:() => {
-      setMenuOrder(true)
+    {menuText:'Pedidos', menuClass:order ? 'sidebar active icon-order' : 'sidebar icon-order', menuClick:() => {
+      setOrder(true)
       setMenu(false)}},
   ];
 
@@ -25,7 +25,7 @@ const Saloon = () => {
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
       {menu && <Menu />}
-      {menuOrder && <Orders />}
+      {order && <Orders />}
     </div>
   );
 };
