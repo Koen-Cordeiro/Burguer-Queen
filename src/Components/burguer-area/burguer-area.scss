@@ -1,4 +1,5 @@
 @import '../../scss/utils/mixins';
+@import "../../scss/utils/placeholder";
 @import '../../scss/utils/colors';
 @import '../../scss/utils/typhography';
 
@@ -12,7 +13,17 @@
   left: 60px;
 }
 
-.label-burguer {
-  @include input-and-label;
+.item__burguer, .item__extra {
+  font-weight: $font-weight-semibold;
+  font-size: 0.95em;
   color: white;
+}
+
+.item__burguer--meat, .item__extra--choice {
+  margin-top: 10px;
+}
+
+.color {
+  color: $red;
+  font-size: 1.3em;
 }
