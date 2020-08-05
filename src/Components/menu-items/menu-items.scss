@@ -8,6 +8,7 @@
   @extend %row;
   justify-content: space-between;
   margin: 15px 0 20px;
+  position: relative;
   &-line{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
