@@ -20,14 +20,14 @@ main {
     @extend %flex;
     @include background(320px, 380px);
     @include mobile {
-      @include responsive-background(270px, 280px);
+      @include background__responsive(270px, 280px);
     }
   }
   &__reg {
     @extend %flex;
     @include background(610px, 380px);
     @include mobile {
-      @include responsive-background(515px, 280px);
+      @include background__responsive(515px, 280px);
     }
   }
 }

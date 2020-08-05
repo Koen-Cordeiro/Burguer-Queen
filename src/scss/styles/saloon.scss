@@ -35,3 +35,20 @@
   }
 }
 
+.order {
+  width: 373px;
+}
+
+.logged {
+  @extend %row;
+  @extend %center;
+  justify-content: space-between;
+  background-color: black;
+  height: 70px;
+  padding: 0 25px;
+  border-radius: 0px $border-angle 0px 0px;
+  h1 {
+    color: white;
+    font-size: 1.2em;
+  }
+}
