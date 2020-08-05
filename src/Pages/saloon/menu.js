@@ -104,7 +104,7 @@ const Menu = () => {
     <>
       <section className='menu'>
         <Nav use='menu' arr={arrMenu}/>
-        <ul className='center'>
+        <ul className='menu__center'>
           {menu && <MenuItems text='Cafés' arr={coffee} handleClick={(e) => addOrder(e)} />}
           {menu && <MenuItems text='Lanche e Suco' arr={breakfast} handleClick={(e) => addOrder(e)} />}
           {!menu && <MenuItems text='Hambúrgueres'

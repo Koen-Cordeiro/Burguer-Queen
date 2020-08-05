@@ -3,12 +3,12 @@
 @import '../../scss/utils/typhography';
 
 
-.base-form {
-  &-div{
+.form__base {
+  &--div{
     display: flex;
     width: 100%;
   }
-  &-inherit-align {
+  &--align {
     display: inherit;
     align-items: center;
     justify-content: center;

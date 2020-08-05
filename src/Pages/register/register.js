@@ -34,12 +34,12 @@ const Register = () => {
     { label: "Confirme sua senha", type: "password", value: confirmPassword, placeholder: 'Confirme sua cifra', handleChange: (e) => setConfirmPassword(e.currentTarget.value) },
   ]
   return (
-    <section className='log-reg-flex reg-background'>
-      <form className='log-reg-column log-reg-center'>
+    <section className='box__reg'>
+      <form className='form__align'>
         {arrText.map((e, index) => <Input key={index} use='sign' specific='data' value={e.value} handleChange={e.handleChange} type={e.type} label={e.label} placeholder={e.placeholder} />)}
         <RadioInputArea setValue={setWorkPlace} />
         {error && <ErrorSpan errorText={error} />}
-        <Button type='submit' text='ENVIAR' handleClick={(e) => {
+        <Button type='submit' text='Enviar' handleClick={(e) => {
           e.preventDefault()
           password === confirmPassword ? register({ name, email, password, workPlace }) : setError('Senhas não conferem')
         }} />

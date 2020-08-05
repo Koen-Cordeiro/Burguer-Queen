@@ -1,0 +1,29 @@
+@import '../../scss/utils/mixins';
+@import "../../scss/utils/placeholder";
+@import '../../scss/utils/colors';
+@import '../../scss/utils/typhography';
+
+.options {
+  background: black;
+  border-radius: $border-angle;
+  width: 210px;
+  height: 115px;
+  padding: 15px;
+  position: absolute;
+  left: 60px;
+}
+
+.item__burguer, .item__extra {
+  font-weight: $font-weight-semibold;
+  font-size: 0.95em;
+  color: white;
+}
+
+.item__burguer--meat, .item__extra--choice {
+  margin-top: 10px;
+}
+
+.color {
+  color: $red;
+  font-size: 1.3em;
+}

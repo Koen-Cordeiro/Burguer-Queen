@@ -37,13 +37,13 @@ const Login = () => {
   return (
     <>
       <Logo use='login'/>
-      <section className='log-reg-center log-background'>
-        <form className='log-reg-column log-reg-center'>
+      <section className='box__log'>
+        <form className='form__align'>
           {arrText.map((e, index) => (
             <Input key={index} use='sign' specific='data' label={e.label} type={e.type} value={e.value} handleChange={e.handleChange} />
           ))}
           {error && <ErrorSpan errorText={error}/>}
-          <Button type='submit' text='ENTRAR' handleClick={(e) => {
+          <Button type='submit' text='Entrar' handleClick={(e) => {
             e.preventDefault()
             login({ email, password })
           }}/>

@@ -10,205 +10,29 @@ body {
 }
 
 main {
+  @extend %flex;
   height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.alert {
-  font-size: 0.65em;
-  font-weight: $font-weight-medium;
-  padding-bottom: 15px;
-  color: $red;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  @include mobile {
-    font-size: 0.55em;
-  }
-}
-
-.log {
-  &-background {
+.box {
+  &__log {
+    @extend %flex;
     @include background(320px, 380px);
-    padding-top: 28px;
     @include mobile {
       @include responsive-background(270px, 280px);
-      padding-top: 26px;
     }
   }
-  &-img-logo {
-    width: 340px;
+  &__reg {
+    @extend %flex;
+    @include background(610px, 380px);
     @include mobile {
-      width: 255px;
-    }
-  }
-  &-logo {
-    width: 400px;
-    height: 230px;
-    @include mobile {
-      width: 280px;
-      height: 180px;
-    }
-  }
-  &-base-div {
-    display: flex;
-    width: 100%;
-  }
-}
-
-.reg {
-  &-background {
-    @include background(610px, 100%);
-    @include mobile {
-      @include responsive-background(515px, 100%);
-    }
-  }
-  &-row {
-    display: flex;
-    flex-direction: row;
-  }
-  &-work-label {
-    @include input-and-label;
-    width: 320px;
-    height: 73px;
-    @include mobile {
-      font-size: 0.85em;
-      width: 230px;
-      height: 70px;
-    }
-  }
-  &-radio-input-div {
-    margin-top: 11px;
-    width: 320px;
-    height: 45px;
-    border-top: 2px solid $light-gray;
-    border-bottom: 2px solid $light-gray;
-    justify-content: center;
-    @include mobile {
-      width: 230px;
-      height: 40px;
-    }
-    input[type='radio'] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      outline: none;
-      margin: 0;
-      cursor: pointer;
-    }
-    label {
-      display: contents;
-      ::before {
-        content: '';
-        display: inline-block;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        margin-right: 8px;
-        background: $light-gray;
-        border: 1px solid $light-gray;
-        box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-        box-sizing: content-box;
-        @include mobile {
-          width: 18px;
-          height: 18px;
-        }
-      }
-      :checked::before {
-        background: radial-gradient(white 30%, $red 40%);
-        box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-        @include mobile {
-          background: radial-gradient(white 30%, $red 40%);
-        }
-      }
-    }
-    p {
-      margin: 0 20px;
-      @include mobile {
-        margin: 0 15px;
-      }
+      @include responsive-background(515px, 280px);
     }
   }
 }
 
-.log-reg {
-  &-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  &-column {
-    display: flex;
-    flex-direction: column;
-  }
-  &-inherit-align {
-    display: inherit;
-    align-items: center;
-    justify-content: center;
-  }
-  &-center {
-    align-items: center;
-  }
-  &-space-after {
-    margin-bottom: 25px;
-    @include mobile {
-      margin-bottom: 20px;
-    }
-  }
-  &-input {
-    @include input-and-label;
-    ::placeholder {
-      color: $gray;
-    }
-    input {
-      @include submit;
-      background-color: $light-gray;
-      border: 1px solid $light-gray;
-      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-      box-sizing: border-box;
-      color: $gray;
-      font-weight: $font-weight-medium;
-      margin-top: 11px;
-      padding-left: 15px;
-      @include mobile {
-        font-size: 0.85em;
-          @include submit-responsive;
-          margin-top: 11px;
-          padding-left: 15px;
-          margin-top: 9px;
-          padding-left: 10px;
-        }
-      &:focus {
-        border: 2px solid $red;
-        -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        outline: none;
-      }
-    }
-  }
-  &-base-p {
-    background: black;
-    color: white;
-    font-weight: $font-weight-medium;
-    font-size: 0.9em;
-    border-radius: 0px 0px $border-angle $border-angle;
-    width: inherit;
-    height: 60px;
-    text-align: center;
-    @include mobile {
-      font-size: 0.75em;
-      height: 55px;
-      }
-    a {
-      color: white;
-    }
-  }
+.form__align {
+  @extend %column;
+  @extend %center;
 }
