@@ -122,9 +122,9 @@ const Menu = () => {
           {!menu && <MenuItems text='Bebidas' arr={drinks} handleClick={(e) => addOrder(e)} />} 
         </ul>
       </section>
-      <section>
-        <header>
-          <h1>Puxar o nome do atendente</h1>
+      <section className='order'>
+        <header className='logged'>
+          <h1>{firebase.auth().currentUser.displayName}</h1>
           <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
         <form className='log-reg-flex'>
