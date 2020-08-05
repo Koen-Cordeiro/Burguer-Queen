@@ -4,7 +4,7 @@ import OrderCard from '../../Components/order-card/order-card'
 
 
 const CardBoard = ({arr}) => (
-  <ul className='cardboard-flex'>
+  <ul className='cardboard-flex cardboard'>
   {arr.map((e, index) => {
     return (<OrderCard e={e} index={index} key={index + 3000} />)
   })}
