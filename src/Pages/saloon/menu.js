@@ -147,7 +147,7 @@ const Menu = () => {
             <Button text='Enviar pedido' handleClick={(event) => {
               event.preventDefault()
               const orderNumberValue = `${clientName}-${table}-${orderNumber}`
-              sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending', msOrdered: new Date().getTime(), workerName: firebase.auth().currentUser.displayName })
+              sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending',timeOrdered:`${new Date().getHours()}h${new Date().getMinutes()}`, msOrdered: new Date().getTime(), workerName: firebase.auth().currentUser.displayName })
             }} />
           </fieldset>
         </form>
