@@ -4,20 +4,19 @@
 @import "../../scss/utils/typhography";
 
 .nav {
-  &-sidebar {
+  &__sidebar {
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
-  &-menu {
+  &__menu {
     background: $gray;
     box-shadow: inset 0px 3.00008px 7.50021px rgba(0, 0, 0, 0.15);
     height: 70px;
     display: flex;
     align-items: flex-end;
-    &-ul {
-      display: flex;
-      flex-direction: row;
+    &--ul {
+      @extend %row;
     }
   }
 }

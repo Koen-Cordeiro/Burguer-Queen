@@ -3,9 +3,9 @@ import Button from '../../Components/button/button'
 import './nav.scss'
 
 const Nav = (props) => {
-  const navClass=`nav-${props.use}`;
-  const ulClass=`nav-${props.use}-ul`;
-  const liClass=`nav-${props.use}-ul-li`;
+  const navClass=`nav__${props.use}`;
+  const ulClass=`nav__${props.use}--ul`;
+  const liClass=`nav__${props.use}--ul-li`;
 
   return (
     <nav className={navClass}>
