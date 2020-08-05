@@ -1,42 +1,84 @@
 @import "../../scss/utils/mixins";
+@import "../../scss/utils/placeholder";
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
 
 .input {
-  &-sign {
-    &-data {
-      display: flex;
-      flex-direction: column;
+  &__sign {
+    &--data {  
+      @extend %column;
       @include input-and-label;
-    ::placeholder {
-      color: $gray;
-    }
-    input {
-      @include submit;
-      background-color: $light-gray;
-      border: 1px solid $light-gray;
-      box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
-      box-sizing: border-box;
-      color: $gray;
-      font-weight: $font-weight-medium;
-      margin-top: 11px;
-      margin-bottom: 25px;
-      padding-left: 15px;
       @include mobile {
-        font-size: 0.85em;
-        margin-bottom: 20px;
-          @include submit-responsive;
-          margin-top: 9px;
-          padding-left: 10px;
+        font-size: 0.9em;
         }
-      &:focus {
-        border: 2px solid $red;
-        -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-        outline: none;
+      ::placeholder {
+        color: $gray;
+      }
+      input {
+        @include submit;
+        background-color: $light-gray;
+        border: 1px solid $light-gray;
+        box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+        box-sizing: border-box;
+        color: $gray;
+        font-weight: $font-weight-medium;
+        margin-top: 11px;
+        margin-bottom: 25px;
+        padding-left: 15px;
+        @include mobile {
+          font-size: 0.85em;
+          margin-bottom: 20px;
+            @include submit-responsive;
+            margin-top: 9px;
+            padding-left: 10px;
+          }
+        &:focus {
+          border: 2px solid $red;
+          -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+          -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+          box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+          outline: none;
+        }
       }
     }
   }
-}}
-
+  &__work {
+    &--info {
+      display: contents;
+      ::before {
+        content: '';
+        display: inline-block;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        margin-right: 8px;
+        background: $light-gray;
+        border: 1px solid $light-gray;
+        box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+        box-sizing: content-box;
+        @include mobile {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      :checked::before {
+        background: radial-gradient(white 30%, $red 40%);
+        box-shadow: inset 0px 4px 10px rgba(160, 160, 160, 0.15);
+        @include mobile {
+          background: radial-gradient(white 30%, $red 40%);
+        }
+      }
+      input[type='radio'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: none;
+        margin: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

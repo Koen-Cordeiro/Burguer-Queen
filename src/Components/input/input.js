@@ -2,7 +2,7 @@ import React from 'react'
 import './input.scss'
 
 const Input = (props) => {
-  const inputClass = `input-${props.use}-${props.specific}`
+  const inputClass = `input__${props.use}--${props.specific}`
 
   return (
     <label className={inputClass}>{props.label}
