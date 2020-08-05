@@ -3,8 +3,8 @@ import logo from '../../img/logo.png'
 import './logo.scss'
 
 const Logo = (props) => {
-  const logoClass = `logo-${props.use}`
-  const imgClass = `logo-${props.use}-img`
+  const logoClass = `logo__${props.use}`
+  const imgClass = `logo__${props.use}--img`
 
   return (
     <div className={logoClass}>

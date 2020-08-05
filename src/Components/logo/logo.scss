@@ -4,7 +4,7 @@
 @import "../../scss/utils/typhography";
 
 .logo {
-  &-login {
+  &__login {
     @extend %flex;
     width: 380px;
     height: 230px;
@@ -12,18 +12,18 @@
       width: 280px;
       height: 180px;
     }
-    &-img {
+    &--img {
       width: 340px;
       @include mobile {
         width: 255px;
       }
     }
   }
-  &-sidebar {
+  &__sidebar {
     @extend %flex;
     width: 240px;
     height: 240px;
-    &-img {
+    &--img {
       width: 195px;
     }
   }
