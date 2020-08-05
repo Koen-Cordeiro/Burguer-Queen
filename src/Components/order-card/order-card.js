@@ -8,8 +8,10 @@ import Button from '../button/button'
 
 const orderCard = ({e,index}) =>{ 
   return (
-    <li key={index } className='card-border'>
+    <li key={index } className='card-order'>
+      <div key={`key-div-${index}`} className='card-order-div-top'>
       <p key={e.orderNumber + index}>N°{e.orderNumber}</p>
+      </div>
       <section key={`section-data-${index}`}>
   <p key={e.table+index}>Mesa {e.table}</p>
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
