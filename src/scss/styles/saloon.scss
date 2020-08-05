@@ -14,8 +14,8 @@
 
 .frame {
   @include background(768px, 1024px);
-  display: flex;
-  flex-direction: row;
+  @extend %row;
+  padding:0;
 }
 
 .sidebar {
@@ -27,10 +27,9 @@
 
 .menu {
   width: 410px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .center {
+  @extend %column;
+  @extend %center;
+  &__center {
     width: 360px;
     margin-top: 32px;
   }

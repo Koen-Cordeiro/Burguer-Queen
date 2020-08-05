@@ -9,8 +9,8 @@ const BaseForm = (props) => (
   )
 
 BaseForm.defaultProps =  {
-  classDiv: 'base-form-div',
-  classP: 'base-form-inherit-align'
+  classDiv: 'form__base--div',
+  classP: 'form__base--align'
 
 }
 

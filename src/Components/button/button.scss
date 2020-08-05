@@ -12,6 +12,7 @@
     font-weight: $font-weight-bold;
     letter-spacing: 0.05em;
     transition: 1000ms; 
+    text-transform: uppercase;
     margin-bottom: 25px;
     @include mobile {
       @include submit-responsive;
