@@ -4,7 +4,7 @@
 
 
 .button {
-  &_submit {
+  &__submit {
     @include submit;
     background-color: $red;
     border: none;
@@ -15,7 +15,7 @@
     text-transform: uppercase;
     margin-bottom: 25px;
     @include mobile {
-      @include submit-responsive;
+      @include submit__responsive;
       margin-bottom: 20px;
     }
     &:focus {
@@ -29,7 +29,7 @@
       transform: scale(1.03);
     }
   }
-  &_sidebar {
+  &__sidebar {
     @include button (200px, 70px, black, white, left);
     border-radius: $border-angle 0px 0px $border-angle;
     &.active {
@@ -39,7 +39,7 @@
       outline: none;
     }
   }
-  &_menu {
+  &__menu {
     @include button (205px, 55px, white, black, center);
     border-radius: $border-big $border-big 0px 0px;
     text-transform: uppercase;
