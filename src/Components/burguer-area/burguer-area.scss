@@ -20,7 +20,8 @@
 }
 
 .item__burguer--meat, .item__extra--choice {
-  margin-top: 10px;
+  display: flex;
+  margin: 10px 0;
 }
 
 .color {

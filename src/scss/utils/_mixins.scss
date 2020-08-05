@@ -7,6 +7,12 @@
   padding-top: 28px;
 }
 
+@mixin background__responsive($height, $width) {
+  width: $width;
+  height: $height;
+  padding-top: 26px;
+}
+
 @mixin input-and-label {
   color: $gray;
   font-weight: $font-weight-semibold;
@@ -20,22 +26,10 @@
   border-radius: $border-angle;
 }
 
-@mixin submit-responsive {
+@mixin submit__responsive {
   width: 230px;
   height: 37px;
   font-size: 0.9em;
-}
-
-@mixin responsive-background($height, $width) {
-  width: $width;
-  height: $height;
-  padding-top: 26px;
-}
-
-@mixin mobile {
-  @media (min-width: 320px) and (max-width: 767px) {
-    @content;
-  }
 }
 
 @mixin button ($width, $height, $bg-color, $color, $align) {
@@ -52,4 +46,27 @@
 @mixin icon {
   margin: 0px 12.5px 0px 30px;
   vertical-align: sub;
+}
+
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin burguer($text) {
+  content: $text;
+  font-size: 0.95em;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-angle;
+  width: 65px;
+  height: 25px;
+  background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0) 100%), white;
+  box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: content-box;
+  text-transform: uppercase;
+  margin-right: 8px;
 }

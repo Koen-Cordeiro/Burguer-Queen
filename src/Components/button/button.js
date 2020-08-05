@@ -2,7 +2,7 @@ import React from 'react'
 import './button.scss'
 
 const Button = (props) => {
-  const buttonClass = `button_${props.type}`
+  const buttonClass = `button__${props.type}`
   return(<button className={buttonClass} onClick={props.handleClick}>
     {props.text}
   </button>)
