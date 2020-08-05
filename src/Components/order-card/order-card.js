@@ -10,13 +10,13 @@ const orderCard = ({e,index}) =>{
   return (
     <li key={index } className='card-border'>
       <p key={e.orderNumber + index}>N°{e.orderNumber}</p>
-      <section key={Math.random() * 30}>
+      <section key={`section-data-${index}`}>
   <p key={e.table+index}>Mesa {e.table}</p>
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
   <p key={e.clientName+index}>Mesa {e.clientName}</p>
   <p key={e.timeOrdered+index}><img src={clock} alt='Tempo desde que o pedido foi feito'/> {e.timeOrdered}</p>
       </section>
-      <ul key={Math.random() * 50}>
+      <ul key={`orders-${index}`}>
         {e.clientOrder.map((item, index) => (
           <li key={index}>
             <span key={item.count + index}>{item.count}</span>
@@ -28,9 +28,9 @@ const orderCard = ({e,index}) =>{
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
-          {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
-          {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready'})}/>}
-          {e.orderStatus === 'delivered'&& window.location.pathname==='/kitchen' && <p>Entregue</p>}
+          {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={`accept-${index}`} text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
+          {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={`finalize-${index}`} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready'})}/>}
+          {e.orderStatus === 'delivered'&& window.location.pathname==='/kitchen' && <p key={`delivered-${index}`}>Entregue</p>}
   </li>
     
 )}
