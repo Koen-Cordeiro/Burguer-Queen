@@ -53,3 +53,20 @@
     @content;
   }
 }
+
+@mixin burguer($text) {
+  content: $text;
+  font-size: 0.95em;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-angle;
+  width: 65px;
+  height: 25px;
+  background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0) 100%), white;
+  box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: content-box;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
