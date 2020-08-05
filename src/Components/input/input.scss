@@ -84,25 +84,7 @@
   &__burguer {
     &--item {
       display: contents;
-      ::before {
-        font-size: 1em;
-        content: '';
-        display: inline-block;
-        border-radius: $border-angle;
-        width: 60px;
-        height: 25px;
-        margin-right: 8px;
-        background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0) 100%), white;
-        box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.2);
-        box-sizing: content-box;
-        @include mobile {
-          width: 18px;
-          height: 18px;
-        }
-      }
-      :checked::before {
-        background: $red;
-      }
+      color: black;
       input[type='radio'], input[type='checkbox'] {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -114,6 +96,56 @@
         margin: 0;
         cursor: pointer;
       }
+      &.burguer--text {
+        &--bovino {
+          ::before {
+            @include burguer('Bovino');
+          }
+          :checked::before {
+            background: $red;
+            color: white;
+          }
+        }
+        &--frango {
+          ::before {
+            @include burguer('Frango');
+          }
+          :checked::before {
+            background: $red;
+            color: white;
+          }
+        }
+        &--vegano {
+          ::before {
+            @include burguer('Vegano');
+          }
+          :checked::before {
+            background: $red;
+            color: white;
+          }
+        }
+      }
+      &.extra--text {
+        &--ovo {
+          ::before {
+            @include burguer('Ovo');
+          }
+          :checked::before {
+            background: $red;
+            color: white;
+          }
+        }
+        &--queijo {
+          ::before {
+            @include burguer('Queijo');
+          }
+          :checked::before {
+            background: $red;
+            color: white;
+          }
+        }
+      }
     }
   }
 }
+
