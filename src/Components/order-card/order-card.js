@@ -30,6 +30,7 @@ const orderCard = ({e,index}) =>{
           </div>
           {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
           {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={Math.random() * 40} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready'})}/>}
+          {e.orderStatus === 'delivered'&& window.location.pathname==='/kitchen' && <p>Entregue</p>}
   </li>
     
 )}
