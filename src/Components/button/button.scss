@@ -50,6 +50,22 @@
       outline: none;
     }
   }
+  &__burguer {
+    background-color: #D70000;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.2);
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fseta.svg?alt=media&token=b2729cd2-3f86-436c-a181-b57c5df98607);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+  }
 }
 
 .icon {
