@@ -10,10 +10,10 @@ const Saloon = () => {
   const [order, setOrder] = useState(false)
 
   const arrMenu = [
-    {menuText:'Menu', menuClass:menu ? 'sidebar-on-menu' : 'sidebar-menu', menuClick:() => {
+    {menuText:'Menu', menuClass:menu ? 'sidebar active icon-menu' : 'sidebar icon-menu', menuClick:() => {
       setOrder(false)
       setMenu(true)}},
-    {menuText:'Pedidos', menuClass:order ? 'sidebar-on-order' : 'sidebar-order', menuClick:() => {
+    {menuText:'Pedidos', menuClass:order ? 'sidebar active icon-order' : 'sidebar icon-order', menuClick:() => {
       setOrder(true)
       setMenu(false)}},
   ];
