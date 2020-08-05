@@ -11,17 +11,16 @@ const Kitchen = () => {
 
   useEffect(() => {
     firebase.firestore().collection('orders').onSnapshot((snap => {
-      const getBurguer = snap.docs.map((doc) => ({
+      const getData = snap.docs.map((doc) => ({
         id: doc.id,
         waitingTime: Number((((new Date().getTime() - doc.data().msOrdered) / 1000) / 60).toFixed(0)),
         ...doc.data()
       }))
       
-      setOpen(getBurguer)
+      setOpen(getData)
     }))
   }, [])
 
-  // useEffect(()=> setInterval(() => setDate(new Date().getTime()), 60000), [open])
   useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
 
   return (
