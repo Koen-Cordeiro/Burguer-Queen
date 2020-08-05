@@ -1,0 +1,26 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
+.card-order {
+  width: 227px;
+  height: 453px;
+  border-radius: 23px;
+  box-shadow: 0px 0.753619px 3.7681px 0.753619px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-div-top {
+    border-radius: 23px 23px 0px 0px;
+    background: url(../../img/noise.svg);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+  }
+  &-main-text {
+    font-size: 23px;
+  }
+}
