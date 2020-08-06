@@ -124,7 +124,7 @@ const Menu = () => {
       <section className='order'>
         <header className='logged'>
           <h1>{firebase.auth().currentUser.displayName}</h1>
-          <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
+          <Button type={'logout icon-door'} handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
         <form id='orderForm' className='log-reg-flex'>
           <h1>Pedido {orderNumber}</h1>
@@ -163,6 +163,9 @@ const Menu = () => {
                 msOrdered: new Date().getTime(), 
                 workerName: firebase.auth().currentUser.displayName 
               })
+              setClientName('')
+              setTable('')
+              setOrder([])
             }} />
           </fieldset>
         </form>
