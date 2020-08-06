@@ -15,7 +15,7 @@ const Menu = () => {
   const [burguers, setBurguers] = useState([])
   const [menu, setMenu] = useState(false)
   const [order, setOrder] = useState([])
-  const [orderNumber, setOrderNumber] = useState()
+  const [orderNumber, setOrderNumber] = useState(0)
   const [table, setTable] = useState('')
   const [clientName, setClientName] = useState('')
   const [finalPrice, setFinalPrice] = useState(0)
@@ -45,7 +45,7 @@ const Menu = () => {
   }
 
   const sendOrder = (post) => {
-    firebase.firestore().collection('orders').doc(post.orderNumber).set(post)
+    firebase.firestore().collection('orders').doc(post.orderValueNumber).set(post)
   }
 
   const reloadData = (event, greater) => {
@@ -63,8 +63,7 @@ const Menu = () => {
     }
   }
 
-  useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
-  // useEffect(() => console.log(clientOrder), [clientOrder])
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -127,10 +126,10 @@ const Menu = () => {
           <h1>{firebase.auth().currentUser.displayName}</h1>
           <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
-        <form className='log-reg-flex'>
+        <form id='orderForm' className='log-reg-flex'>
           <h1>Pedido {orderNumber}</h1>
-          <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
-          <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
+          <Input type='text' text='Nome do Cliente' value={clientName} handleChange={(e) => setClientName(e.currentTarget.value)} />
+          <Input type='number' text='Mesa' value={table} handleChange={(e) => setTable(e.currentTarget.value)} />
           <fieldset>
             {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
               price: e.price,
@@ -145,12 +144,25 @@ const Menu = () => {
 
             <Button text='Cancelar Pedido' handleClick={(event) => {
               event.preventDefault()
+              setClientName('')
+              setTable('')
               setOrder([])
               }} />
             <Button text='Enviar pedido' handleClick={(event) => {
               event.preventDefault()
-              const orderNumberValue = `${clientName}-${table}-${orderNumber}`
-              sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending',timeOrdered:`${new Date().getHours()}h${new Date().getMinutes()}`, msOrdered: new Date().getTime(), workerName: firebase.auth().currentUser.displayName })
+              const orderValueNumber = `${clientName}-${table}-${orderNumber}`
+              sendOrder({ 
+                orderNumber, 
+                orderValueNumber,
+                finalPrice, 
+                clientName, 
+                table, 
+                clientOrder, 
+                orderStatus: 'pending',
+                timeOrdered:`${new Date().getHours()}h${new Date().getMinutes()}`, 
+                msOrdered: new Date().getTime(), 
+                workerName: firebase.auth().currentUser.displayName 
+              })
             }} />
           </fieldset>
         </form>
