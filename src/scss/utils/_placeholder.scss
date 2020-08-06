@@ -18,3 +18,9 @@
 %center {
   align-items: center;
 }
+
+%space-around-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
