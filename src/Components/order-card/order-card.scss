@@ -27,7 +27,7 @@
     padding: 0 20px;
     @extend %space-around-column;
     box-sizing: border-box;
-  }
+  } 
   &-main-text {
     font-size: 1.5em;
   }
@@ -44,5 +44,14 @@
     @extend %row;
     justify-content: space-between;
     width: 100%;
+  }
+  &-list {
+    width: 100%;
+padding: 0 30px;
+box-sizing: border-box;
+li {
+  display: flex;
+justify-content: space-around;
+}
   }
 }

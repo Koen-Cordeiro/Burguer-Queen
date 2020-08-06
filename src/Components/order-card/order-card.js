@@ -14,15 +14,15 @@ const orderCard = ({e,index}) =>{
       </div>
       <section key={`section-data-${index}`} className='order-card-info'>
         <div>
-  <p key={e.table+index}>Mesa <span key={index + e.table} className='order-card-table-name'>{e.table}</span></p>
-  <p key={e.clientName+index}>Nome<span key={index + e.clientName} className='order-card-table-name'>{e.clientName}</span></p>
+  <p key={e.table+index}>Mesa <span key={index + e.table} className='order-card-table-name'> {e.table}</span></p>
+  <p key={e.clientName+index}>Nome<span key={index + e.clientName} className='order-card-table-name'> {e.clientName}</span></p>
         </div>
   <div className='order-card-time'>
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
   <p key={e.timeOrdered+index}><img src={clock} alt='Tempo desde que o pedido foi feito'/> {e.timeOrdered}</p>
   </div>
       </section>
-      <ul key={`orders-${index}`}>
+      <ul key={`orders-${index}`} className='order-card-list'>
         {e.clientOrder.map((item, index) => (
           <li key={index}>
             <span key={item.count + index}>{item.count}</span>
