@@ -13,7 +13,7 @@ const orderCard = ({e,index}) =>{
       <p key={e.orderNumber + index} className='order-card-main-text'>N°{e.orderNumber}</p>
       </div>
       <section key={`section-data-${index}`} className='order-card-info'>
-        <div>
+        <div className='order-card-div-info'>
   <p key={e.table+index}>Mesa <span key={index + e.table} className='order-card-table-name'> {e.table}</span></p>
   <p key={e.clientName+index}>Nome<span key={index + e.clientName} className='order-card-table-name'> {e.clientName}</span></p>
         </div>
@@ -27,6 +27,7 @@ const orderCard = ({e,index}) =>{
           <li key={index}>
             <span key={item.count + index}>{item.count}</span>
             <span key={item.type + index}>{item.type}</span>
+            {item.extras && <p> Estou aqui</p>}
           </li>
         ))}
       </ul>
