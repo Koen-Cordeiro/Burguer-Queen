@@ -1,12 +1,13 @@
 @import "../../scss/utils/mixins";
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
+@import "../../scss/utils/placeholder";
 
-.card-order {
+.order-card {
   width: 227px;
   height: 453px;
   border-radius: 23px;
-  box-shadow: 0px 0.753619px 3.7681px 0.753619px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0.8px 3.8px 0.8px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +22,15 @@
     margin: 0;
   }
   &-main-text {
-    font-size: 23px;
+    font-size: 1.5em;
+  }
+  img {
+    width: 22px;
+    height: 22px;
+  }
+  &-time {
+    @extend %row;
+    justify-content: space-around;
+    width: 100%;
   }
 }
