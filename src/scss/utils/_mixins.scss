@@ -32,6 +32,20 @@
   font-size: 0.9em;
 }
 
+@mixin send($width, $height, $font) {
+  width: $width;
+  height: $height;
+  font-size: $font;
+  border-radius: $border-angle;
+  background-color: $red;
+  border: none;
+  color: white;
+  font-weight: $font-weight-bold;
+  letter-spacing: 0.05em;
+  transition: 1000ms; 
+  text-transform: uppercase;
+}
+
 @mixin button ($width, $height, $bg-color, $color, $align) {
   border: none;
   background-color: $bg-color;
