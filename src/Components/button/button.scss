@@ -69,6 +69,12 @@
   &__accept {
     width: 151px;
     height: 46px;
+    font-size: 1.19em;
+    text-transform: uppercase;
+    color: white;
+    font-weight: $font-weight-semibold;
+    border-radius: 6px;
+    background-color: $red;
   }
 }
 
