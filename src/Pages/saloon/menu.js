@@ -126,10 +126,15 @@ const Menu = () => {
           <h1>{firebase.auth().currentUser.displayName}</h1>
           <Button type={'logout icon-door'} handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
-        <form id='orderForm' className='log-reg-flex'>
-          <h1>Pedido {orderNumber}</h1>
-          <Input type='text' text='Nome do Cliente' value={clientName} handleChange={(e) => setClientName(e.currentTarget.value)} />
-          <Input type='number' text='Mesa' value={table} handleChange={(e) => setTable(e.currentTarget.value)} />
+        <form id='orderForm' className='order__form'>
+          <div className='order__number'>
+            <h1>Caso</h1>
+            <h3>Nº{"\u00a0"}{orderNumber}</h3>
+          </div>
+          <div className='order__info'>
+            <Input use='order' specific='name' type='text' label='Nome' value={clientName} handleChange={(e) => setClientName(e.currentTarget.value)} />
+            <Input use='order' specific='table'  type='number' label='Mesa' value={table} handleChange={(e) => setTable(e.currentTarget.value)} />
+          </div>
           <fieldset>
             {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
               price: e.price,
