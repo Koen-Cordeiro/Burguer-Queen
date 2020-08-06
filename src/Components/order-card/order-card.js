@@ -26,8 +26,12 @@ const orderCard = ({e,index}) =>{
         {e.clientOrder.map((item, index) => (
           <li key={index}>
             <span key={item.count + index}>{item.count}</span>
-            <span key={item.type + index}>{item.type}</span>
-            {item.extras && <p> Estou aqui</p>}
+            <span key={item.type + index}>
+              <p>{item.type}</p>
+            {item.meat && <p>{item.meat}</p>}
+            {item.extras && item.extras.Queijo  && <p> Queijo</p>}
+            {item.extras && item.extras.Ovo && <p> Ovo</p>}
+            </span>
           </li>
         ))}
       </ul>
@@ -35,9 +39,11 @@ const orderCard = ({e,index}) =>{
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
+          <div className='order-card-div-bottom'>
           {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={`accept-${index}`} text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
           {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={`finalize-${index}`} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready'})}/>}
           {e.orderStatus === 'delivered'&& window.location.pathname==='/kitchen' && <p key={`delivered-${index}`}>Entregue</p>}
+          </div>
   </li>
     
 )}
