@@ -33,11 +33,7 @@
             padding-left: 10px;
           }
         &:focus {
-          border: 2px solid $red;
-          -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          outline: none;
+          @include focus;
         }
       }
     }
@@ -69,14 +65,6 @@
         }
       }
       input[type='radio'] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
-        margin: 0;
         cursor: pointer;
       }
     }
@@ -86,14 +74,6 @@
       display: contents;
       color: black;
       input[type='radio'], input[type='checkbox'] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none;
-        margin: 0;
         cursor: pointer;
       }
       &.burguer--text {
@@ -102,8 +82,7 @@
             @include burguer('Bovino');
           }
           :checked::before {
-            background: $red;
-            color: white;
+            @include checked;
           }
         }
         &--frango {
@@ -111,8 +90,7 @@
             @include burguer('Frango');
           }
           :checked::before {
-            background: $red;
-            color: white;
+            @include checked;
           }
         }
         &--vegano {
@@ -120,8 +98,7 @@
             @include burguer('Vegano');
           }
           :checked::before {
-            background: $red;
-            color: white;
+            @include checked;
           }
         }
       }
@@ -131,8 +108,7 @@
             @include burguer('Ovo');
           }
           :checked::before {
-            background: $red;
-            color: white;
+            @include checked;
           }
         }
         &--queijo {
@@ -140,8 +116,7 @@
             @include burguer('Queijo');
           }
           :checked::before {
-            background: $red;
-            color: white;
+            @include checked;
           }
         }
       }
@@ -164,7 +139,6 @@
       font-weight: $font-weight-semibold;
       color: black;
       input {
-        // margin-left: 10px;
         height: 30px;
         background: rgba(160, 160, 160, 0.2);
         box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
@@ -175,20 +149,14 @@
         text-transform: uppercase;
         font-size: 0.9em;
         &:focus {
-          border: 2px solid $red;
-          -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
-          outline: none;
+          @include focus;
         }
         &::placeholder {
           margin-left: 10px;
           color: black;
           text-transform: uppercase;
         }
-        
       }
-      
     }
   }
 }

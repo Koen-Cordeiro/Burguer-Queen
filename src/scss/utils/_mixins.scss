@@ -70,3 +70,16 @@
   text-transform: uppercase;
   margin-right: 8px;
 }
+
+@mixin focus {
+  border: 2px solid $red;
+  -webkit-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  -moz-box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  box-shadow: 0px 0px 5px rgba(160, 160, 160, 0.75);
+  outline: none;
+}
+
+@mixin checked {
+  background: $red;
+  color: white;
+}
