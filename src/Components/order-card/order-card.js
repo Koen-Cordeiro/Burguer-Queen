@@ -8,15 +8,17 @@ import Button from '../button/button'
 
 const orderCard = ({e,index}) =>{ 
   return (
-    <li key={index } className='card-order'>
-      <div key={`key-div-${index}`} className='card-order-div-top'>
-      <p key={e.orderNumber + index} className='card-order-main-text'>N°{e.orderNumber}</p>
+    <li key={index } className='order-card'>
+      <div key={`key-div-${index}`} className='order-card-div-top'>
+      <p key={e.orderNumber + index} className='order-card-main-text'>N°{e.orderNumber}</p>
       </div>
-      <section key={`section-data-${index}`}>
-  <p key={e.table+index}>Mesa {e.table}</p>
-  <p key={e.clientName+index}>Nome {e.clientName}</p>
+      <section key={`section-data-${index}`} className='order-card-info'>
+  <p key={e.table+index}>Mesa <span key={index + e.table}>{e.table}</span></p>
+  <p key={e.clientName+index}>Nome<span key={index + e.clientName}>{e.clientName}</span></p>
+  <div className='order-card-time'>
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
   <p key={e.timeOrdered+index}><img src={clock} alt='Tempo desde que o pedido foi feito'/> {e.timeOrdered}</p>
+  </div>
       </section>
       <ul key={`orders-${index}`}>
         {e.clientOrder.map((item, index) => (
@@ -26,7 +28,7 @@ const orderCard = ({e,index}) =>{
           </li>
         ))}
       </ul>
-        <div key={e.finalPrice + index}>
+        <div key={e.finalPrice + index} className='order-card-time'>
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
