@@ -26,7 +26,7 @@ const setExtras = (e) => {
           <Input use='burguer' specific='item extra--text--queijo' type='checkbox' name={props.extraTwo}  handleClick={(e)=> setExtras(e)} />
         </div>
       </section>
-      <Button type={'burguer'} handleClick={props.burguerClick}/>
+      <Button type='burguer' handleClick={props.burguerClick}/>
     </div>
   )
 }

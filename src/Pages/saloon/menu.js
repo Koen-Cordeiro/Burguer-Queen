@@ -124,7 +124,7 @@ const Menu = () => {
       <section className='order'>
         <header className='logged'>
           <h1>{firebase.auth().currentUser.displayName}</h1>
-          <Button type={'logout icon-door'} handleClick={() => firebase.auth().signOut()} text='Sair' />
+          <Button type='logout icon-door' handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
         <form id='orderForm' className='order__form'>
           <div className='order__number'>
@@ -135,7 +135,7 @@ const Menu = () => {
             <Input use='order' specific='name' type='text' label='Nome' value={clientName} handleChange={(e) => setClientName(e.currentTarget.value)} />
             <Input use='order' specific='table'  type='number' label='Mesa' value={table} handleChange={(e) => setTable(e.currentTarget.value)} />
           </div>
-          <fieldset>
+          <fieldset className='order__items'>
             {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
               price: e.price,
               type: e.type,
@@ -145,15 +145,19 @@ const Menu = () => {
               extras: e.extras,
               func: reloadData
             }} />)}
-            <h2>R${finalPrice}</h2>
-
-            <Button text='Cancelar Pedido' handleClick={(event) => {
+          </fieldset>
+          <div className='order__total'>
+            <h2>Total</h2>
+            <h3>R${"\u00a0"}{finalPrice}</h3>
+          </div>
+          <div className='order__buttons'>
+            <Button type='order--cancel' text='Cancelar' handleClick={(event) => {
               event.preventDefault()
               setClientName('')
               setTable('')
               setOrder([])
               }} />
-            <Button text='Enviar pedido' handleClick={(event) => {
+            <Button type='order--confirm' text='Enviar' handleClick={(event) => {
               event.preventDefault()
               const orderValueNumber = `${clientName}-${table}-${orderNumber}`
               sendOrder({ 
@@ -172,7 +176,7 @@ const Menu = () => {
               setTable('')
               setOrder([])
             }} />
-          </fieldset>
+          </div>
         </form>
       </section>
     </>
