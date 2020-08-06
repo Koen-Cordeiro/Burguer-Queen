@@ -21,8 +21,20 @@
     height: 50px;
     margin: 0;
   }
+  &-info {
+    width: 100%;
+    height: 130px;
+    padding: 0 20px;
+    @extend %space-around-column;
+    box-sizing: border-box;
+  }
   &-main-text {
     font-size: 1.5em;
+  }
+  &-table-name {
+    font-size: 1.1em;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
   }
   img {
     width: 22px;
@@ -30,7 +42,7 @@
   }
   &-time {
     @extend %row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
   }
 }

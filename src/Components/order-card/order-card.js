@@ -13,8 +13,10 @@ const orderCard = ({e,index}) =>{
       <p key={e.orderNumber + index} className='order-card-main-text'>N°{e.orderNumber}</p>
       </div>
       <section key={`section-data-${index}`} className='order-card-info'>
-  <p key={e.table+index}>Mesa <span key={index + e.table}>{e.table}</span></p>
-  <p key={e.clientName+index}>Nome<span key={index + e.clientName}>{e.clientName}</span></p>
+        <div>
+  <p key={e.table+index}>Mesa <span key={index + e.table} className='order-card-table-name'>{e.table}</span></p>
+  <p key={e.clientName+index}>Nome<span key={index + e.clientName} className='order-card-table-name'>{e.clientName}</span></p>
+        </div>
   <div className='order-card-time'>
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
   <p key={e.timeOrdered+index}><img src={clock} alt='Tempo desde que o pedido foi feito'/> {e.timeOrdered}</p>
