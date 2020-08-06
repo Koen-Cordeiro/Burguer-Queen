@@ -33,8 +33,13 @@ const setExtras = (e) => {
 
 MenuItems.defaultProps = {
   titleTextOne: 'Hambúrguer',
+  textInputOne: 'Bovino',
+  textInputTwo: 'Frango',
+  textInputThree: 'Vegano',
   titleTextTwo: 'Extras',
   price: '1',
+  extraOne: 'Ovo',
+  extraTwo: 'Queijo',
 }
-
+  
 export default MenuItems
