@@ -49,13 +49,13 @@
   &__number, &__info {
     @extend %row;
     width: inherit;
-    height: 70px;
+    height: 80px;
     justify-content: space-between;
   }
   &__number {
     align-items: flex-end;
     padding-bottom: 20px;
-    border-bottom: 2px solid $gray;
+    border-bottom: 2.5px solid $gray;
     h1 {
       font-size: 2.5em;
     }
@@ -67,6 +67,35 @@
   }
   &__info {
     @extend %center;
+  }
+  &__items {
+    height: 370px;
+    background: rgba(160, 160, 160, 0.2);
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 0px 0px $border-angle $border-angle;
+  }
+  &__total {
+    @extend %row;
+    @extend %center;
+    width: inherit;
+    height: 55px;
+    justify-content: space-between;
+    border-bottom: 2.5px solid $gray;
+    font-weight: $font-weight-semibold;
+    font-size: 1.2em;
+    h2 {
+      text-transform: uppercase;
+    }
+    h3 {
+      text-align: right;
+    }
+  }
+  &__buttons {
+    @extend %row;
+    width: inherit;
+    height: 63px;
+    align-items: flex-end;
+    justify-content: space-between;
   }
 }
 
