@@ -19,8 +19,9 @@
       justify-content: center;
       display: flex;
       align-items: center;
+      background-repeat: no-repeat;
       width: 100%;
-      height: 50px;
+      height: 54px;
       margin: 0;
     }
     &-bottom {
@@ -30,7 +31,7 @@
       display: flex;
       align-items: center;
       width: 100%;
-      height: 90px;
+      height: 91px;
       background-repeat: no-repeat;
       background-size: 300px;
       margin: 0;
@@ -42,10 +43,14 @@
       justify-content: space-around;
     }
   }
+  &-section {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
   &-info {
     width: 100%;
     height: 130px;
-    padding: 0 20px;
     @extend %space-around-column;
     box-sizing: border-box;
   }
@@ -68,7 +73,7 @@
   }
   &-list {
     width: 100%;
-    height: 207px;
+    height: 150px;
     padding: 0 30px 20px;
     box-sizing: border-box;
     li {

@@ -12,7 +12,8 @@ const orderCard = ({e,index}) =>{
       <div key={`key-div-${index}`} className='order-card-div-top'>
       <p key={e.orderNumber + index} className='order-card-main-text'>N°{e.orderNumber}</p>
       </div>
-      <section key={`section-data-${index}`} className='order-card-info'>
+      <section className='order-card-section'>
+      <div key={`section-data-${index}`} className='order-card-info'>
         <div className='order-card-div-info'>
   <p key={e.table+index}>Mesa <span key={index + e.table} className='order-card-table-name'> {e.table}</span></p>
   <p key={e.clientName+index}>Nome<span key={index + e.clientName} className='order-card-table-name'> {e.clientName}</span></p>
@@ -21,7 +22,7 @@ const orderCard = ({e,index}) =>{
   <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito'/>{e.waitingTime}</p>
   <p key={e.timeOrdered+index}><img src={clock} alt='Tempo desde que o pedido foi feito'/> {e.timeOrdered}</p>
   </div>
-      </section>
+      </div>
       <ul key={`orders-${index}`} className='order-card-list'>
         {e.clientOrder.map((item, index) => (
           <li key={index}>
@@ -35,10 +36,12 @@ const orderCard = ({e,index}) =>{
           </li>
         ))}
       </ul>
-        <div key={e.finalPrice + index} className='order-card-time'>
+        <div key={e.finalPrice + index} className='order-card-total'>
           <p key={'Total' + index}>Total</p>
           <span key={e.finalPrice * index}>{e.finalPrice}</span>
           </div>
+             
+      </section>
           <div className='order-card-div-bottom'>
           {e.orderStatus === 'pending'&& window.location.pathname==='/kitchen' && <Button key={`accept-${index}`} type='accept' text='Aceitar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'doing'})}/>}
           {e.orderStatus === 'doing'&& window.location.pathname==='/kitchen' && <Button key={`finalize-${index}`} text='Finalizar' handleClick={async ()=>  await firebase.firestore().collection('orders').doc(e.id).update({orderStatus: 'ready'})}/>}
