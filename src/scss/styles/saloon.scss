@@ -36,7 +36,38 @@
 }
 
 .order {
-  width: 373px;
+  @extend %flex;
+  width: 374px;
+  height: 768px;
+  box-shadow: -4px 0px 7px rgba(0, 0, 0, 0.15);
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fruido.png?alt=media&token=2f216a63-4a06-442b-8866-9981b2a9f3d7);
+  &__form {
+    width: 315px;
+    height: 698px;
+    border-radius: 0px 0px $border-angle 0px;
+  }
+  &__number, &__info {
+    @extend %row;
+    width: inherit;
+    height: 70px;
+    justify-content: space-between;
+  }
+  &__number {
+    align-items: flex-end;
+    padding-bottom: 20px;
+    border-bottom: 2px solid $gray;
+    h1 {
+      font-size: 2.5em;
+    }
+    h3 {
+      font-size: 1.5em;
+      font-weight: $font-weight-semibold;
+      text-align: right;
+    }
+  }
+  &__info {
+    @extend %center;
+  }
 }
 
 .logged {
@@ -44,8 +75,9 @@
   @extend %center;
   justify-content: space-between;
   background-color: black;
+  width: 318px;
   height: 70px;
-  padding: 0 25px;
+  padding: 0 28px;
   border-radius: 0px $border-angle 0px 0px;
   h1 {
     color: white;
