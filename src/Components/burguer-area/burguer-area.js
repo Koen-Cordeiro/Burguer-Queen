@@ -26,15 +26,20 @@ const setExtras = (e) => {
           <Input use='burguer' specific='item extra--text--queijo' type='checkbox' name={props.extraTwo}  handleClick={(e)=> setExtras(e)} />
         </div>
       </section>
-      <Button type={'burguer'} handleClick={props.burguerClick}/>
+      <Button type='burguer' handleClick={props.burguerClick}/>
     </div>
   )
 }
 
 MenuItems.defaultProps = {
   titleTextOne: 'Hambúrguer',
+  textInputOne: 'Bovino',
+  textInputTwo: 'Frango',
+  textInputThree: 'Vegano',
   titleTextTwo: 'Extras',
   price: '1',
+  extraOne: 'Ovo',
+  extraTwo: 'Queijo',
 }
-
+  
 export default MenuItems

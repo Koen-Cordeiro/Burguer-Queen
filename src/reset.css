@@ -41,3 +41,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+input[type='radio'], input[type='checkbox'] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline: none;
+	margin: 0;
+}

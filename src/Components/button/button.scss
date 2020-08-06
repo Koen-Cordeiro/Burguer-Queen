@@ -5,7 +5,7 @@
 
 .button {
   &__submit {
-    @include submit;
+    @include send(320px, 45px, 1em);
     background-color: $red;
     border: none;
     color: white;
@@ -15,7 +15,7 @@
     text-transform: uppercase;
     margin-bottom: 25px;
     @include mobile {
-      @include submit__responsive;
+      @include send(230px, 37px, 0.9em);
       margin-bottom: 20px;
     }
     &:focus {
@@ -66,6 +66,27 @@
     background-position: center;
     background-size: 30px;
   }
+  &__logout {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: $font-weight-extrabold;
+    font-size: 0.8em;
+    padding: 0;
+  }
+  &__order {
+    &--cancel {
+      @include send(135px, 45px, 1em);
+      background-color: $gray;
+    }
+    &--confirm {
+      @include send(115px, 45px, 1em);
+    }
+  }
 }
 
 .icon {
@@ -89,6 +110,13 @@
       &::before {
         content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5');
       }
+    }
+  }
+  &-door {
+    &::after {
+      margin-left: 8px;
+      vertical-align: sub;
+      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fdoor.svg?alt=media&token=fbb20d72-cd1e-4d3b-aaf5-3e7720338cba');
     }
   }
 }
