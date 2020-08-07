@@ -87,6 +87,16 @@
     font-weight: $font-weight-extrabold;
     font-size: 0.8em;
     padding: 0;
+    &--gray {
+      display: flex;
+      background-color: $gray;
+      text-transform: uppercase;
+      font-weight: $font-weight-semibold;
+      border: none;
+      font-size: 0.8em;
+      color: white;
+      align-items: center;
+    }
   }
   &__order {
     &--cancel {
@@ -95,6 +105,21 @@
     }
     &--confirm {
       @include send(115px, 45px, 1em);
+    }
+  }
+  &__status {
+    border-radius: $border-big $border-big 0px 0px;
+    @include button(205px, 55px, white, black, center);
+    text-transform: uppercase;
+    &--red {
+      @include button(205px, 55px, $red, white, center);
+      border-radius: $border-big $border-big 0px 0px;
+      text-transform: uppercase;
+    }
+    &--black {
+      @include button(205px, 55px,black, white, center);
+      border-radius: $border-big $border-big 0px 0px;
+      text-transform: uppercase;
     }
   }
 }
