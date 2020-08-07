@@ -33,9 +33,15 @@ body {
   width: 240px;
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
+  position: fixed;
   &__kitchen {
     position:fixed;
   }
+}
+
+.cardapio {
+  @extend %row;
+  margin-left:  240px;
 }
 
 .menu {
@@ -114,6 +120,20 @@ body {
     height: 63px;
     align-items: flex-end;
     justify-content: space-between;
+  }
+  &__cards {
+    @extend %column;
+    margin-left: 240px;
+  }
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 28px;
+    height: 70px;
+    background: $gray;
+    box-shadow: inset 0px 3.00008px 7.50021px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
   }
 }
 

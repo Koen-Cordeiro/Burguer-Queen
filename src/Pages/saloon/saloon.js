@@ -24,8 +24,10 @@ const Saloon = () => {
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
-      {menu && <Menu />}
-      {order && <Orders />}
+      <div className='cardapio'>
+        {menu && <Menu />}
+        {order && <Orders />}
+      </div>
     </div>
   );
 };
