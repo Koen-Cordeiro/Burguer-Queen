@@ -82,10 +82,15 @@ body {
     @extend %center;
   }
   &__items {
+    @extend %column;
+    display: flex;
+    align-items: center;
     height: 370px;
+    overflow: auto;
     background: rgba(160, 160, 160, 0.2);
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px 0px $border-angle $border-angle;
+    
   }
   &__total {
     @extend %row;
