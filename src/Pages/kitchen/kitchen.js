@@ -29,22 +29,28 @@ const Kitchen = () => {
   useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
 
   const arrMenu = [
-    {menuText:'Abertos', menuClass:status === 'pending'? 'sidebar active icon-menu' : 'sidebar icon-menu', menuClick:() => setStatus('pending')},
-    {menuText:'Prontos', menuClass:status === 'doing' ? 'sidebar active icon-order' : 'sidebar icon-order', menuClick:() => setStatus('doing')},
-    {menuText:'Entregues', menuClass:status === '' ? 'sidebar active icon-order' : 'sidebar icon-order', menuClick:() => setStatus('')},
+    {menuText:'Abertos', menuClass:status === 'pending'? 'sidebar active' : 'sidebar', menuClick:() => setStatus('pending')},
+    {menuText:'Prontos', menuClass:status === 'doing' ? 'sidebar active' : 'sidebar', menuClick:() => setStatus('doing')},
+    {menuText:'Entregues', menuClass:status === '' ? 'sidebar active' : 'sidebar', menuClick:() => setStatus('')},
   ];
 
   return (
     <div className='frame'>
-      <Button text='Sair' handleClick={() => firebase.auth().signOut()} />
-
-      <aside className='sidebar sidebar__kitchen'>
+      <aside className='sidebar'>
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
-      {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
-      {status.length===0 && <CardBoard arr={delivered} />}
+      <section className='order__cards'>
+        <header className='order__top'>
+          <h1>{firebase.auth().currentUser.displayName}</h1>
+          <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />
+        </header>
+        {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
+        {status.length===0 && <CardBoard arr={delivered} />}
+      </section>
     </div>
+
+    
   );
 };
 
