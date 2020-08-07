@@ -1,7 +1,6 @@
-@import '../../scss/utils/mixins';
-@import '../../scss/utils/colors';
-@import '../../scss/utils/typhography';
-
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/_typhography";
 
 .button {
   &__submit {
@@ -11,7 +10,7 @@
     color: white;
     font-weight: $font-weight-bold;
     letter-spacing: 0.05em;
-    transition: 1000ms; 
+    transition: 1000ms;
     text-transform: uppercase;
     margin-bottom: 25px;
     @include mobile {
@@ -30,28 +29,28 @@
     }
   }
   &__sidebar {
-    @include button (200px, 70px, black, white, left);
+    @include button(200px, 70px, black, white, left);
     border-radius: $border-angle 0px 0px $border-angle;
     &.active {
-      @include button (200px, 70px, white, black, left);
+      @include button(200px, 70px, white, black, left);
     }
     &:focus {
       outline: none;
     }
   }
   &__menu {
-    @include button (205px, 55px, white, black, center);
+    @include button(205px, 55px, white, black, center);
     border-radius: $border-big $border-big 0px 0px;
     text-transform: uppercase;
     &.active {
-      @include button (205px, 55px, $gray, white, center);
+      @include button(205px, 55px, $gray, white, center);
     }
     &:focus {
       outline: none;
     }
   }
   &__burguer {
-    background-color: #D70000;
+    background-color: #d70000;
     position: absolute;
     bottom: 15px;
     right: 20px;
@@ -66,8 +65,19 @@
     background-position: center;
     background-size: 30px;
   }
+  &__accept {
+    width: 151px;
+    height: 46px;
+    font-size: 1.19em;
+    text-transform: uppercase;
+    color: white;
+    font-weight: $font-weight-semibold;
+    border-radius: 6px;
+    background-color: $red;
+  }
   &__logout {
     display: flex;
+    font-family: $font-primary;
     align-items: center;
     background-color: black;
     border: none;
@@ -93,22 +103,22 @@
   &-menu {
     &::before {
       @include icon;
-      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fwhite%20burguer.svg?alt=media&token=fc767755-b77d-4e9c-a93e-22dce0bc681a');
-      }
+      content: url("../../img/white\ burguer.svg");
+    }
     &.active {
       &::before {
-        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd');
+        content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd");
       }
     }
   }
   &-order {
     &::before {
       @include icon;
-      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1');
+      content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1");
     }
     &.active {
       &::before {
-        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5');
+        content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5");
       }
     }
   }
@@ -116,7 +126,7 @@
     &::after {
       margin-left: 8px;
       vertical-align: sub;
-      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fdoor.svg?alt=media&token=fbb20d72-cd1e-4d3b-aaf5-3e7720338cba');
+      content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fdoor.svg?alt=media&token=fbb20d72-cd1e-4d3b-aaf5-3e7720338cba");
     }
   }
 }
