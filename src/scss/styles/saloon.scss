@@ -3,6 +3,11 @@
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
 
+body {
+  font-size: $text-base-size;
+  font-family: $font-primary, $font-secondary;
+  background: url(../../img/pattern-detective.png) repeat;
+}
 .menu-row-reverse {
   display: flex;
   flex-direction: row-reverse;
@@ -16,6 +21,7 @@
   @include background(768px, 1024px);
   @extend %row;
   padding:0;
+  overflow:auto;
 }
 
 .sidebar {
@@ -23,6 +29,9 @@
   width: 240px;
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
+  &__kitchen {
+    position:fixed;
+  }
 }
 
 .menu {
