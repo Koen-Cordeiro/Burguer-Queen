@@ -18,7 +18,8 @@ const Register = () => {
   const register = async (document) => {
     try {
       const userCollection = await firebase.firestore().collection('users-info');
-      await firebase.auth().createUserWithEmailAndPassword(document.email, document.password)
+      const registerName = await firebase.auth().createUserWithEmailAndPassword(document.email, document.password)
+      registerName.user.updateProfile({displayName: document.name});
       const uid = firebase.auth().currentUser.uid;
       userCollection.doc(uid).set(document);
     } catch (error) {
