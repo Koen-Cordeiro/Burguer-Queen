@@ -44,8 +44,8 @@ const orderCard = ({ e, index }) => {
       </section>
       <div className='order-card-div-bottom'>
         {e.orderStatus === 'pending' && window.location.pathname === '/kitchen' && <Button key={`accept-${index}`} type='accept' text='Aceitar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'doing' })} />}
-        {e.orderStatus === 'doing' && window.location.pathname === '/kitchen' && <Button key={`finalize-${index}`} text='Finalizar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'ready' })} />}
-        {e.orderStatus === 'delivered' && window.location.pathname === '/kitchen' && <p key={`delivered-${index}`}>Entregue</p>}
+        {e.orderStatus === 'doing' && window.location.pathname === '/kitchen' && <Button key={`finalize-${index}`} type='accept' text='Finalizar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'ready' })} />}
+        {e.orderStatus === 'delivered' && window.location.pathname === '/kitchen' && <p key={`delivered-${index}`} className='order-card__read'>Entregue</p>}
       </div>
     </li>
 
