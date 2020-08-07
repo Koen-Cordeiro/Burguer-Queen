@@ -96,27 +96,28 @@
     }
   }
 }
+}
 
 .icon {
   &-menu {
     &::before {
       @include icon;
-      content: url("../../img/white\ burguer.svg");
-    }
+      content: url('../../img/white\ burguer.svg');
+      }
     &.active {
       &::before {
-        content: url("../../img/burguer.svg");
+        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd');
       }
     }
   }
   &-order {
     &::before {
       @include icon;
-      content: url("../../img/pedido\ branco.svg");
+      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1');
     }
     &.active {
       &::before {
-        content: url("../../img/pedido\ preto.svg");
+        content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5');
       }
     }
   }
@@ -127,5 +128,4 @@
       content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fdoor.svg?alt=media&token=fbb20d72-cd1e-4d3b-aaf5-3e7720338cba');
     }
   }
-}
 }
