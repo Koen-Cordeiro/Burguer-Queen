@@ -15,7 +15,7 @@ const Menu = () => {
   const [burguers, setBurguers] = useState([])
   const [menu, setMenu] = useState(false)
   const [order, setOrder] = useState([])
-  const [orderNumber, setOrderNumber] = useState()
+  const [orderNumber, setOrderNumber] = useState(0)
   const [table, setTable] = useState('')
   const [clientName, setClientName] = useState('')
   const [finalPrice, setFinalPrice] = useState(0)
@@ -45,7 +45,7 @@ const Menu = () => {
   }
 
   const sendOrder = (post) => {
-    firebase.firestore().collection('orders').doc(post.orderNumber).set(post)
+    firebase.firestore().collection('orders').doc(post.orderValueNumber).set(post)
   }
 
   const reloadData = (event, greater) => {
@@ -63,8 +63,7 @@ const Menu = () => {
     }
   }
 
-  useEffect(() => setOrderNumber((Math.random() * 100000).toFixed(0)), [])
-  // useEffect(() => console.log(clientOrder), [clientOrder])
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -125,13 +124,18 @@ const Menu = () => {
       <section className='order'>
         <header className='logged'>
           <h1>{firebase.auth().currentUser.displayName}</h1>
-          <Button handleClick={() => firebase.auth().signOut()} text='Sair' />
+          <Button type='logout icon-door' handleClick={() => firebase.auth().signOut()} text='Sair' />
         </header>
-        <form className='log-reg-flex'>
-          <h1>Pedido {orderNumber}</h1>
-          <Input type='text' text='Nome do Cliente' handleChange={(e) => setClientName(e.currentTarget.value)} />
-          <Input type='number' text='Mesa' handleChange={(e) => setTable(e.currentTarget.value)} />
-          <fieldset>
+        <form id='orderForm' className='order__form'>
+          <div className='order__number'>
+            <h1>Caso</h1>
+            <h3>Nº{"\u00a0"}{orderNumber}</h3>
+          </div>
+          <div className='order__info'>
+            <Input use='order' specific='name' type='text' label='Nome' value={clientName} handleChange={(e) => setClientName(e.currentTarget.value)} />
+            <Input use='order' specific='table'  type='number' label='Mesa' value={table} handleChange={(e) => setTable(e.currentTarget.value)} />
+          </div>
+          <fieldset className='order__items'>
             {clientOrder.map((e, index) => <FinalOrder key={index + 1000} data={{
               price: e.price,
               type: e.type,
@@ -141,18 +145,38 @@ const Menu = () => {
               extras: e.extras,
               func: reloadData
             }} />)}
-            <h2>R${finalPrice}</h2>
-
-            <Button text='Cancelar Pedido' handleClick={(event) => {
+          </fieldset>
+          <div className='order__total'>
+            <h2>Total</h2>
+            <h3>R${"\u00a0"}{finalPrice}</h3>
+          </div>
+          <div className='order__buttons'>
+            <Button type='order--cancel' text='Cancelar' handleClick={(event) => {
               event.preventDefault()
+              setClientName('')
+              setTable('')
               setOrder([])
               }} />
-            <Button text='Enviar pedido' handleClick={(event) => {
+            <Button type='order--confirm' text='Enviar' handleClick={(event) => {
               event.preventDefault()
-              const orderNumberValue = `${clientName}-${table}-${orderNumber}`
-              sendOrder({ orderNumber: orderNumberValue, finalPrice, clientName, table, clientOrder, orderStatus: 'pending',timeOrdered:`${new Date().getHours()}h${new Date().getMinutes()}`, msOrdered: new Date().getTime(), workerName: firebase.auth().currentUser.displayName })
+              const orderValueNumber = `${clientName}-${table}-${orderNumber}`
+              sendOrder({ 
+                orderNumber, 
+                orderValueNumber,
+                finalPrice, 
+                clientName, 
+                table, 
+                clientOrder, 
+                orderStatus: 'pending',
+                timeOrdered:`${new Date().getHours()}h${new Date().getMinutes()}`, 
+                msOrdered: new Date().getTime(), 
+                workerName: firebase.auth().currentUser.displayName 
+              })
+              setClientName('')
+              setTable('')
+              setOrder([])
             }} />
-          </fieldset>
+          </div>
         </form>
       </section>
     </>

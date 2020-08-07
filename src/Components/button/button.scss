@@ -4,7 +4,7 @@
 
 .button {
   &__submit {
-    @include submit;
+    @include send(320px, 45px, 1em);
     background-color: $red;
     border: none;
     color: white;
@@ -14,7 +14,7 @@
     text-transform: uppercase;
     margin-bottom: 25px;
     @include mobile {
-      @include submit__responsive;
+      @include send(230px, 37px, 0.9em);
       margin-bottom: 20px;
     }
     &:focus {
@@ -74,6 +74,26 @@
     font-weight: $font-weight-semibold;
     border-radius: 6px;
     background-color: $red;
+  &__logout {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: $font-weight-extrabold;
+    font-size: 0.8em;
+    padding: 0;
+  }
+  &__order {
+    &--cancel {
+      @include send(135px, 45px, 1em);
+      background-color: $gray;
+    }
+    &--confirm {
+      @include send(115px, 45px, 1em);
+    }
   }
 }
 
@@ -100,4 +120,12 @@
       }
     }
   }
+  &-door {
+    &::after {
+      margin-left: 8px;
+      vertical-align: sub;
+      content: url('https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fdoor.svg?alt=media&token=fbb20d72-cd1e-4d3b-aaf5-3e7720338cba');
+    }
+  }
+}
 }
