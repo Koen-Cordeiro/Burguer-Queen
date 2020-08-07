@@ -3,11 +3,15 @@
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
 
-body {
+* {
   font-size: $text-base-size;
   font-family: $font-primary, $font-secondary;
+}
+
+body {
   background: url(../../img/pattern-detective.png) repeat;
 }
+
 .menu-row-reverse {
   display: flex;
   flex-direction: row-reverse;
