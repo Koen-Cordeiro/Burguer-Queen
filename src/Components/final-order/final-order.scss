@@ -1,0 +1,53 @@
+@import "../../scss/utils/mixins";
+@import "../../scss/utils/placeholder";
+@import "../../scss/utils/colors";
+@import "../../scss/utils/typhography";
+
+.order {
+  &__list {
+    @extend %row;
+    width: 290px;
+    padding: 18px 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid gray;
+  }
+  &__counter {
+    @extend %row;
+    font-weight: $font-weight-semibold;
+    &--button, &--value {
+      height: 25px;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+    &--button {
+      width: 25px;
+      font-size: 1.2em;
+      background-color: black;
+      box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
+      border-radius: 50%;
+      color: white;
+    }
+    &--value {
+      width: 40px;
+      font-size: 1.2em;
+    }
+    .red {
+      background-color: $red;
+    }
+  }
+  &__menu {
+    @extend %column;
+    width: 156px;
+    &--main {
+      font-weight: $font-weight-semibold;
+      font-size: 0.95em;
+      margin: 5px 0 4px;
+      text-align: left;
+    }
+    &--price {
+      font-size: 1.2em;
+    }
+  }
+}

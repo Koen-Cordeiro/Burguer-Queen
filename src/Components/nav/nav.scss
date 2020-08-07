@@ -19,4 +19,12 @@
       @extend %row;
     }
   }
+  &__status {
+    height: 70px;
+    display: flex;
+    align-items: flex-end;
+    &--ul {
+      @extend %row;
+    }
+  }
 }

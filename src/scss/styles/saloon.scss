@@ -3,11 +3,15 @@
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
 
-body {
+* {
   font-size: $text-base-size;
   font-family: $font-primary, $font-secondary;
+}
+
+body {
   background: url(../../img/pattern-detective.png) repeat;
 }
+
 .menu-row-reverse {
   display: flex;
   flex-direction: row-reverse;
@@ -29,9 +33,12 @@ body {
   width: 240px;
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
-  &__kitchen {
-    position:fixed;
-  }
+  position: fixed;
+}
+
+.cardapio {
+  @extend %row;
+  margin-left:  240px;
 }
 
 .menu {
@@ -78,10 +85,15 @@ body {
     @extend %center;
   }
   &__items {
+    @extend %column;
+    display: flex;
+    align-items: center;
     height: 370px;
+    overflow: auto;
     background: rgba(160, 160, 160, 0.2);
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px 0px $border-angle $border-angle;
+    
   }
   &__total {
     @extend %row;
@@ -106,6 +118,26 @@ body {
     align-items: flex-end;
     justify-content: space-between;
   }
+  &__cards {
+    @extend %column;
+    margin-left: 240px;
+    width: 100%;
+  }
+  &__top {
+    @extend %center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 25px;
+    height: 70px;
+    background: $gray;
+    box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    h1 {
+      color: white;
+      font-size: 1.2em;
+    }
+  }
 }
 
 .logged {
@@ -122,3 +154,4 @@ body {
     font-size: 1.2em;
   }
 }
+

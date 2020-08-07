@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import firebase from 'firebase'
 import CardBoard from '../../Containers/cardboard/card-board'
 import Button from '../../Components/button/button'
-const Kitchen = () => {
+import Nav from '../../Components/nav/nav'
+
+const Orders = () => {
   const [open, setOpen] = useState([])
   const [status, setStatus] = useState('pending')
   const [date, setDate] = useState(new Date().getTime())
@@ -24,16 +26,25 @@ const Kitchen = () => {
 
   useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
 
+  const arrMenu = [
+    { menuText:'Abertos', 
+      menuClass:status === 'pending' ? 'status' : status === '' ? 'status--black' : 'status--red', 
+      menuClick:() => setStatus('pending')
+    },
+    {menuText:'Prontos', menuClass:status === 'doing' ? 'status' : 'status--red', menuClick:() => setStatus('doing')},
+    {menuText:'Entregues', menuClass:status === '' ? 'status' : 'status--black', menuClick:() => setStatus('')}
+  ];
+
   return (
-    <>
-      <Button text='Sair' handleClick={() => firebase.auth().signOut()} />
-      <Button text='Abertos' handleClick={() => setStatus('pending')} />
-      <Button text='Prontos' handleClick={() => setStatus('doing')} />
-      <Button text='Entregues' handleClick={() => setStatus('')} />
+    <div className='order__cards'>
+      <header className='order__top'>
+        <Nav use='status' arr={arrMenu}/>
+        <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />
+      </header>
       {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
       {status.length===0 && <CardBoard arr={delivered} />}
-    </>
+    </div>
   );
 };
 
-export default Kitchen
+export default Orders
