@@ -34,9 +34,6 @@ body {
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
   position: fixed;
-  &__kitchen {
-    position:fixed;
-  }
 }
 
 .cardapio {
@@ -124,16 +121,22 @@ body {
   &__cards {
     @extend %column;
     margin-left: 240px;
+    width: 100%;
   }
   &__top {
+    @extend %center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-right: 28px;
+    padding: 0px 25px;
     height: 70px;
     background: $gray;
-    box-shadow: inset 0px 3.00008px 7.50021px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
+    h1 {
+      color: white;
+      font-size: 1.2em;
+    }
   }
 }
 
@@ -151,3 +154,4 @@ body {
     font-size: 1.2em;
   }
 }
+
