@@ -13,7 +13,9 @@ const Kitchen = () => {
   const [date, setDate] = useState(new Date().getTime())
   const [delivered, setDelivered] = useState([])
 
-  setInterval(() => setDate(new Date().getTime()), 60000)
+  useEffect(()=> setInterval(() => setDate(new Date().getTime()), 60000), [] )
+
+  
 
   useEffect(() => {
     firebase.firestore().collection('orders').onSnapshot((snap => {
@@ -41,7 +43,7 @@ const Kitchen = () => {
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
-      <section className='order__cards'>
+      <section className='order__cards order__cards-kitchen'>
         <header className='order__top'>
           <h1>{firebase.auth().currentUser.displayName}</h1>
           <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />

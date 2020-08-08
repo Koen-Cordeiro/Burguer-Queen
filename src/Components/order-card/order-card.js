@@ -11,17 +11,17 @@ const orderCard = ({ e, index }) => {
   return (
     <li key={index} className='order-card'>
       <div key={`key-div-${index}`} className='order-card-div-top'>
-        <p key={e.orderNumber + index} className='order-card-main-text'>N°{e.orderNumber}</p>
+        <p key={`order-number-${index}`} className='order-card-main-text'>N°{e.orderNumber}</p>
       </div>
-      <section className='order-card-section'>
+      <section className='order-card-section' key={`order-section-${index}`}>
         <div key={`section-data-${index}`} className='order-card-info'>
-          <div className='order-card-div-info'>
-            <p key={e.table + index}>Mesa <span key={index + e.table} className='order-card-table-name'> {e.table}</span></p>
-            <p key={e.clientName + index}>Nome<span key={index + e.clientName} className='order-card-table-name'> {e.clientName}</span></p>
+          <div className='order-card-div-info' key={`info-div-${index}`}>
+            <p kkey={`table-p-${index}`}>Mesa <span key={index + e.table} className='order-card-table-name'> {e.table}</span></p>
+            <p key={`client-name-${index}`}>Nome<span key={index + e.clientName} className='order-card-table-name'> {e.clientName}</span></p>
           </div>
-          <div className='order-card-time'>
-            <p key={e.waitingTime + index}><img src={chefhat} alt='Quando o pedido foi feito' />{e.waitingTime} min</p>
-            <p key={e.timeOrdered + index}><img src={clock} alt='Tempo desde que o pedido foi feito' /> {e.timeOrdered}</p>
+          <div className='order-card-time' key={`div-time-${index}`}>
+            <p key={`waiting-time-${index}`}><img src={chefhat} alt='Quando o pedido foi feito' />{e.waitingTime} min</p>
+            <p kkey={`time-ordered-${index}`}><img src={clock} alt='Tempo desde que o pedido foi feito' /> {e.timeOrdered}</p>
           </div>
         </div>
         <ul key={`orders-${index}`} className='order-card-list'>

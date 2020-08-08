@@ -120,8 +120,10 @@ body {
   }
   &__cards {
     @extend %column;
-    margin-left: 240px;
     width: 100%;
+    &-kitchen {
+      margin-left: 240px;
+    }
   }
   &__top {
     @extend %center;
