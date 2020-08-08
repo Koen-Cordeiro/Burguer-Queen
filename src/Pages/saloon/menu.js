@@ -23,6 +23,7 @@ const Menu = () => {
   const [burguerMeat, setBurguerMeat] = useState('')
   const [extras, setExtras] = useState({ Ovo: false, Queijo: false })
   const [burguerType, setBurguerType] = useState({})
+  let [updateOrderNumber, setUpdateOrderNumber] = useState(0)
 
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
@@ -63,7 +64,7 @@ const Menu = () => {
     }
   }
 
-  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [])
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -175,6 +176,7 @@ const Menu = () => {
               setClientName('')
               setTable('')
               setOrder([])
+              setUpdateOrderNumber(updateOrderNumber+=1)
             }} />
           </div>
         </form>
