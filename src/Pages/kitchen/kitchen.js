@@ -13,7 +13,7 @@ const Kitchen = () => {
   const [date, setDate] = useState(new Date().getTime())
   const [delivered, setDelivered] = useState([])
 
-  useEffect(()=> setInterval(() => setDate(new Date().getTime()), 60000), [] )
+setInterval(() => setDate(new Date().getTime()), 60000)
 
   
 
