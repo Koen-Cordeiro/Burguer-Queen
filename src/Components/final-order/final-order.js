@@ -15,10 +15,10 @@ const FinalOrder = ({data}) => {
       <p className='order__menu--main'key={data.type}>{data.type}</p>
       {data.meat && <p>{data.meat}</p>}
       {data.extras && 
-      <p className={JSON.stringify(data.extras)}>
+      <div className={JSON.stringify(data.extras)}>
         {data.extras.Queijo && <p>Queijo</p>}
         {data.extras.Ovo && <p>Ovo</p>}
-      </p>}
+      </div>}
     </div>
     <p className='order__menu--price' key={data.price}>{data.price}</p>
   </div>

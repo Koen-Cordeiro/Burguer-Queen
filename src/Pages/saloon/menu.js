@@ -5,7 +5,8 @@ import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
 import FinalOrder from '../../Components/final-order/final-order'
 import Nav from '../../Components/nav/nav'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/firebase-firestore';
 
 const Menu = () => {
   const [breakfast, setBreakfast] = useState([])

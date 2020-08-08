@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from '../src/Pages/login/login'
 import Kitchen from '../src/Pages/kitchen/kitchen'

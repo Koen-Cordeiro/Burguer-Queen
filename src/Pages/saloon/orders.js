@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import CardBoard from '../../Containers/cardboard/card-board'
 import Button from '../../Components/button/button'
 import Nav from '../../Components/nav/nav'
