@@ -32,7 +32,7 @@ const Orders = () => {
       menuClass:status === 'pending' ? 'status' : status === '' ? 'status--black' : 'status--red', 
       menuClick:() => setStatus('pending')
     },
-    {menuText:'Prontos', menuClass:status === 'doing' ? 'status' : 'status--red', menuClick:() => setStatus('doing')},
+    {menuText:'Prontos', menuClass:status === 'ready' ? 'status' : 'status--red', menuClick:() => setStatus('ready')},
     {menuText:'Entregues', menuClass:status === '' ? 'status' : 'status--black', menuClick:() => setStatus('')}
   ];
 
