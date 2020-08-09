@@ -4,7 +4,7 @@ import './final-order.scss'
 const FinalOrder = ({data}) => {
   return (
   <div className='order__list'key={data.key}>
-    <div className='order__counter'>
+    <div className={`order__counter ${JSON.stringify(data.extras)}`} name={JSON.stringify(data.extras)}>
       <span className='order__counter--button red'onClick={(event) => data.func(event, false)}>-</span>
       <div className='order__counter--value' key={data.count + data.type}>
         {data.count}
