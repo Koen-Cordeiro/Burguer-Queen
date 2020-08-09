@@ -52,13 +52,16 @@ const Menu = () => {
   }
 
   const reloadData = (event, greater) => {
-    const element = event.currentTarget.parentElement.children[0].textContent
-    const meat = event.currentTarget.parentElement.children[2].textContent
-    const extrasDOM = event.currentTarget.parentElement.children[3].className
-    const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM)
-    if (indexMeat !== -1) {
-      greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
-      setOrder([...order])
+    const element = event.currentTarget.parentElement.nextSibling.children[0].textContent
+
+    if (/Hambúrguer/.test(element)) {
+      const meat = event.currentTarget.parentElement.nextSibling.children[1].textContent
+      const extrasDOM = event.currentTarget.parentElement.classList[1]
+      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM)
+      if (indexMeat !== -1) {
+        greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
+        setOrder([...order])
+      }
     } else {
       const index = order.findIndex(x => x.type === element)
       greater ? order.push(order[index]) : order.pop(order[index])
@@ -180,10 +183,10 @@ const Menu = () => {
                 setTable('')
                 setOrder([])
                 setUpdateOrderNumber(updateOrderNumber += 1)
-              }  else {
-                Report.Failure( 'Pedido incompleto', 
-                'Para enviar um pedido, favor preencher todas as informações corretamente.', 
-                'Ok, entendo' );
+              } else {
+                Report.Failure('Pedido incompleto',
+                  'Para enviar um pedido, favor preencher todas as informações corretamente.',
+                  'Ok, entendo');
               }
             }} />
           </div>
