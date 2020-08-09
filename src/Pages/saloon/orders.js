@@ -11,7 +11,7 @@ const Orders = () => {
   const [date, setDate] = useState(new Date().getTime())
   const [delivered, setDelivered] = useState([])
 
-  setInterval(() => setDate(new Date().getTime()), 60000)
+  const interval = setInterval(() => setDate(new Date().getTime()), 60000)
 
   useEffect(() => {
     firebase.firestore().collection('orders').onSnapshot((snap => {
@@ -40,7 +40,9 @@ const Orders = () => {
     <div className='order__cards'>
       <header className='order__top'>
         <Nav use='status' arr={arrMenu}/>
-        <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />
+        <Button type='logout--gray icon-door' text='Sair' handleClick={() => {
+          clearInterval(interval)
+          firebase.auth().signOut()}} />
       </header>
       {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
       {status.length===0 && <CardBoard arr={delivered} />}

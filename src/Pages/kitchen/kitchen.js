@@ -13,7 +13,7 @@ const Kitchen = () => {
   const [date, setDate] = useState(new Date().getTime())
   const [delivered, setDelivered] = useState([])
 
-setInterval(() => setDate(new Date().getTime()), 60000)
+const interval = setInterval(() => setDate(new Date().getTime()), 60000)
 
   
 
@@ -46,7 +46,9 @@ setInterval(() => setDate(new Date().getTime()), 60000)
       <section className='order__cards order__cards-kitchen'>
         <header className='order__top'>
           <h1>{firebase.auth().currentUser.displayName}</h1>
-          <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />
+          <Button type='logout--gray icon-door' text='Sair' handleClick={() =>{ 
+            clearInterval(interval)
+            firebase.auth().signOut()}} />
         </header>
         {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
         {status.length===0 && <CardBoard arr={delivered} />}
