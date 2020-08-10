@@ -39,6 +39,7 @@ body {
 .cardapio {
   @extend %row;
   margin-left:  240px;
+  width: 784px;
 }
 
 .menu {
@@ -130,11 +131,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0px 25px;
+    padding: 0px 20px 0px 25px;
     height: 70px;
-    background: $gray;
+    background: #A0A0A0;
     box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
+    align-items: baseline;
     h1 {
       color: white;
       font-size: 1.2em;

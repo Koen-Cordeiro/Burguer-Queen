@@ -50,7 +50,7 @@
     }
   }
   &__burguer {
-    background-color: #d70000;
+    background-color: $red;
     position: absolute;
     bottom: 15px;
     right: 20px;
@@ -66,14 +66,7 @@
     background-size: 30px;
   }
   &__accept {
-    width: 151px;
-    height: 46px;
-    font-size: 1.19em;
-    text-transform: uppercase;
-    color: white;
-    font-weight: $font-weight-semibold;
-    border-radius: 6px;
-    background-color: $red;
+    @include send(150px, 45px, 1em);
   }
   &__logout {
     display: flex;
