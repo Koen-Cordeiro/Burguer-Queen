@@ -24,7 +24,7 @@ const Saloon = () => {
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
       </aside>
-      <div className='cardapio'>
+      <div className='saloon'>
         {menu && <Menu />}
         {order && <Orders />}
       </div>

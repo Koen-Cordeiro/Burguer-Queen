@@ -23,6 +23,10 @@
     @extend %flex;
     width: 240px;
     height: 240px;
+    @include vertical {
+      height: 180px;
+      width: 255px;
+    }
     &--img {
       width: 195px;
     }
