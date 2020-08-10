@@ -131,12 +131,15 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0px 20px 0px 25px;
+    padding: 0px 30px 0px 25px;
     height: 70px;
     background: #A0A0A0;
     box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
-    align-items: baseline;
+    align-items: center;
+    position: fixed;
+    width: 784px;
+    border-radius: 0px $border-angle 0px 0px;
     h1 {
       color: white;
       font-size: 1.2em;
