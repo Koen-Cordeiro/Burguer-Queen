@@ -1,5 +1,5 @@
-@import "../../scss/utils/mixins";
 @import "../../scss/utils/placeholder";
+@import "../../scss/utils/mixins";
 @import "../../scss/utils/colors";
 @import "../../scss/utils/typhography";
 
@@ -22,10 +22,15 @@ body {
 }
 
 .frame {
-  @include background(768px, 1024px);
   @extend %row;
+  @include background(768px, 1024px);
   padding:0;
   overflow:auto;
+  @include vertical {
+    flex-direction: column;
+    @include background(1024px, 768px);
+    padding: 0;
+  }
 }
 
 .sidebar {
@@ -34,12 +39,18 @@ body {
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
   position: fixed;
+  @include vertical {
+    display: flex;
+    width: 768px;
+    height: 180px;
+    border-radius: $border-angle $border-angle 0px 0px;
+  }
 }
 
-.cardapio {
+.saloon {
   @extend %row;
   margin-left:  240px;
-  width: 784px;
+  width: 100%;
 }
 
 .menu {
@@ -124,6 +135,10 @@ body {
     width: 100%;
     &-kitchen {
       margin-left: 240px;
+      @include vertical {
+        margin-left: 0;
+        margin-top: 180px;
+      }
     }
   }
   &__top {
@@ -140,6 +155,11 @@ body {
     position: fixed;
     width: 784px;
     border-radius: 0px $border-angle 0px 0px;
+    @include vertical {
+      width: 768px;
+      border-radius: 0px;
+      padding: 0px 25px;
+    }
     h1 {
       color: white;
       font-size: 1.2em;
@@ -162,3 +182,27 @@ body {
   }
 }
 
+.copyright {
+  &__land {
+    text-align: center;
+    color: white;
+    @include vertical {
+      display: none;
+    }
+  }
+  &__portrait {
+    display: none;
+    @include vertical {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 0;
+      color: white;
+      width: 768px;
+      height: 70px;
+      background-color: black;
+      border-radius: 0px 0px $border-angle $border-angle;
+    }
+  }
+}
