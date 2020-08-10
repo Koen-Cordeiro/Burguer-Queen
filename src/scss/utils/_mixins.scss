@@ -97,3 +97,27 @@
   background: $red;
   color: white;
 }
+
+@mixin card($image, $height) {
+  @extend %flex;
+  background: url(https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fruido.png?alt=media&token=2f216a63-4a06-442b-8866-9981b2a9f3d7);
+  background-repeat: no-repeat;
+  background-size: $image;
+  width: 100%;
+  height: $height;
+  margin: 0;
+}
+
+@mixin stamp($angle){
+  @extend %flex;
+  width: 140px;
+  height: 40px;
+  border-radius: $border-angle;
+  border: 4px solid $red;
+  transform: rotate($angle);
+  color: $red;
+  font-size: 1.25em;
+  letter-spacing: 0.02em;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+}
