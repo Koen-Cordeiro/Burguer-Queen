@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'

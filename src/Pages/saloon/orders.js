@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import CardBoard from '../../Containers/cardboard/card-board'
 import Button from '../../Components/button/button'
 import Nav from '../../Components/nav/nav'
@@ -10,10 +11,10 @@ const Orders = () => {
   const [date, setDate] = useState(new Date().getTime())
   const [delivered, setDelivered] = useState([])
 
-  setInterval(() => setDate(new Date().getTime()), 60000)
+  const interval = setInterval(() => setDate(new Date().getTime()), 60000)
 
   useEffect(() => {
-    firebase.firestore().collection('orders').onSnapshot((snap => {
+    const orders = firebase.firestore().collection('orders').onSnapshot(snap => {
       const getData = snap.docs.map((doc) => ({
         id: doc.id,
         waitingTime: Number((((new Date().getTime() - doc.data().msOrdered) / 1000) / 60).toFixed(0)),
@@ -21,7 +22,9 @@ const Orders = () => {
       }))
       setDelivered(getData.filter(e=> e.orderStatus === 'delivered'))
       setOpen(getData)
-    }))
+
+    })
+    return orders
   }, [])
 
   useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
@@ -31,7 +34,7 @@ const Orders = () => {
       menuClass:status === 'pending' ? 'status' : status === '' ? 'status--black' : 'status--red', 
       menuClick:() => setStatus('pending')
     },
-    {menuText:'Prontos', menuClass:status === 'doing' ? 'status' : 'status--red', menuClick:() => setStatus('doing')},
+    {menuText:'Prontos', menuClass:status === 'ready' ? 'status' : 'status--red', menuClick:() => setStatus('ready')},
     {menuText:'Entregues', menuClass:status === '' ? 'status' : 'status--black', menuClick:() => setStatus('')}
   ];
 
@@ -39,7 +42,9 @@ const Orders = () => {
     <div className='order__cards'>
       <header className='order__top'>
         <Nav use='status' arr={arrMenu}/>
-        <Button type='logout--gray icon-door' text='Sair' handleClick={() => firebase.auth().signOut()} />
+        <Button type='logout--gray icon-door' text='Sair' handleClick={() => {
+          clearInterval(interval)
+          firebase.auth().signOut()}} />
       </header>
       {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
       {status.length===0 && <CardBoard arr={delivered} />}
