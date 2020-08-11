@@ -32,13 +32,13 @@
     @include button(200px, 70px, black, white, left);
     border-radius: $border-angle 0px 0px $border-angle;
       @include vertical {
-        @include button(150px, 70px, black, white, left);
+        @include button(165px, 70px, black, white, left);
         border-radius: $border-angle;
       }
     &.active {
       @include button(200px, 70px, white, black, left);
         @include vertical {
-          @include button(150px, 70px, white, black, left);
+          @include button(165px, 70px, white, black, left);
           border-radius: $border-angle;
         }
     }
@@ -57,8 +57,14 @@
     @include button(205px, 55px, white, black, center);
     border-radius: $border-big $border-big 0px 0px;
     text-transform: uppercase;
+    @include vertical {
+      @include button(200px, 55px, white, black, center);
+    }
     &.active {
       @include button(205px, 55px, $gray, white, center);
+      @include vertical {
+        @include button(200px, 55px, $gray, white, center);
+      }
     }
     &:focus {
       outline: none;
@@ -137,10 +143,16 @@
     &::before {
       @include icon;
       content: url("../../img/white\ burguer.svg");
+      @include vertical {
+        margin: 0 12px;
+      }
     }
     &.active {
       &::before {
         content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fburguer.svg?alt=media&token=9576a62c-6121-4732-82ea-1970ffc7ccfd");
+        @include vertical {
+          margin: 0 12px;
+        }
       }
     }
   }
@@ -148,10 +160,16 @@
     &::before {
       @include icon;
       content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20branco.svg?alt=media&token=d30842d6-08f5-4563-9d7b-7a38a328cff1");
+      @include vertical {
+        margin: 0 12px;
+      }
     }
     &.active {
       &::before {
         content: url("https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fpedido%20preto.svg?alt=media&token=125e5134-1114-413e-8431-3be8dd8818c5");
+        @include vertical {
+          margin: 0 12px;
+        }
       }
     }
   }
