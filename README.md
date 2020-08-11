@@ -62,11 +62,15 @@ Para ela também seria interessante poder avisar para o salão quando um pedido 
 ## Dados técnicos sobre as ferramentas utilizadas neste projeto
 
 **MacOS Catalina - 10.15.4**
+
 Node - 12.13.0
+
 NPM - 6.14.6
 
 **Windows 10 Home - 64 bits**
+
 Node - 12.16.1
+
 NPM - 6.14.6
 
 
