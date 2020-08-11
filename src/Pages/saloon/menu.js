@@ -40,6 +40,9 @@ const Menu = () => {
 
   const addBurguer = () => {
     setOrder([...order, { type: burguerType.type, price: burguerType.price, extras, meat: burguerMeat }])
+    setExtras({ Ovo: false, Queijo: false })
+    setBurguerMeat('')
+    setBurguerValue(false)
   }
 
   const addOrder = (event) => {
