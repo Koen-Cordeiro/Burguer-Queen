@@ -43,7 +43,9 @@ const interval = setInterval(() => setDate(new Date().getTime()), 60000)
       <aside className='sidebar'>
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
-        <p className='copyright__land'>© Caroline Pinheiro e Tamires Cordeiro</p>
+        <div className='copyright__land'>
+          © Caroline Pinheiro Tamires Cordeiro
+        </div>
       </aside>
       <section className='order__cards order__cards-kitchen'>
         <header className='order__top'>
@@ -54,10 +56,10 @@ const interval = setInterval(() => setDate(new Date().getTime()), 60000)
         </header>
         {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
         {status.length===0 && <CardBoard arr={delivered} />}
-        <footer className='copyright__portrait'>
-          © Caroline Pinheiro e Tamires Cordeiro
-        </footer>
       </section>
+      <footer className='copyright__portrait'>
+        © Caroline Pinheiro e Tamires Cordeiro
+      </footer>
     </div>
 
     
