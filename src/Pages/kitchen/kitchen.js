@@ -33,9 +33,9 @@ const interval = setInterval(() => setDate(new Date().getTime()), 60000)
   useEffect(()=> setOpen(o => o.map(e => ({...e, waitingTime: Number((((new Date().getTime() - e.msOrdered) / 1000) / 60).toFixed(0)) }))) , [date])
 
   const arrMenu = [
-    {menuText:'Abertos', menuClass:status === 'pending'? 'sidebar active' : 'sidebar', menuClick:() => setStatus('pending')},
-    {menuText:'Prontos', menuClass:status === 'doing' ? 'sidebar active' : 'sidebar', menuClick:() => setStatus('doing')},
-    {menuText:'Entregues', menuClass:status === '' ? 'sidebar active' : 'sidebar', menuClick:() => setStatus('')},
+    {menuText:'Abertos', menuClass:status === 'pending'? 'sidebar active space' : 'sidebar space', menuClick:() => setStatus('pending')},
+    {menuText:'Prontos', menuClass:status === 'doing' ? 'sidebar active space' : 'sidebar space', menuClick:() => setStatus('doing')},
+    {menuText:'Entregues', menuClass:status === '' ? 'sidebar active space' : 'sidebar space', menuClick:() => setStatus('')},
   ];
 
   return (
@@ -43,6 +43,7 @@ const interval = setInterval(() => setDate(new Date().getTime()), 60000)
       <aside className='sidebar'>
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
+        <p className='copyright__land'>© Caroline Pinheiro e Tamires Cordeiro</p>
       </aside>
       <section className='order__cards order__cards-kitchen'>
         <header className='order__top'>
@@ -53,6 +54,9 @@ const interval = setInterval(() => setDate(new Date().getTime()), 60000)
         </header>
         {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
         {status.length===0 && <CardBoard arr={delivered} />}
+        <footer className='copyright__portrait'>
+          © Caroline Pinheiro e Tamires Cordeiro
+        </footer>
       </section>
     </div>
 

@@ -8,6 +8,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    &--ul{
+      @include vertical {
+        display: flex;
+        flex-direction: row;
+        margin-left: 15px;
+      }
+    }
   }
   &__menu {
     background: $gray;

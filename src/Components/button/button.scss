@@ -31,11 +31,26 @@
   &__sidebar {
     @include button(200px, 70px, black, white, left);
     border-radius: $border-angle 0px 0px $border-angle;
+      @include vertical {
+        @include button(150px, 70px, black, white, left);
+        border-radius: $border-angle;
+      }
     &.active {
       @include button(200px, 70px, white, black, left);
+        @include vertical {
+          @include button(150px, 70px, white, black, left);
+          border-radius: $border-angle;
+        }
     }
     &:focus {
       outline: none;
+    }
+    &.space {
+      padding-left: 30px;
+      @include vertical {
+        padding-left: 0;
+        text-align: center;
+      }
     }
   }
   &__menu {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Report } from 'notiflix'
+import { Report, Notify } from 'notiflix'
 import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
@@ -179,6 +179,7 @@ const Menu = () => {
                   msOrdered: new Date().getTime(),
                   workerName: firebase.auth().currentUser.displayName
                 })
+                Notify.Success('Pedido enviado')
                 setClientName('')
                 setTable('')
                 setOrder([])
@@ -186,7 +187,7 @@ const Menu = () => {
               } else {
                 Report.Failure('Pedido incompleto',
                   'Para enviar um pedido, favor preencher todas as informações corretamente.',
-                  'Ok, entendo');
+                  'OK');
               }
             }} />
           </div>

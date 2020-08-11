@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
-    margin: 30px 25px;
-    height: 600px;
+    margin: 100px 20px 0px 25px;
+    height: calc(100vh - 100px);
   }
 }

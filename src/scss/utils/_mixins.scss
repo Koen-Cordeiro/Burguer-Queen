@@ -62,12 +62,6 @@
   vertical-align: sub;
 }
 
-@mixin mobile {
-  @media (min-width: 320px) and (max-width: 767px) {
-    @content;
-  }
-}
-
 @mixin burguer($text) {
   content: $text;
   font-size: 0.95em;
@@ -120,4 +114,16 @@
   letter-spacing: 0.02em;
   font-weight: $font-weight-semibold;
   text-transform: uppercase;
+}
+
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin vertical {
+  @media (min-width: 768px) and (orientation : portrait) {
+    @content;
+  }
 }
