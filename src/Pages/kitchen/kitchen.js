@@ -41,9 +41,11 @@ const Kitchen = () => {
   return (
     <div className='frame'>
       <aside className='sidebar'>
-        <Logo use='sidebar' />
-        <Nav use='sidebar' arr={arrMenu} />
-        <p className='copyright__land'>© Caroline Pinheiro e Tamires Cordeiro</p>
+        <Logo use='sidebar'/>
+        <Nav use='sidebar' arr={arrMenu}/>
+        <div className='copyright__land'>
+          © Caroline Pinheiro Tamires Cordeiro
+        </div>
       </aside>
       <section className='order__cards order__cards-kitchen'>
         <header className='order__top'>
@@ -53,12 +55,12 @@ const Kitchen = () => {
             firebase.auth().signOut()
           }} />
         </header>
-        {status.length > 0 && <CardBoard arr={open.filter(e => e.orderStatus === status)} />}
-        {status.length === 0 && <CardBoard arr={delivered} />}
-        <footer className='copyright__portrait'>
-          © Caroline Pinheiro e Tamires Cordeiro
-        </footer>
+        {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
+        {status.length===0 && <CardBoard arr={delivered} />}
       </section>
+      <footer className='copyright__portrait'>
+        © Caroline Pinheiro e Tamires Cordeiro
+      </footer>
     </div>
 
 
