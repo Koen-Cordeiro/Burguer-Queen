@@ -90,7 +90,8 @@ body {
     height: 698px;
     border-radius: 0px 0px $border-angle 0px;
   }
-  &__number, &__info {
+  &__number,
+  &__info {
     @extend %row;
     width: inherit;
     height: 80px;
@@ -121,7 +122,6 @@ body {
     background: rgba(160, 160, 160, 0.2);
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px 0px $border-angle $border-angle;
-    
   }
   &__total {
     @extend %row;
@@ -149,16 +149,16 @@ body {
   &__cards {
     @extend %column;
     width: 100%;
-    height: 67vh;
+    height: 768px;
     @include vertical {
-      height: 68vh;
+      height: calc(1024px - 70px - 190px);
     }
     &-kitchen {
       margin-left: 240px;
       @include vertical {
         margin-left: 0;
         margin-top: 180px;
-        height: 68vh;
+        height: calc(1024px - 70px - 190px);
       }
     }
   }
@@ -169,7 +169,7 @@ body {
     justify-content: space-between;
     padding: 0px 30px 0px 25px;
     height: 70px;
-    background: #A0A0A0;
+    background: #a0a0a0;
     box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
     align-items: center;
@@ -215,19 +215,20 @@ body {
     width: 60%;
     text-align: center;
     color: white;
-    height: 35%;
+    height: 45%;
     font-size: 0.8em;
     padding: 10% 20%;
     line-height: 1.2em;
     text-align: center;
     color: white;
-    &.saloon {
-      height: 45%;
-      margin: 0;
-    }
     @include vertical {
       display: none;
     }
+  }
+  &__saloon {
+    margin: 0;
+    width: 200px;
+    justify-content: center;
   }
   &__portrait {
     display: none;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Report, Notify } from 'notiflix'
+import { Report, Notify, Confirm } from 'notiflix'
 import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
 import MenuItems from '../../Components/menu-items/menu-items'
@@ -22,7 +22,7 @@ const Menu = () => {
   const [clientName, setClientName] = useState('')
   const [finalPrice, setFinalPrice] = useState(0)
   const [burguerValue, setBurguerValue] = useState(false)
-  const [burguerMeat, setBurguerMeat] = useState('')
+  const [burguerMeat, setBurguerMeat] = useState('Bovino')
   const [extras, setExtras] = useState({ Ovo: false, Queijo: false })
   const [burguerType, setBurguerType] = useState({})
   let [updateOrderNumber, setUpdateOrderNumber] = useState(0)
@@ -41,7 +41,7 @@ const Menu = () => {
   const addBurguer = () => {
     setOrder([...order, { type: burguerType.type, price: burguerType.price, extras, meat: burguerMeat }])
     setExtras({ Ovo: false, Queijo: false })
-    setBurguerMeat('')
+    setBurguerMeat('Bovino')
     setBurguerValue(false)
   }
 
@@ -162,9 +162,20 @@ const Menu = () => {
           <div className='order__buttons'>
             <Button type='order--cancel' text='Cancelar' handleClick={(event) => {
               event.preventDefault()
-              setClientName('')
-              setTable('')
-              setOrder([])
+              Confirm.Show(
+                'Cancelamento do pedido',
+                'Você deseja cancelar o pedido??',
+                'Sim',
+                'Não',
+                function () {
+                  setClientName('')
+                  setTable('')
+                  setOrder([])
+                  Notify.Success('Pedido cancelado com sucesso!')
+                },
+                function () {
+                  Notify.Failure('Ação cancelada')
+                });
             }} />
             <Button type='order--confirm' text='Enviar' handleClick={(event) => {
               event.preventDefault()

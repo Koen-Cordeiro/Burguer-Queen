@@ -46,7 +46,7 @@ const Orders = () => {
           clearInterval(interval)
           firebase.auth().signOut()}} />
       </header>
-      {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status)} />}
+      {status.length>0 && <CardBoard arr={open.filter(e=> e.orderStatus === status).reverse()} />}
       {status.length===0 && <CardBoard arr={delivered} />}
     </div>
   );
