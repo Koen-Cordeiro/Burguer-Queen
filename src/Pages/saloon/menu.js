@@ -22,7 +22,7 @@ const Menu = () => {
   const [clientName, setClientName] = useState('')
   const [finalPrice, setFinalPrice] = useState(0)
   const [burguerValue, setBurguerValue] = useState(false)
-  const [burguerMeat, setBurguerMeat] = useState('')
+  const [burguerMeat, setBurguerMeat] = useState('Bovino')
   const [extras, setExtras] = useState({ Ovo: false, Queijo: false })
   const [burguerType, setBurguerType] = useState({})
   let [updateOrderNumber, setUpdateOrderNumber] = useState(0)
@@ -41,7 +41,7 @@ const Menu = () => {
   const addBurguer = () => {
     setOrder([...order, { type: burguerType.type, price: burguerType.price, extras, meat: burguerMeat }])
     setExtras({ Ovo: false, Queijo: false })
-    setBurguerMeat('')
+    setBurguerMeat('Bovino')
     setBurguerValue(false)
   }
 
