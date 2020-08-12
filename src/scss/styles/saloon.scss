@@ -25,11 +25,13 @@ body {
   @extend %row;
   @include background(768px, 1024px);
   padding:0;
-  overflow:auto;
   @include vertical {
     flex-direction: column;
     @include background(1024px, 768px);
     padding: 0;
+  }
+  @include mobile {
+    @include background(1024px, 768px)
   }
 }
 
@@ -49,17 +51,28 @@ body {
 
 .saloon {
   @extend %row;
-  margin-left:  240px;
+  margin-left: 240px;
   width: 100%;
+  @include vertical {
+    margin-left: 0;
+    margin-top: 180px;
+    height: calc(82vh - 72px);
+  }
 }
 
 .menu {
   width: 410px;
   @extend %column;
   @extend %center;
+  @include vertical {
+    width: 400px;
+  }
   &__center {
     width: 360px;
     margin-top: 32px;
+    @include vertical {
+      width: 355px;
+    }
   }
 }
 
@@ -69,6 +82,9 @@ body {
   height: 768px;
   box-shadow: -4px 0px 7px rgba(0, 0, 0, 0.15);
   background-image: url(https://firebasestorage.googleapis.com/v0/b/burger-queen-labss.appspot.com/o/icons%2Fruido.png?alt=media&token=2f216a63-4a06-442b-8866-9981b2a9f3d7);
+  @include vertical {
+    width: 368px;
+  }
   &__form {
     width: 315px;
     height: 698px;
@@ -133,11 +149,16 @@ body {
   &__cards {
     @extend %column;
     width: 100%;
+    height: 67vh;
+    @include vertical {
+      height: 68vh;
+    }
     &-kitchen {
       margin-left: 240px;
       @include vertical {
         margin-left: 0;
         margin-top: 180px;
+        height: 68vh;
       }
     }
   }
@@ -176,6 +197,10 @@ body {
   height: 70px;
   padding: 0 28px;
   border-radius: 0px $border-angle 0px 0px;
+  @include vertical {
+    width: 312px;
+    border-radius: 0px;
+  }
   h1 {
     color: white;
     font-size: 1.2em;
@@ -184,8 +209,22 @@ body {
 
 .copyright {
   &__land {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 60%;
     text-align: center;
     color: white;
+    height: 35%;
+    font-size: 0.8em;
+    padding: 10% 20%;
+    line-height: 1.2em;
+    text-align: center;
+    color: white;
+    &.saloon {
+      height: 45%;
+      margin: 0;
+    }
     @include vertical {
       display: none;
     }
@@ -196,11 +235,11 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      position: fixed;
-      bottom: 0;
+      position: relative;
       color: white;
+      font-size: 0.8em;
       width: 768px;
-      height: 70px;
+      height: 80px;
       background-color: black;
       border-radius: 0px 0px $border-angle $border-angle;
     }

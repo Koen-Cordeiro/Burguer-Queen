@@ -23,11 +23,17 @@ const Saloon = () => {
       <aside className='sidebar'>
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
+        <div className='copyright__land saloon'>
+          © Caroline Pinheiro Tamires Cordeiro
+        </div>
       </aside>
       <div className='saloon'>
         {menu && <Menu />}
         {order && <Orders />}
       </div>
+      <footer className='copyright__portrait'>
+        © Caroline Pinheiro e Tamires Cordeiro
+      </footer>
     </div>
   );
 };
