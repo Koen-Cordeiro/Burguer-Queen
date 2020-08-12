@@ -169,14 +169,13 @@ const Menu = () => {
                 'Não',
                 function () {
                   setClientName('')
-              setTable('')
-              setOrder([])
-              Notify.Success('Pedido cancelado com sucesso!')
+                  setTable('')
+                  setOrder([])
+                  Notify.Success('Pedido cancelado com sucesso!')
                 },
                 function () {
                   Notify.Failure('Ação cancelada')
                 });
-              
             }} />
             <Button type='order--confirm' text='Enviar' handleClick={(event) => {
               event.preventDefault()
