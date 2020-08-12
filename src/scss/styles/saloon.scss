@@ -24,8 +24,8 @@ body {
 .frame {
   @extend %row;
   @include background(768px, 1024px);
-  padding:0;
-  overflow:auto;
+  padding: 0;
+  overflow: auto;
   @include vertical {
     flex-direction: column;
     @include background(1024px, 768px);
@@ -49,7 +49,7 @@ body {
 
 .saloon {
   @extend %row;
-  margin-left:  240px;
+  margin-left: 240px;
   width: 100%;
 }
 
@@ -74,7 +74,8 @@ body {
     height: 698px;
     border-radius: 0px 0px $border-angle 0px;
   }
-  &__number, &__info {
+  &__number,
+  &__info {
     @extend %row;
     width: inherit;
     height: 80px;
@@ -105,7 +106,6 @@ body {
     background: rgba(160, 160, 160, 0.2);
     box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.15);
     border-radius: 0px 0px $border-angle $border-angle;
-    
   }
   &__total {
     @extend %row;
@@ -148,7 +148,7 @@ body {
     justify-content: space-between;
     padding: 0px 30px 0px 25px;
     height: 70px;
-    background: #A0A0A0;
+    background: #a0a0a0;
     box-shadow: inset 0px 3px 7.5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
     align-items: center;
@@ -186,6 +186,9 @@ body {
   &__land {
     text-align: center;
     color: white;
+    position: fixed;
+    bottom: calc(100vh - 768px);
+    width: 230px;
     @include vertical {
       display: none;
     }
