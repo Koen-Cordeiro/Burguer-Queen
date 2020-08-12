@@ -149,16 +149,16 @@ body {
   &__cards {
     @extend %column;
     width: 100%;
-    height: 67vh;
+    height: 768px;
     @include vertical {
-      height: 68vh;
+      height: calc(1024px - 70px - 190px);
     }
     &-kitchen {
       margin-left: 240px;
       @include vertical {
         margin-left: 0;
         margin-top: 180px;
-        height: 68vh;
+        height: calc(1024px - 70px - 190px);
       }
     }
   }
@@ -215,22 +215,20 @@ body {
     width: 60%;
     text-align: center;
     color: white;
-    height: 35%;
+    height: 45%;
     font-size: 0.8em;
     padding: 10% 20%;
     line-height: 1.2em;
     text-align: center;
     color: white;
-    position: fixed;
-    bottom: calc(100vh - 768px);
-    width: 230px;
-    &.saloon {
-      height: 45%;
-      margin: 0;
-    }
     @include vertical {
       display: none;
     }
+  }
+  &__saloon {
+    margin: 0;
+    width: 200px;
+    justify-content: center;
   }
   &__portrait {
     display: none;
