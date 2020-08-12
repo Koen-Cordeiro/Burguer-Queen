@@ -44,7 +44,7 @@ const Kitchen = () => {
         <Logo use='sidebar'/>
         <Nav use='sidebar' arr={arrMenu}/>
         <div className='copyright__land'>
-          © Caroline Pinheiro Tamires Cordeiro
+          <p className='copyright__saloon'>© Caroline Pinheiro e Tamires Cordeiro</p>
         </div>
       </aside>
       <section className='order__cards order__cards-kitchen'>
