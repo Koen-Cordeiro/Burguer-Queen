@@ -2,6 +2,7 @@ import React from 'react'
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import './order-card.scss'
+import { Notify } from 'notiflix';
 import chefhat from '../../img/chefhat.svg'
 import clock from '../../img/clock.svg'
 import Button from '../button/button'
@@ -44,11 +45,22 @@ const orderCard = ({ e, index }) => {
 
       </section>
       <div className='order__card--div-bottom'>
-        {e.orderStatus === 'pending' && window.location.pathname === '/kitchen' && <Button key={`accept-${index}`} type='accept' text='Aceitar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'doing' })}/>}
-        {e.orderStatus === 'pending' && window.location.pathname === '/saloon' && <p key={`delivered-${index}`} className='order__card--left'>Pendente</p>} 
-        {e.orderStatus === 'doing' && window.location.pathname === '/kitchen' && <Button key={`finalize-${index}`} type='accept' text='Finalizar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'ready' })} />}
-        {e.orderStatus === 'ready' && window.location.pathname === '/saloon' && <Button key={`deliver-${index}`} type='accept' text='Entregar' handleClick={async () => await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'delivered' })} />}
-        {e.orderStatus === 'doing' && window.location.pathname === '/saloon' && <p key={`doing-saloon-${index}`} className='order-card__read'>Fazendo</p>}
+        {e.orderStatus === 'pending' && window.location.pathname === '/kitchen' && <Button key={`accept-${index}`} type='accept' text='Aceitar'
+          handleClick={async () => {
+            Notify.Success('Preparo aceito pela cozinha!')
+            await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'doing' })
+          }} />}
+        {e.orderStatus === 'pending' && window.location.pathname === '/saloon' && <p key={`delivered-${index}`} className='order__card--left'>Pendente</p>}
+        {e.orderStatus === 'doing' && window.location.pathname === '/kitchen' && <Button key={`finalize-${index}`} type='accept' text='Finalizar'
+          handleClick={async () => {
+            Notify.Success('Pedido encaminhado para a entrega!')
+            await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'ready' })
+          }} />}
+        {e.orderStatus === 'ready' && window.location.pathname === '/saloon' && <Button key={`deliver-${index}`} type='accept' text='Entregar'
+          handleClick={async () => {
+            Notify.Success('Pedido entregue com sucesso!')
+            await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'delivered' })
+          }} />}
         {e.orderStatus === 'delivered' && <p key={`delivered-${index}`} className='order__card--left'>Entregue</p>}
       </div>
     </li>
