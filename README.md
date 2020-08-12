@@ -28,6 +28,51 @@ Para ela também seria interessante poder avisar para o salão quando um pedido 
 
 
 ### - Prototipação
+
+#### Usabilidade
+
+Partindo do uso preferencial em tablets, e suas particularidades de leitura tanto em modelo paisagem como retrato, foram aplicadas boas práticas apresentadas no relatório [Tablet Website and Application UX](https://www.nngroup.com/reports/tablets/) da Nielsen Norman Group, abaixo as principais referências:
+
+- Crie áreas de clique grandes o suficiente. Recomendado: 1 x 1 cm.
+- Adicione dimensionalidade 3D apenas aos elementos clicáveis.
+- Garanta que seu aplicativo funcione em todas as orientações possíveis.
+- Confirme que os usuários possam ver o que digitam em ambas as orientações.
+
+#### SALÃO
+
+>Fácil acesso as informações de menu e pedidos em andamento para os garçons.
+
+Para rápida visualização do cardápio e retirada de pedido, foi criada a tela **Menu**:
+
+ - Divisão do cardápio com palavras diretas e curtas: DIA e CAFÉ.
+ - Criação de grid 2 x 1 para cada seção do menu, visto o padrão de dois items em cada.
+ - Cartões clicáveis de adição para cada item com: ícone figurativo, nome e preço.
+ - Comanda de preenchimento do nome do cliente e do número da mesa no topo, prevendo a área ocupada pelo teclado digital.
+ - Área de resumo com botões de adição e exclusão de itens.
+ - Ao final botões de cancelar e envio, com notificação visual de confirmação.
+
+Já na tela **Pedidos** temos o acompanhamento das comandas enviadas à cozinha:
+
+ - Abas da situação do pedido: Abertos, Prontos e Entregues.
+ - Comandas com: 
+ - [ ] Informações do cliente – número do pedido, nome e mesa;
+ - [ ] Atendimento – horário de retirada do pedido e tempo de preparo; 
+ - [ ] Resumo – itens para preparo e preço total para conferência;
+ - [ ] Situação de entrega:
+	- pendente (cozinha não aceitou);
+	- entregar (cozinha finalizou);
+	- e entregue (mesa).
+
+#### COZINHA
+
+>Fácil acesso as entradas e saídas de pedidos para os cozinheiros.
+
+Similar a tela de Pedidos do Salão temos as abas: **Abertos**, **Prontos** e **Entregues**.
+Com a diferença nos textos da situação de entrega: aceitar, finalizar e entregue.
+
+#### Interface
+Ainda sobre a inter leis conceitos de heurística foram utilizados nas seguintes decisões de interação do usuário:
+
 #### Baixa fidelidade
 - Tela de menu
 ![Versão de baixa fidelidade do menu](https://trello-attachments.s3.amazonaws.com/5f0f71b2a4217c75a2a906cb/5f21bddadb9757047338a1f1/1fbd0bfab5fbca885235bae1745a3d44/baixaf.png)
