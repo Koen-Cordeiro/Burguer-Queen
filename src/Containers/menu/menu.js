@@ -73,6 +73,7 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
+  
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
@@ -90,6 +91,7 @@ const Menu = () => {
       return allTypes;
     }, []))
   }, [order])
+  
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     if (atualType.extras) {
       if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
