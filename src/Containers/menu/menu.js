@@ -77,7 +77,7 @@ const Menu = () => {
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras))
+      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras) && x.type === atualType.type)
       if (atualType.extras && indexMeat === -1) {
         allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
       } else if (atualType.extras && indexMeat !== -1) {
