@@ -109,6 +109,7 @@ const Menu = () => {
       x.type === atualType.type)
     if (indexMeat === -1) {
       atualType.count = 1
+      console.log(atualType)
       return allTypes.push(atualType)
     } else if (indexMeat !== -1) {
       return allTypes[indexMeat].count++
@@ -119,11 +120,12 @@ const Menu = () => {
 
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     let extras = 0
-    if(atualType. extras) {
-      if ( atualType.extras.Ovo && atualType.extras.Queijo) extras += 2
+    if (atualType.extras) {
+      if (atualType.extras.Ovo && atualType.extras.Queijo) extras += 2
       else if (atualType.extras.Ovo || atualType.extras.Queijo) extras++
     }
-    return atualType.price * atualType.count + allTypes + extras
+    extras+= atualType.price
+    return extras * atualType.count + allTypes 
   }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'cafe', set: setCoffee }), [])
