@@ -2,7 +2,6 @@
 
 ![Chase Burguer - foto de Esther Lin/ Unsplash](https://trello-attachments.s3.amazonaws.com/5f0f71b2a4217c75a2a906cb/5f0f744d4758793e49cd5d31/a0930c45d15c947dfd06609c69f5e310/chase-burguer.jpg)
 
-  
 
 Com a crescente fama dos empreendimentos de escape rooms, onde os usuários são imersos em um ambiente de mistérios e devem buscar a solução para os mesmos, nasceu a Chase Burguer, uma hamburgueria ambientada no universo dos mistérios onde lendas como Sherlock Holmes e Poirot cresceram.
 
