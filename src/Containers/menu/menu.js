@@ -123,10 +123,8 @@ const Menu = () => {
   useEffect(() => updateClientOrder(), [order])
 
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
-    if (atualType.extras) {
       if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
       else if (atualType.extras.Ovo || atualType.extras.Queijo) atualType.price++
-    }
     return atualType.price * atualType.count + allTypes
   }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
