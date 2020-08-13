@@ -58,14 +58,16 @@ const Menu = () => {
     const element = event.currentTarget.parentElement.nextSibling.children[0].textContent
 
     if (/Hambúrguer/.test(element)) {
+      const type = event.currentTarget.parentElement.nextSibling.children[0].textContent
       const meat = event.currentTarget.parentElement.nextSibling.children[1].textContent
       const extrasDOM = event.currentTarget.parentElement.classList[1]
-      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM)
+      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM && x.type === type)
       if (indexMeat !== -1) {
         greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
         setOrder([...order])
       }
-    } else {
+    }
+    else {
       const index = order.findIndex(x => x.type === element)
       greater ? order.push(order[index]) : order.pop(order[index])
       setOrder([...order])
@@ -73,11 +75,13 @@ const Menu = () => {
   }
 
   useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
-  
+
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras) && x.type === atualType.type)
+      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat &&
+        JSON.stringify(x.extras) === JSON.stringify(atualType.extras) &&
+        x.type === atualType.type)
       if (atualType.extras && indexMeat === -1) {
         allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
       } else if (atualType.extras && indexMeat !== -1) {
@@ -91,7 +95,7 @@ const Menu = () => {
       return allTypes;
     }, []))
   }, [order])
-  
+
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     if (atualType.extras) {
       if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
