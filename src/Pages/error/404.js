@@ -1,6 +1,6 @@
 import React from "react";
 import firebase from "firebase/app";
-import Button from "../Components/button/button";
+import Button from "../../Components/button/button";
 
 const Page404 = () => (
   <div className="error">

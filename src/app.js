@@ -7,7 +7,7 @@ import Login from '../src/Pages/login/login'
 import Kitchen from '../src/Pages/kitchen/kitchen'
 import Saloon from '../src/Pages/saloon/saloon'
 import Register from '../src/Pages/register/register'
-import Page404 from '../src/Pages/404'
+import Page404 from './Pages/error/404'
 
 const App = () => {
   const [userPage, setUserPage] = useState();
