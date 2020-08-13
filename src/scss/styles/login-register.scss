@@ -12,6 +12,9 @@ body {
 main {
   @extend %flex;
   height: 100vh;
+  @include desktop {
+    height: 100%;
+  }
   width: 100%;
 }
 
