@@ -76,25 +76,43 @@ const Menu = () => {
 
   useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
 
-  useEffect(() => {
+  const updateClientOrder = () => {
     setClientOrder(order.reduce((allTypes, atualType) => {
-      const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat &&
-        JSON.stringify(x.extras) === JSON.stringify(atualType.extras) &&
-        x.type === atualType.type)
-      if (atualType.extras && indexMeat === -1) {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
-      } else if (atualType.extras && indexMeat !== -1) {
-        allTypes[indexMeat].count++
-      }
-      else if (index !== -1) {
-        allTypes[index].count++
-      } else {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
-      }
+      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
       return allTypes;
     }, []))
-  }, [order])
+  }
+
+  const updateOrderValue = (allTypes, atualType) => {
+    const index = allTypes.findIndex(x => x.type === atualType.type)
+    if (index !== -1) {
+      return allTypes[index].count++
+    } else {
+      return allTypes.push({
+        type: atualType.type,
+        price: atualType.price,
+        count: 1
+      })
+    }
+  }
+  const updateBurguerValue = (allTypes, atualType) => {
+    const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat &&
+      JSON.stringify(x.extras) === JSON.stringify(atualType.extras) &&
+      x.type === atualType.type)
+    if (indexMeat === -1) {
+      return allTypes.push({
+        type: atualType.type,
+        price: atualType.price,
+        count: 1,
+        extras: atualType.extras,
+        meat: atualType.meat
+      })
+    } else if (indexMeat !== -1) {
+      return allTypes[indexMeat].count++
+    }
+  }
+
+  useEffect(() => updateClientOrder(), [order])
 
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     if (atualType.extras) {
