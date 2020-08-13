@@ -25,7 +25,11 @@ const App = () => {
         <Route path='/saloon' component={Saloon} />
       </BrowserRouter>)
     } else {
-      setUserPage(() => <Route path='/error' component={404} />)
+      setUserPage(() => 
+      <BrowserRouter>
+        <Redirect to='/error' />
+        <Route path='/error' component={Page404} />
+      </BrowserRouter>)
     };
   }
 
