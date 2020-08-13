@@ -5,7 +5,7 @@ import './order-card.scss'
 import { Notify } from 'notiflix';
 import chefhat from '../../img/chefhat.svg'
 import clock from '../../img/clock.svg'
-import Button from '../button/button'
+import Button from '../../Components/button/button'
 
 
 const orderCard = ({ e, index }) => {

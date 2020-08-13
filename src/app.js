@@ -7,7 +7,7 @@ import Login from '../src/Pages/login/login'
 import Kitchen from '../src/Pages/kitchen/kitchen'
 import Saloon from '../src/Pages/saloon/saloon'
 import Register from '../src/Pages/register/register'
-import Page404 from '../src/Pages/404'
+import Page404 from './Pages/error/404'
 
 const App = () => {
   const [userPage, setUserPage] = useState();
@@ -25,7 +25,11 @@ const App = () => {
         <Route path='/saloon' component={Saloon} />
       </BrowserRouter>)
     } else {
-      setUserPage(() => <Route path='/error' component={404} />)
+      setUserPage(() => 
+      <BrowserRouter>
+        <Redirect to='/error' />
+        <Route path='/error' component={Page404} />
+      </BrowserRouter>)
     };
   }
 

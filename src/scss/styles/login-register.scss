@@ -39,3 +39,10 @@ main {
   @extend %column;
   @extend %center;
 }
+
+.error {
+  @extend %flex;
+  h1{
+    margin: 25px 0;
+  }
+}
