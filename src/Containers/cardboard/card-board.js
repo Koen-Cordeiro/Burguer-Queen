@@ -1,6 +1,6 @@
 import React from 'react'
 import './card-board.scss'
-import OrderCard from '../../Components/order-card/order-card'
+import OrderCard from '../order-card/order-card.js'
 
 
 const CardBoard = ({arr}) => (

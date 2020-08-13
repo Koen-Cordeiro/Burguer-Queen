@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Menu from './menu'
-import Orders from './orders'
+import Menu from '../../Containers/menu/menu'
+import Orders from '../../Containers/orders/orders'
 import Nav from '../../Components/nav/nav'
 import Logo from '../../Components/logo/logo'
 import '../../scss/styles/saloon.scss'
