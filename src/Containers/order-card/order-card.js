@@ -59,7 +59,7 @@ const orderCard = ({ e, index }) => {
         {e.orderStatus === 'ready' && window.location.pathname === '/saloon' && <Button key={`deliver-${index}`} type='accept' text='Entregar'
           handleClick={async () => {
             Notify.Success('Pedido entregue com sucesso!')
-            await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'delivered' })
+            await firebase.firestore().collection('orders').doc(e.id).update({ orderStatus: 'delivered', waitingTime: (((new Date().getTime() - e.msOrdered)/1000)/60).toFixed(0) })
           }} />}
         {e.orderStatus === 'delivered' && <p key={`delivered-${index}`} className='order__card--left'>Entregue</p>}
       </div>
