@@ -31,16 +31,16 @@
   &__sidebar {
     @include button(200px, 70px, black, white, left);
     border-radius: $border-angle 0px 0px $border-angle;
-      @include vertical {
-        @include button(165px, 70px, black, white, left);
-        border-radius: $border-angle;
-      }
+    @include vertical {
+      @include button(165px, 70px, black, white, left);
+      border-radius: $border-angle;
+    }
     &.active {
       @include button(200px, 70px, white, black, left);
-        @include vertical {
-          @include button(165px, 70px, white, black, left);
-          border-radius: $border-angle;
-        }
+      @include vertical {
+        @include button(165px, 70px, white, black, left);
+        border-radius: $border-angle;
+      }
     }
     &:focus {
       outline: none;
@@ -88,6 +88,10 @@
   }
   &__accept {
     @include send(150px, 45px, 1em);
+    transition: 1000ms;
+    &:hover {
+      transform: scale(1.03);
+    }
   }
   &__logout {
     display: flex;
@@ -101,6 +105,10 @@
     font-weight: $font-weight-extrabold;
     font-size: 0.8em;
     padding: 0;
+    transition: 1000ms;
+    &:hover {
+      transform: scale(1.03);
+    }
     &--gray {
       display: flex;
       background-color: $gray;
@@ -110,15 +118,27 @@
       font-size: 0.8em;
       color: white;
       align-items: center;
+      transition: 1000ms;
+      &:hover {
+        transform: scale(1.03);
+      }
     }
   }
   &__order {
     &--cancel {
       @include send(135px, 45px, 1em);
       background-color: $gray;
+      transition: 1000ms;
+      &:hover {
+        transform: scale(1.03);
+      }
     }
     &--confirm {
       @include send(115px, 45px, 1em);
+      transition: 1000ms;
+      &:hover {
+        transform: scale(1.03);
+      }
     }
   }
   &__status {
@@ -131,7 +151,7 @@
       text-transform: uppercase;
     }
     &--black {
-      @include button(205px, 55px,black, white, center);
+      @include button(205px, 55px, black, white, center);
       border-radius: $border-big $border-big 0px 0px;
       text-transform: uppercase;
     }

@@ -39,7 +39,15 @@ const Menu = () => {
   }
 
   const addBurguer = () => {
-    setOrder([...order, { type: burguerType.type, price: burguerType.price, extras, meat: burguerMeat }])
+    setOrder([
+      ...order,
+      {
+        type: burguerType.type,
+        price: burguerType.price,
+        extras,
+        meat: burguerMeat,
+        count: 0
+      }])
     setExtras({ Ovo: false, Queijo: false })
     setBurguerMeat('Bovino')
     setBurguerValue(false)
@@ -58,46 +66,62 @@ const Menu = () => {
     const element = event.currentTarget.parentElement.nextSibling.children[0].textContent
 
     if (/Hambúrguer/.test(element)) {
+      const type = event.currentTarget.parentElement.nextSibling.children[0].textContent
       const meat = event.currentTarget.parentElement.nextSibling.children[1].textContent
       const extrasDOM = event.currentTarget.parentElement.classList[1]
-      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM)
+      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM && x.type === type)
       if (indexMeat !== -1) {
         greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
         setOrder([...order])
       }
-    } else {
+    }
+    else {
       const index = order.findIndex(x => x.type === element)
       greater ? order.push(order[index]) : order.pop(order[index])
       setOrder([...order])
     }
   }
 
+  const updateOrderValue = (allTypes, atualType) => {
+    const index = allTypes.findIndex(x => x.type === atualType.type)
+    if (index !== -1) {
+      return allTypes[index].count++
+    } else {
+      return allTypes.push({
+        type: atualType.type,
+        price: atualType.price,
+        count: 1
+      })
+    }
+  }
+  const updateBurguerValue = (allTypes, atualType) => {
+    const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat &&
+      JSON.stringify(x.extras) === JSON.stringify(atualType.extras) &&
+      x.type === atualType.type)
+    if (indexMeat === -1) {
+      atualType.count = 1
+      console.log(atualType)
+      return allTypes.push(atualType)
+    } else if (indexMeat !== -1) {
+      return allTypes[indexMeat].count++
+    }
+  }
+
   useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
-  
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
-      const index = allTypes.findIndex(x => x.type === atualType.type)
-      const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat && JSON.stringify(x.extras) === JSON.stringify(atualType.extras))
-      if (atualType.extras && indexMeat === -1) {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1, extras: atualType.extras, meat: atualType.meat })
-      } else if (atualType.extras && indexMeat !== -1) {
-        allTypes[indexMeat].count++
-      }
-      else if (index !== -1) {
-        allTypes[index].count++
-      } else {
-        allTypes.push({ type: atualType.type, price: atualType.price, count: 1 })
-      }
+      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
       return allTypes;
     }, []))
   }, [order])
-  
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
+    let extras = 0
     if (atualType.extras) {
-      if (atualType.extras.Ovo && atualType.extras.Queijo) atualType.price += 2
-      else if (atualType.extras.Ovo || atualType.extras.Queijo) atualType.price++
+      if (atualType.extras.Ovo && atualType.extras.Queijo) extras += 2
+      else if (atualType.extras.Ovo || atualType.extras.Queijo) extras++
     }
-    return atualType.price * atualType.count + allTypes
+    extras+= atualType.price
+    return extras * atualType.count + allTypes 
   }, 0)), [clientOrder])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
   useEffect(() => requestData({ menu: 'Breakfast', type: 'cafe', set: setCoffee }), [])
