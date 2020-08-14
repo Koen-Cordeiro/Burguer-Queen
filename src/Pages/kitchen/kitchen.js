@@ -18,7 +18,7 @@ const Kitchen = () => {
 
 
   useEffect(() => {
-    const orders = firebase.firestore().collection('orders').onSnapshot(snap => {
+    const orders = firebase.firestore().collection("orders").orderBy("timeOrdered", "desc").onSnapshot(snap => {
       const getData = snap.docs.map((doc) => ({
         id: doc.id,
         waitingTime: Number((((new Date().getTime() - doc.data().msOrdered) / 1000) / 60).toFixed(0)),
