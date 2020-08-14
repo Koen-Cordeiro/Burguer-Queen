@@ -82,15 +82,6 @@ const Menu = () => {
     }
   }
 
-  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
-
-  const updateClientOrder = () => {
-    setClientOrder(order.reduce((allTypes, atualType) => {
-      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
-      return allTypes;
-    }, []))
-  }
-
   const updateOrderValue = (allTypes, atualType) => {
     const index = allTypes.findIndex(x => x.type === atualType.type)
     if (index !== -1) {
@@ -116,8 +107,13 @@ const Menu = () => {
     }
   }
 
-  useEffect(() => updateClientOrder(), [order])
-
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
+  useEffect(() => {
+    setClientOrder(order.reduce((allTypes, atualType) => {
+      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
+      return allTypes;
+    }, []))
+  }, [order])
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     let extras = 0
     if (atualType.extras) {
