@@ -37,6 +37,7 @@ body {
 
 .sidebar {
   background: black;
+  z-index: 1;
   width: 240px;
   height: 768px;
   border-radius: $border-angle 0px 0px $border-angle;
@@ -174,6 +175,7 @@ body {
     box-sizing: border-box;
     align-items: center;
     position: fixed;
+    z-index: 1;
     width: 784px;
     border-radius: 0px $border-angle 0px 0px;
     @include vertical {
