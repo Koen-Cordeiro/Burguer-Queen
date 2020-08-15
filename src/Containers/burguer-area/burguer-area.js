@@ -1,6 +1,6 @@
 import React from 'react'
-import Input from '../input/input'
-import Button from '../button/button'
+import Input from '../../Components/input/input'
+import Button from '../../Components/button/button'
 import './burguer-area.scss'
 
 const MenuItems = (props) => {

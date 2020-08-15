@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Report, Notify, Confirm } from 'notiflix'
 import Button from '../../Components/button/button'
 import Input from '../../Components/input/input'
-import MenuItems from '../../Components/menu-items/menu-items'
+import MenuItems from '../menu-items/menu-items'
 import FinalOrder from '../../Components/final-order/final-order'
 import Nav from '../../Components/nav/nav'
 import firebase from 'firebase/app';
@@ -100,20 +100,20 @@ const Menu = () => {
       x.type === atualType.type)
     if (indexMeat === -1) {
       atualType.count = 1
-      console.log(atualType)
       return allTypes.push(atualType)
     } else if (indexMeat !== -1) {
       return allTypes[indexMeat].count++
     }
   }
-
-  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
   useEffect(() => {
     setClientOrder(order.reduce((allTypes, atualType) => {
       atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
       return allTypes;
     }, []))
   }, [order])
+
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
+  
   useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
     let extras = 0
     if (atualType.extras) {
