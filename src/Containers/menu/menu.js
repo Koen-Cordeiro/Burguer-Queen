@@ -27,6 +27,56 @@ const Menu = () => {
   const [burguerType, setBurguerType] = useState({})
   let [updateOrderNumber, setUpdateOrderNumber] = useState(0)
 
+  
+  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
+  
+  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
+    let extras = 0
+    if (atualType.extras) {
+      if (atualType.extras.Ovo && atualType.extras.Queijo) extras += 2
+      else if (atualType.extras.Ovo || atualType.extras.Queijo) extras++
+    }
+    extras+= atualType.price
+    return extras * atualType.count + allTypes 
+  }, 0)), [clientOrder])
+  useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
+  useEffect(() => requestData({ menu: 'Breakfast', type: 'cafe', set: setCoffee }), [])
+  useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
+  useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
+  useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
+  
+  useEffect(() => {
+    setClientOrder(order.reduce((allTypes, atualType) => {
+      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
+      return allTypes;
+    }, []))
+  }, [order])
+
+  const updateOrderValue = (allTypes, atualType) => {
+    const index = allTypes.findIndex(e => e.type === atualType.type)
+    if (index !== -1) {
+      return allTypes[index].count++
+    } else {
+      return allTypes.push({
+        type: atualType.type,
+        price: atualType.price,
+        count: 1
+      })
+    }
+  }
+
+  const updateBurguerValue = (allTypes, atualType) => {
+    const indexMeat = allTypes.findIndex(e => e.meat === atualType.meat &&
+      JSON.stringify(e.extras) === JSON.stringify(atualType.extras) &&
+      e.type === atualType.type)
+    if (indexMeat === -1) {
+      atualType.count = 1
+      return allTypes.push(atualType)
+    } else if (indexMeat !== -1) {
+      return allTypes[indexMeat].count++
+    }
+  }
+
   const requestData = (document) => {
     firebase.firestore().collection('menu').doc(document.menu).collection(document.type).get().then((snap => {
       const getBurguer = snap.docs.map((doc) => ({
@@ -69,65 +119,21 @@ const Menu = () => {
       const type = event.currentTarget.parentElement.nextSibling.children[0].textContent
       const meat = event.currentTarget.parentElement.nextSibling.children[1].textContent
       const extrasDOM = event.currentTarget.parentElement.classList[1]
-      const indexMeat = order.findIndex(x => x.meat === meat && JSON.stringify(x.extras) === extrasDOM && x.type === type)
+      const indexMeat = order.findIndex(e => e.meat === meat && JSON.stringify(e.extras) === extrasDOM && e.type === type)
       if (indexMeat !== -1) {
         greater ? order.push(order[indexMeat]) : order.splice(indexMeat, 1)
         setOrder([...order])
       }
     }
     else {
-      const index = order.findIndex(x => x.type === element)
-      greater ? order.push(order[index]) : order.pop(order[index])
+      const index = order.findIndex(e => e.type === element)
+      greater ? order.push(order[index]) : order.splice(index, 1)
       setOrder([...order])
     }
   }
 
-  const updateOrderValue = (allTypes, atualType) => {
-    const index = allTypes.findIndex(x => x.type === atualType.type)
-    if (index !== -1) {
-      return allTypes[index].count++
-    } else {
-      return allTypes.push({
-        type: atualType.type,
-        price: atualType.price,
-        count: 1
-      })
-    }
-  }
-  const updateBurguerValue = (allTypes, atualType) => {
-    const indexMeat = allTypes.findIndex(x => x.meat === atualType.meat &&
-      JSON.stringify(x.extras) === JSON.stringify(atualType.extras) &&
-      x.type === atualType.type)
-    if (indexMeat === -1) {
-      atualType.count = 1
-      return allTypes.push(atualType)
-    } else if (indexMeat !== -1) {
-      return allTypes[indexMeat].count++
-    }
-  }
-  useEffect(() => {
-    setClientOrder(order.reduce((allTypes, atualType) => {
-      atualType.extras ? updateBurguerValue(allTypes, atualType) : updateOrderValue(allTypes, atualType)
-      return allTypes;
-    }, []))
-  }, [order])
-
-  useEffect(() => setOrderNumber(Number((Math.random() * 100000).toFixed(0))), [updateOrderNumber])
   
-  useEffect(() => setFinalPrice(clientOrder.reduce((allTypes, atualType) => {
-    let extras = 0
-    if (atualType.extras) {
-      if (atualType.extras.Ovo && atualType.extras.Queijo) extras += 2
-      else if (atualType.extras.Ovo || atualType.extras.Queijo) extras++
-    }
-    extras+= atualType.price
-    return extras * atualType.count + allTypes 
-  }, 0)), [clientOrder])
-  useEffect(() => requestData({ menu: 'Breakfast', type: 'pratos', set: setBreakfast }), [])
-  useEffect(() => requestData({ menu: 'Breakfast', type: 'cafe', set: setCoffee }), [])
-  useEffect(() => requestData({ menu: 'All-day', type: 'acompanhamentos', set: setSnacks }), [])
-  useEffect(() => requestData({ menu: 'All-day', type: 'bebidas', set: setDrinks }), [])
-  useEffect(() => requestData({ menu: 'All-day', type: 'hamburgueres', set: setBurguers }), [])
+  
 
   const arrMenu = [
     { menuText: 'Dia', menuClass: menu ? 'menu active' : 'menu', menuClick: () => { setMenu(!menu) } },
