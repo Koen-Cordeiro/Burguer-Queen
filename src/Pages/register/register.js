@@ -5,7 +5,7 @@ import { errorsRegister } from './errorsRegister'
 import Input from '../../Components/input/input'
 import Button from '../../Components/button/button'
 import BaseForm from '../../Components/base-form/baseform'
-import RadioInputArea from '../../Components/radio-input/radioInput'
+import RadioInputArea from '../../Containers/radio-input/radioInput'
 import ErrorSpan from '../../Components/error/error'
 
 const Register = () => {

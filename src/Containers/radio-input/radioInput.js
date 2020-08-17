@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../input/input'
+import Input from '../../Components/input/input'
 import './radioinput.scss'
 
 const RadioInputArea = (props) => {
